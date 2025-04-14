@@ -79,7 +79,7 @@ export default function TechStack() {
       </ButtonGroup>
 
       <Box sx={{ 
-        maxHeight: 700, 
+           height: 550,
         overflowY: 'auto',
         border: '1px solid rgba(255, 255, 255, 0.1)',
         borderRadius: 2,
