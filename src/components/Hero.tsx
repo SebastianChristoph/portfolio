@@ -1,76 +1,133 @@
-import { Grid, Typography, Box} from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const StyledBox = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2),
-  height: '100%',
+const HeroContainer = styled(Box)(({ }) => ({
+  width: '100%',
+  height: '400px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
-  // backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  backdropFilter: 'blur(10px)',
+  position: 'relative',
+  overflow: 'hidden',
 }));
 
-const AvatarPlaceholder = styled(Box)(({ theme }) => ({
-  width: '200px',
-  height: '200px',
-  borderRadius: '50%',
-  backgroundColor: theme.palette.primary.main,
+const ContentWrapper = styled(Box)(({ theme }) => ({
+  maxWidth: '100%',
+  margin: '0 auto',
+  width: '100%',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-  margin: '0 auto',
+  gap: theme.spacing(4),
+  position: 'relative',
+  zIndex: 1,
 }));
 
-const DataGridPlaceholder = styled(Box)(({ theme }) => ({
-  width: '100%',
-  height: '300px',
-  backgroundColor: theme.palette.background.paper,
-  border: `1px solid ${theme.palette.divider}`,
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  gap: '1px',
-  padding: '1px',
-  '& > div': {
-    backgroundColor: theme.palette.primary.main,
-    opacity: 0.1,
-  },
+const TextContent = styled(Box)(({ }) => ({
+  flex: 1,
+}));
+
+const ProfileImage = styled(Box)(({ }) => ({
+  width: '250px',
+  height: '250px',
+  borderRadius: '50%',
+  overflow: 'hidden',
+  position: 'relative',
+  border: '2px solid rgba(255, 255, 255, 0.1)',
+  boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)',
+  '& img': {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  }
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  borderRadius: '25px',
+  padding: '10px 30px',
+  textTransform: 'none',
+  fontSize: '1rem',
+  marginRight: theme.spacing(2),
+}));
+
+const GraphicElement = styled(Box)(({ }) => ({
+  position: 'absolute',
+  width: '200px',
+  height: '200px',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  borderRadius: '10px',
+  backdropFilter: 'blur(5px)',
+  background: 'rgba(255, 255, 255, 0.05)',
 }));
 
 export default function Hero() {
   return (
-    <Grid container spacing={4}>
-      <Grid size={{ xs: 12, md: 4 }}>
-        <StyledBox>
-          <Typography variant="h2" color="text.primary" gutterBottom>
-            Sebastian
+    <HeroContainer>
+      <ContentWrapper>
+        <TextContent>
+          <Typography 
+            variant="h1" 
+            sx={{ 
+              fontSize: '3.5rem', 
+              fontWeight: 'bold',
+              color: '#fff',
+              mb: 1
+            }}
+          >
+            Sebastian Christoph
           </Typography>
-          <Typography variant="h4" color="text.secondary" gutterBottom>
-            Full Stack Developer
+          <Typography 
+            variant="h2" 
+            sx={{ 
+              fontSize: '1.75rem',
+              color: '#8f9ba8',
+              mb: 2,
+              fontWeight: 'normal'
+            }}
+          >
+            Full-Stack Software Developer
           </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Creating digital experiences that matter
+          <Typography 
+            variant="body1" 
+            sx={{ 
+              color: '#8f9ba8',
+              mb: 3,
+              maxWidth: '600px'
+            }}
+          >
+            Passionate about creating innovative solutions and delivering exceptional user experiences through clean, efficient code and modern technologies.
           </Typography>
-        </StyledBox>
-      </Grid>
-      <Grid size={{ xs: 12, md: 4 }}>
-        <StyledBox>
-          <AvatarPlaceholder>
-            <Typography variant="h6" color="text.primary">
-              Avatar
-            </Typography>
-          </AvatarPlaceholder>
-        </StyledBox>
-      </Grid>
-      <Grid size={{ xs: 12, md: 4 }}>
-        <StyledBox>
-          <DataGridPlaceholder>
-            {[...Array(9)].map((_, index) => (
-              <div key={index} />
-            ))}
-          </DataGridPlaceholder>
-        </StyledBox>
-      </Grid>
-    </Grid>
+          <Box>
+            <StyledButton 
+              variant="contained" 
+              color="primary"
+              sx={{ 
+                '&:hover': { backgroundColor: theme => theme.palette.primary.dark }
+              }}
+            >
+              Hire Me
+            </StyledButton>
+            <StyledButton 
+              variant="outlined" 
+              color="secondary"
+              sx={{ 
+                '&:hover': { borderColor: theme => theme.palette.secondary.dark }
+              }}
+            >
+              Portfolio
+            </StyledButton>
+          </Box>
+        </TextContent>
+        <ProfileImage>
+          <img
+            src="/profil2_header_2500px.jpg"
+            alt="Profile"
+          />
+        </ProfileImage>
+      </ContentWrapper>
+      
+      {/* Decorative elements */}
+      <GraphicElement sx={{ top: '10%', right: '5%', transform: 'rotate(15deg)' }} />
+      <GraphicElement sx={{ top: '20%', left: '75%', transform: 'rotate(-8deg)', opacity: 0.4, zIndex: 0 }} />
+    </HeroContainer>
   );
 }

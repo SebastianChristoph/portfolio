@@ -143,16 +143,24 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#05c7a7" },  // helles grün
-    secondary: { main: "#57C3FF" },  // leichtes hellblau
-    accent: { main: "#02AFAC" }, // 
+    primary: { 
+      main: "#ff6b6b",  // coral red from hero
+      light: "#ff8585",
+      dark: "#ff5252",
+    },
+    secondary: { 
+      main: "#4a9eff",  // blue from hero
+      light: "#6cb2ff",
+      dark: "#3d84d6",
+    },
+    accent: { main: "#02AFAC" },
     background: { 
       default: "#080F25", 
       paper: "#101935" 
     },
     text: { 
-      primary: "#05c7a7", 
-      secondary: "#ced3e3"  // angepasst für besseren Kontrast
+      primary: "#ffffff", 
+      secondary: "#8f9ba8"  // angepasst an die Hero-Farben
     },
   },
   typography: {
