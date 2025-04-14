@@ -1,14 +1,30 @@
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Hero from './components/Hero';
+import NavBar from './components/NavBar';
 import { lightTheme, darkTheme } from '../theme';
-
-
+import { Container, Grid} from "@mui/material";
+import TechStack from './components/TechStack';
+import Projects from './components/Projects';
+import Cv from './components/Cv';
+import Contact from './components/Contact';
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <Hero />
+      <NavBar />
+      <Container maxWidth="xl">
+      <Hero /> 
+      <Grid container spacing={4}>
+        <TechStack />
+        <Projects />
+        </Grid>
+        <Cv />
+        <Contact />
+        </Container>
+    
+      
+     
     </ThemeProvider>
   );
 }

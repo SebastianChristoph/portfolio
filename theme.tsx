@@ -143,7 +143,7 @@ export const lightTheme = createTheme({
 export const darkTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#6C72FF" },  // mattes lila
+    primary: { main: "#05c7a7" },  // helles grün
     secondary: { main: "#57C3FF" },  // leichtes hellblau
     accent: { main: "#02AFAC" }, // 
     background: { 
@@ -151,7 +151,7 @@ export const darkTheme = createTheme({
       paper: "#101935" 
     },
     text: { 
-      primary: "#AEB9E1", 
+      primary: "#05c7a7", 
       secondary: "#ced3e3"  // angepasst für besseren Kontrast
     },
   },
