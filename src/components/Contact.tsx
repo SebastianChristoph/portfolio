@@ -129,7 +129,7 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
             p: 1,
             borderRadius: '4px',
             width: '100%',
-            height: "700px"
+            height: "500px"
           }}
         >
           <Typography 
@@ -176,9 +176,10 @@ Message sent! That's what she said! 😉`}
           backgroundColor: '#0C0C0C',
           color: '#CCCCCC',
           p: 1,
+          mt: 3, 
           borderRadius: '4px',
           width: '100%',
-          height: "700px"
+          height: "450px"
         }}
       >
         <Typography 
