@@ -1,5 +1,6 @@
 import { Box, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import BackgroundAnimation from "./BackgroundAnimation";
 
 const HeroContainer = styled(Box)(({ }) => ({
   width: '100%',
@@ -27,14 +28,14 @@ const TextContent = styled(Box)(({ }) => ({
   flex: 1,
 }));
 
-const ProfileImage = styled(Box)(({ }) => ({
+const ProfileImage = styled(Box)(({ theme }) => ({
   width: '250px',
   height: '250px',
   borderRadius: '50%',
   overflow: 'hidden',
   position: 'relative',
-  border: '2px solid rgba(255, 255, 255, 0.1)',
-  boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)',
+  border: `2px solid ${theme.palette.divider}`,
+  boxShadow: theme.shadows[5],
   '& img': {
     width: '100%',
     height: '100%',
@@ -50,19 +51,20 @@ const StyledButton = styled(Button)(({ theme }) => ({
   marginRight: theme.spacing(2),
 }));
 
-const GraphicElement = styled(Box)(({ }) => ({
+const GraphicElement = styled(Box)(({ theme }) => ({
   position: 'absolute',
   width: '200px',
   height: '200px',
-  border: '1px solid rgba(255, 255, 255, 0.1)',
+  border: `1px solid ${theme.palette.divider}`,
   borderRadius: '10px',
   backdropFilter: 'blur(5px)',
-  background: 'rgba(255, 255, 255, 0.05)',
+  background: theme.palette.background.paper,
 }));
 
 export default function Hero() {
   return (
     <HeroContainer>
+      <BackgroundAnimation />
       <ContentWrapper>
         <TextContent>
           <Typography 
@@ -70,7 +72,7 @@ export default function Hero() {
             sx={{ 
               fontSize: '3.5rem', 
               fontWeight: 'bold',
-              color: '#fff',
+              color: 'text.primary',
               mb: 1
             }}
           >
@@ -80,7 +82,7 @@ export default function Hero() {
             variant="h2" 
             sx={{ 
               fontSize: '1.75rem',
-              color: '#8f9ba8',
+              color: 'text.secondary',
               mb: 2,
               fontWeight: 'normal'
             }}
@@ -90,7 +92,7 @@ export default function Hero() {
           <Typography 
             variant="body1" 
             sx={{ 
-              color: '#8f9ba8',
+              color: 'text.secondary',
               mb: 3,
               maxWidth: '600px'
             }}
@@ -102,7 +104,7 @@ export default function Hero() {
               variant="contained" 
               color="primary"
               sx={{ 
-                '&:hover': { backgroundColor: theme => theme.palette.primary.dark }
+                '&:hover': { backgroundColor: 'primary.dark' }
               }}
             >
               Hire Me
@@ -111,7 +113,7 @@ export default function Hero() {
               variant="outlined" 
               color="secondary"
               sx={{ 
-                '&:hover': { borderColor: theme => theme.palette.secondary.dark }
+                '&:hover': { borderColor: 'secondary.dark' }
               }}
             >
               Portfolio
