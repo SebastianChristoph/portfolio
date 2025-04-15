@@ -13,32 +13,41 @@ export default function TechStackSkill({ icon, skill, experience }: TechStackSki
       display: 'flex', 
       alignItems: 'center', 
       gap: 2, 
-      p: 2,
+      py: 1.5,
+      px: 2,
       borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
     }}>
       <Box sx={{ 
-        width: 50, 
-        height: 50, 
+        width: 40, 
+        height: 40, 
         display: 'flex', 
         alignItems: 'center', 
         justifyContent: 'center',
         '& svg': {
-          width: 32,
-          height: 32
+          width: 24,
+          height: 24
         }
       }}>
         {icon}
       </Box>
       <Box sx={{ flex: 1 }}>
-        <Typography variant="h6">{skill}</Typography>
+        <Typography 
+          variant="subtitle1" 
+          sx={{ 
+            fontSize: '0.95rem',
+            fontWeight: 500
+          }}
+        >
+          {skill}
+        </Typography>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <LinearProgress 
             variant="determinate" 
             value={experience * 20} 
             sx={{ 
               flex: 1,
-              height: 8,
-              borderRadius: 4,
+              height: 5,
+              borderRadius: 3,
               backgroundColor: 'rgba(255, 255, 255, 0.1)',
               '& .MuiLinearProgress-bar': {
                 backgroundColor: 'secondary.main'

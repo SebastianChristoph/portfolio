@@ -69,6 +69,13 @@ export const lightTheme = createTheme({
       fontWeight: 600,
       letterSpacing: "-0.025em",
     },
+    h4: {
+      fontSize: "1.25rem",
+      fontWeight: 600,
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      fontFamily: '"Share Tech Mono", monospace',
+    },
     body1: {
       fontSize: "1rem",
       lineHeight: 1.5,
@@ -133,6 +140,26 @@ export const lightTheme = createTheme({
               color: "#FFFFFF !important",
             }
           }
+        },
+        h2: {
+          '&::after': {
+            content: '""',
+            display: 'block',
+            width: '50px',
+            height: '2px',
+            backgroundColor: 'primary.main',
+            marginTop: '8px'
+          }
+        },
+        h4: {
+          '&::after': {
+            content: '""',
+            display: 'block',
+            width: '50px',
+            height: '2px',
+            backgroundColor: 'primary.main',
+            marginTop: '8px'
+          }
         }
       }
     }
@@ -173,10 +200,21 @@ export const darkTheme = createTheme({
     h2: {
       fontSize: "1.6rem",
       fontWeight: 600,
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      fontFamily: '"Share Tech Mono", monospace',
+      color: "#FFFFFF",
     },
     h3: {
       fontSize: "1.4rem",
       fontWeight: 500,
+    },
+    h4: {
+      fontSize: "1.25rem",
+      fontWeight: 600,
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      fontFamily: '"Share Tech Mono", monospace',
     },
     body1: {
       fontSize: "1rem",
@@ -202,5 +240,21 @@ export const darkTheme = createTheme({
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        h2: {
+          position: 'relative',
+          '&::after': {
+            content: '""',
+            display: 'block',
+            width: '80px',
+            height: '3px',
+            backgroundColor: '#ff6b6b',
+            marginTop: '12px',
+            borderRadius: '2px'
+          }
+        }
+      }
+    }
   },
 });

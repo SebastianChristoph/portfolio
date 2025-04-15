@@ -24,13 +24,15 @@ const projects = [
 
 export default function Projects() {
   return (
-    <Grid size={{ xs: 12, md: 7 }}  id="projects">
-      <Typography variant="h4" sx={{ mb: 3, textAlign: 'left' }}>
+    <Grid size={{ xs: 12, md: 9 }}  id="projects">
+      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left',  color: 'text.secondary' }}>
         Projects
       </Typography>
-       <Typography variant="body1" sx={{ mb: 4.5, textAlign: 'left' }}>
-        Projects
-      </Typography>
+      <Box sx={{minHeight: '105px'}}>
+       <Typography variant="body1" sx={{ textAlign: 'left', paddingLeft: 2, color: 'text.secondary' }}>
+        Here you'll find an overview of my key projects, showcasing various technologies and solutions I've worked with. Each project demonstrates different technical skills and implementation approaches.
+        </Typography>
+        </Box>
           <Box sx={{ 
           
         height: 550,
@@ -79,10 +81,17 @@ export default function Projects() {
               height="160"
               image={project.image}
               alt={project.title}
-              sx={{ objectFit: 'cover' }}
+              sx={{ 
+                p: 3,
+                objectFit: 'contain',
+                backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                }
+              }}
             />
             <CardContent sx={{ flexGrow: 1 }}>
-              <Box sx={{ minHeight: "100px" }}>
+              <Box sx={{ minHeight: "80px" }}>
                 <Typography gutterBottom variant="h5" component="div">
                   {project.title}
                         </Typography>

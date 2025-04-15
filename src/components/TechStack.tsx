@@ -1,7 +1,7 @@
 import { Box, Typography, Button, ButtonGroup, Grid } from "@mui/material";
 import { useState } from "react";
 import TechStackSkill from "./TechStackSkill";
-import { FaReact, FaMobileAlt, FaJs, FaCss3Alt, FaNodeJs, FaJava } from "react-icons/fa";
+import { FaReact, FaMobileAlt, FaJs, FaCss3Alt, FaNodeJs, FaJava, FaCode } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiRedux, SiPython, SiExpress, SiPostgresql } from "react-icons/si";
 import { MdDevices } from "react-icons/md";
 
@@ -39,9 +39,9 @@ export default function TechStack() {
     : skills.filter(skill => skill.category === selectedCategory);
 
     return (
-        <Grid size={{ xs: 12, md: 5 }} id="techstack">
+        <Grid size={{ xs: 12, md: 3 }} id="techstack">
    
-      <Typography variant="h4" sx={{ mb: 3, textAlign: 'left',  color: 'text.secondary',}}>
+      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left', color: 'text.secondary' }}>
         Tech Stack
       </Typography>
       
@@ -51,7 +51,7 @@ export default function TechStack() {
           mb: 3, 
           display: 'flex', 
           flexWrap: 'wrap',
-          justifyContent: 'center',
+          justifyContent: 'start',
           gap: 1,
           '& .MuiButton-root': {
             borderColor: 'rgba(255, 255, 255, 0.2)',
