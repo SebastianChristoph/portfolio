@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider, Fade } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import CodeIcon from '@mui/icons-material/Code';
@@ -8,11 +8,26 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const NavBar = () => {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setShowTitle(scrollPosition > 100); // Show title after scrolling 100px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -102,19 +117,21 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography 
-            variant="h6" 
-            onClick={() => scrollToSection('home')}
-            sx={{ 
-              flexGrow: 1,
-              cursor: 'pointer',
-              '&:hover': {
-                opacity: 0.8
-              }
-            }}
-          >
-            Portfolio
-          </Typography>
+          <Fade in={showTitle}>
+            <Typography 
+              variant="h6" 
+              onClick={() => scrollToSection('home')}
+              sx={{ 
+                flexGrow: 1,
+                cursor: 'pointer',
+                '&:hover': {
+                  opacity: 0.8
+                }
+              }}
+            >
+              Portfolio
+            </Typography>
+          </Fade>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {menuItems.map((item) => (
               <Button 
