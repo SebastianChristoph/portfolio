@@ -41,7 +41,7 @@ function App() {
           <Box id="cv">
             <Cv />
           </Box>
-          <Grid container spacing={4}>
+          <Grid container spacing={4} sx={{ mt: "200px" }}>
            
               <Contact />
            
