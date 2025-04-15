@@ -1,8 +1,8 @@
 import { Box, Typography, LinearProgress } from '@mui/material';
-
+import { ReactElement } from 'react';
 
 interface TechStackSkillProps {
-  icon: string;
+  icon: ReactElement;
   skill: string;
   experience: number;
 }
@@ -16,7 +16,17 @@ export default function TechStackSkill({ icon, skill, experience }: TechStackSki
       p: 2,
       borderBottom: '1px solid rgba(255, 255, 255, 0.1)'
     }}>
-      <Box sx={{ width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box sx={{ 
+        width: 50, 
+        height: 50, 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        '& svg': {
+          width: 32,
+          height: 32
+        }
+      }}>
         {icon}
       </Box>
       <Box sx={{ flex: 1 }}>

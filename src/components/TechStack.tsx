@@ -1,6 +1,9 @@
 import { Box, Typography, Button, ButtonGroup, Grid } from "@mui/material";
 import { useState } from "react";
 import TechStackSkill from "./TechStackSkill";
+import { FaReact, FaMobileAlt, FaJs, FaCss3Alt, FaNodeJs, FaJava } from "react-icons/fa";
+import { SiTypescript, SiMongodb, SiRedux, SiPython, SiExpress, SiPostgresql } from "react-icons/si";
+import { MdDevices } from "react-icons/md";
 
 // Categories for skills
 export const categories = {
@@ -9,24 +12,23 @@ export const categories = {
   FRONTEND: "Frontend",
   BACKEND: "Backend",
   DATABASE: "Database",
-
 } as const;
 
 // Dummy data for skills with categories
 const skills = [
-  { icon: "⚛️", skill: "React", experience: 4, category: categories.FRONTEND },
-  { icon: "📱", skill: "React Native", experience: 3, category: categories.FRONTEND },
-  { icon: "🔷", skill: "TypeScript", experience: 4, category: categories.PROGRAMMING },
-  { icon: "🎨", skill: "CSS", experience: 4, category: categories.FRONTEND },
-  { icon: "📊", skill: "Node.js", experience: 3, category: categories.BACKEND },
-  { icon: "🗄️", skill: "MongoDB", experience: 3, category: categories.DATABASE },
-  { icon: "🔌", skill: "REST APIs", experience: 4, category: categories.BACKEND },
-  { icon: "🔄", skill: "Redux", experience: 3, category: categories.FRONTEND },
-  { icon: "📱", skill: "Responsive Design", experience: 4, category: categories.FRONTEND },
-  { icon: "🐍", skill: "Python", experience: 3, category: categories.PROGRAMMING },
-  { icon: "☕", skill: "Java", experience: 2, category: categories.PROGRAMMING },
-  { icon: "⚡", skill: "Express.js", experience: 3, category: categories.BACKEND },
-  { icon: "📦", skill: "PostgreSQL", experience: 3, category: categories.DATABASE },
+  { icon: <FaReact />, skill: "React", experience: 4, category: categories.FRONTEND },
+  { icon: <FaMobileAlt />, skill: "React Native", experience: 3, category: categories.FRONTEND },
+  { icon: <SiTypescript />, skill: "TypeScript", experience: 4, category: categories.PROGRAMMING },
+  { icon: <FaCss3Alt />, skill: "CSS", experience: 4, category: categories.FRONTEND },
+  { icon: <FaNodeJs />, skill: "Node.js", experience: 3, category: categories.BACKEND },
+  { icon: <SiMongodb />, skill: "MongoDB", experience: 3, category: categories.DATABASE },
+  { icon: <FaJs />, skill: "REST APIs", experience: 4, category: categories.BACKEND },
+  { icon: <SiRedux />, skill: "Redux", experience: 3, category: categories.FRONTEND },
+  { icon: <MdDevices />, skill: "Responsive Design", experience: 4, category: categories.FRONTEND },
+  { icon: <SiPython />, skill: "Python", experience: 3, category: categories.PROGRAMMING },
+  { icon: <FaJava />, skill: "Java", experience: 2, category: categories.PROGRAMMING },
+  { icon: <SiExpress />, skill: "Express.js", experience: 3, category: categories.BACKEND },
+  { icon: <SiPostgresql />, skill: "PostgreSQL", experience: 3, category: categories.DATABASE },
 ];
 
 export default function TechStack() {
@@ -39,7 +41,7 @@ export default function TechStack() {
     return (
         <Grid size={{ xs: 12, md: 5 }} id="techstack">
    
-      <Typography variant="h4" sx={{ mb: 3, textAlign: 'left' }}>
+      <Typography variant="h4" sx={{ mb: 3, textAlign: 'left',  color: 'text.secondary',}}>
         Tech Stack
       </Typography>
       
