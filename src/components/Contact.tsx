@@ -1,5 +1,6 @@
 import { Box, TextField, Button, Typography, Grid } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
+import TokyoGame from "./TokyoGame";
 
 export default function Contact() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,7 @@ export default function Contact() {
   const [emailError, setEmailError] = useState(false);
   const [sending, setSending] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [showGame, setShowGame] = useState(false);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
@@ -35,6 +37,10 @@ export default function Contact() {
   const handleEmailSubmit = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
+      if (email.toLowerCase() === 'tokyo') {
+        setShowGame(true);
+        return;
+      }
       if (isValidEmail(email)) {
         setEmailError(false);
         setStep(2);
@@ -60,6 +66,11 @@ export default function Contact() {
       setSending(true);
       setProgress(0);
     }
+  };
+
+  const handleGameExit = () => {
+    setShowGame(false);
+    setEmail('');
   };
 
   if (sending) {
@@ -182,116 +193,34 @@ Message sent! That's what she said! 😉`}
           height: "450px"
         }}
       >
-        <Typography 
-          sx={{ 
-            fontFamily: 'Consolas, "Courier New", monospace',
-            fontSize: '14px',
-            mb: 2,
-            whiteSpace: 'pre'
-          }}
-        >
-          {`Contact Form - Ping me like a Pro\nPlease follow the steps below to send me a message:\n\n1. Enter your email and press Enter\n\n2. Type your message and press Enter\n\n3. Click 'send' to submit`}
-        </Typography>
+        {showGame ? (
+          <TokyoGame onExit={handleGameExit} />
+        ) : (
+          <>
+            <Typography 
+              sx={{ 
+                fontFamily: 'Consolas, "Courier New", monospace',
+                fontSize: '14px',
+                mb: 2,
+                whiteSpace: 'pre'
+              }}
+            >
+              {`Contact Form - Ping me like a Pro\nPlease follow the steps below to send me a message:\n\n1. Enter your email and press Enter\n\n2. Type your message and press Enter\n\n3. Click 'send' to submit`}
+            </Typography>
 
-        <Box component="form" onSubmit={handleSubmit}>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography 
-                sx={{ 
-                  fontFamily: 'Consolas, "Courier New", monospace',
-                  fontSize: '14px',
-                  color: '#CCCCCC',
-                  mr: 1
-                }}
-              >
-                C:\Users\guest&gt;
-              </Typography>
-              <TextField
-                value={email}
-                onChange={handleEmailChange}
-                onKeyDown={handleEmailSubmit}
-                placeholder="Enter your email"
-                disabled={step !== 1}
-                autoFocus={step === 1}
-                error={emailError}
-                sx={{
-                  '& .MuiInputBase-root': {
-                    fontFamily: 'Consolas, "Courier New", monospace',
-                    fontSize: '14px',
-                    color: '#CCCCCC',
-                    backgroundColor: 'transparent',
-                    '&:before, &:after': { display: 'none' },
-                    '& .MuiInputBase-input': {
-                      p: 0,
-                      height: 'auto',
-                      '&::placeholder': {
-                        color: '#666666',
-                        opacity: 1
-                      }
-                    }
-                  },
-                  '& .MuiOutlinedInput-notchedOutline': { display: 'none' },
-                  '& .Mui-error': {
-                    color: '#ff6b6b'
-                  }
-                }}
-              />
-              {emailError && (
-                <Typography
-                  sx={{
-                    fontFamily: 'Consolas, "Courier New", monospace',
-                    fontSize: '14px',
-                    color: '#ff6b6b',
-                    mt: 1
-                  }}
-                >
-                  Error: Please enter a valid email address (example@domain.com)
-                </Typography>
-              )}
-            </Box>
+            <Typography 
+              sx={{ 
+                fontFamily: 'Consolas, "Courier New", monospace',
+                fontSize: '14px',
+                mb: 2,
+                color: '#CCCCCC'
+              }}
+            >
+              {`> Whatever you do, do not type "tokyo" in the email field and press enter`}
+            </Typography>
 
-            {step >= 2 && (
-              <>
-                <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                  <Typography 
-                    sx={{ 
-                      fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '14px',
-                      color: '#CCCCCC',
-                      mr: 1
-                    }}
-                  >
-                    C:\Users\guest&gt;
-                  </Typography>
-                  <TextField
-                    multiline
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Enter your message"
-                    disabled={step !== 2}
-                    inputRef={messageInputRef}
-                    autoFocus={step === 2}
-                    sx={{
-                      flex: 1,
-                      '& .MuiInputBase-root': {
-                        fontFamily: 'Consolas, "Courier New", monospace',
-                        fontSize: '14px',
-                        color: '#CCCCCC',
-                        backgroundColor: 'transparent',
-                        '&:before, &:after': { display: 'none' },
-                        '& .MuiInputBase-input': {
-                          p: 0,
-                          '&::placeholder': {
-                            color: '#666666',
-                            opacity: 1
-                          }
-                        }
-                      },
-                      '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
-                    }}
-                  />
-                </Box>
-
+            <Box component="form" onSubmit={handleSubmit}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <Typography 
                     sx={{ 
@@ -303,32 +232,131 @@ Message sent! That's what she said! 😉`}
                   >
                     C:\Users\guest&gt;
                   </Typography>
-                  <Button
-                    type="submit"
-                    disabled={!email || !message}
-                    sx={{ 
-                      fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '14px',
-                      color: '#CCCCCC',
-                      backgroundColor: 'transparent',
-                      p: 0,
-                      minWidth: 0,
-                      '&:hover': {
+                  <TextField
+                    value={email}
+                    onChange={handleEmailChange}
+                    onKeyDown={handleEmailSubmit}
+                    placeholder="Enter your email"
+                    disabled={step !== 1}
+                    autoFocus={step === 1}
+                    error={emailError}
+                    sx={{
+                      '& .MuiInputBase-root': {
+                        fontFamily: 'Consolas, "Courier New", monospace',
+                        fontSize: '14px',
+                        color: '#CCCCCC',
                         backgroundColor: 'transparent',
-                        textDecoration: 'underline'
+                        '&:before, &:after': { display: 'none' },
+                        '& .MuiInputBase-input': {
+                          p: 0,
+                          height: 'auto',
+                          '&::placeholder': {
+                            color: '#666666',
+                            opacity: 1
+                          }
+                        }
                       },
-                      '&.Mui-disabled': {
-                        color: '#666666'
+                      '& .MuiOutlinedInput-notchedOutline': { display: 'none' },
+                      '& .Mui-error': {
+                        color: '#ff6b6b'
                       }
                     }}
-                  >
-                    send (click me)
-                  </Button>
+                  />
+                  {emailError && (
+                    <Typography
+                      sx={{
+                        fontFamily: 'Consolas, "Courier New", monospace',
+                        fontSize: '14px',
+                        color: '#ff6b6b',
+                        mt: 1
+                      }}
+                    >
+                      Error: Please enter a valid email address (example@domain.com)
+                    </Typography>
+                  )}
                 </Box>
-              </>
-            )}
-          </Box>
-        </Box>
+
+                {step >= 2 && (
+                  <>
+                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                      <Typography 
+                        sx={{ 
+                          fontFamily: 'Consolas, "Courier New", monospace',
+                          fontSize: '14px',
+                          color: '#CCCCCC',
+                          mr: 1
+                        }}
+                      >
+                        C:\Users\guest&gt;
+                      </Typography>
+                      <TextField
+                        multiline
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Enter your message"
+                        disabled={step !== 2}
+                        inputRef={messageInputRef}
+                        autoFocus={step === 2}
+                        sx={{
+                          flex: 1,
+                          '& .MuiInputBase-root': {
+                            fontFamily: 'Consolas, "Courier New", monospace',
+                            fontSize: '14px',
+                            color: '#CCCCCC',
+                            backgroundColor: 'transparent',
+                            '&:before, &:after': { display: 'none' },
+                            '& .MuiInputBase-input': {
+                              p: 0,
+                              '&::placeholder': {
+                                color: '#666666',
+                                opacity: 1
+                              }
+                            }
+                          },
+                          '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
+                        }}
+                      />
+                    </Box>
+
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <Typography 
+                        sx={{ 
+                          fontFamily: 'Consolas, "Courier New", monospace',
+                          fontSize: '14px',
+                          color: '#CCCCCC',
+                          mr: 1
+                        }}
+                      >
+                        C:\Users\guest&gt;
+                      </Typography>
+                      <Button
+                        type="submit"
+                        disabled={!email || !message}
+                        sx={{ 
+                          fontFamily: 'Consolas, "Courier New", monospace',
+                          fontSize: '14px',
+                          color: '#CCCCCC',
+                          backgroundColor: 'transparent',
+                          p: 0,
+                          minWidth: 0,
+                          '&:hover': {
+                            backgroundColor: 'transparent',
+                            textDecoration: 'underline'
+                          },
+                          '&.Mui-disabled': {
+                            color: '#666666'
+                          }
+                        }}
+                      >
+                        send (click me)
+                      </Button>
+                    </Box>
+                  </>
+                )}
+              </Box>
+            </Box>
+          </>
+        )}
       </Box>
     </Grid>
   );
