@@ -20,7 +20,9 @@ function App() {
         <Projects />
         </Grid>
         <Cv />
-        <Contact />
+        <Grid container spacing={4}>
+          <Contact />
+          </Grid>
         </Container>
     
       
