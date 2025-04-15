@@ -100,8 +100,7 @@ const NavBar = () => {
       <AppBar 
         position="sticky" 
         sx={{ 
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(10px)',
+          backgroundColor: theme.palette.background.default,
           boxShadow: 'none',
           borderBottom: `1px solid ${theme.palette.divider}`,
         }}

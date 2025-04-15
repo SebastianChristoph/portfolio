@@ -39,7 +39,7 @@ export default function TechStack() {
     return (
         <Grid size={{ xs: 12, md: 5 }} id="techstack">
    
-      <Typography variant="h4" sx={{ mb: 3, textAlign: 'center' }}>
+      <Typography variant="h4" sx={{ mb: 3, textAlign: 'left' }}>
         Tech Stack
       </Typography>
       
