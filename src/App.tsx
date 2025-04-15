@@ -8,6 +8,7 @@ import TechStack from './components/TechStack';
 import Projects from './components/Projects';
 import Cv from './components/Cv';
 import Contact from './components/Contact';
+import GitStats from './components/GitStats';
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
@@ -22,6 +23,7 @@ function App() {
         <Cv />
         <Grid container spacing={4}>
           <Contact />
+          <GitStats />
           </Grid>
         </Container>
     
