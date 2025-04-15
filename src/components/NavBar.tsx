@@ -10,13 +10,40 @@ const NavBar = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const menuItems = ['Home', 'About', 'Projects', 'Contact'];
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setMobileOpen(false);
+    }
+  };
+
+  const menuItems = [
+    { label: 'Home', id: 'home' },
+    { label: 'TechStack', id: 'techstack' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'CV', id: 'cv' },
+    { label: 'GitStats', id: 'gitstats' },
+    { label: 'Contact', id: 'contact' }
+  ];
 
   const drawer = (
     <List>
       {menuItems.map((item) => (
-        <ListItem key={item} component="button" sx={{ width: '100%', textAlign: 'left', p: 2 }}>
-          <ListItemText primary={item} />
+        <ListItem 
+          key={item.id} 
+          onClick={() => scrollToSection(item.id)}
+          sx={{ 
+            width: '100%', 
+            textAlign: 'left', 
+            p: 2,
+            cursor: 'pointer',
+            '&:hover': {
+              backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            }
+          }}
+        >
+          <ListItemText primary={item.label} />
         </ListItem>
       ))}
     </List>
@@ -44,12 +71,34 @@ const NavBar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography 
+            variant="h6" 
+            onClick={() => scrollToSection('home')}
+            sx={{ 
+              flexGrow: 1,
+              cursor: 'pointer',
+              '&:hover': {
+                opacity: 0.8
+              }
+            }}
+          >
             Portfolio
           </Typography>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             {menuItems.map((item) => (
-              <Button key={item} color="inherit">{item}</Button>
+              <Button 
+                key={item.id} 
+                color="inherit"
+                onClick={() => scrollToSection(item.id)}
+                sx={{
+                  mx: 1,
+                  '&:hover': {
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  }
+                }}
+              >
+                {item.label}
+              </Button>
             ))}
           </Box>
         </Toolbar>
@@ -60,7 +109,7 @@ const NavBar = () => {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
+          keepMounted: true,
         }}
         sx={{
           display: { xs: 'block', md: 'none' },

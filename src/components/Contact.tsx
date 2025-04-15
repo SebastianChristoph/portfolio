@@ -11,7 +11,7 @@ export default function Contact() {
   };
 
   return (
-    <Grid size={{ xs: 12, md: 5 }}>
+    <Grid size={{ xs: 12, md: 5 }} id="contact">
 
 <Typography variant="h4" sx={{ mb: 3, textAlign: 'center' }}>
         Contact

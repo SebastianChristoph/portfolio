@@ -24,7 +24,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <Grid size={{ xs: 12, md: 7 }}>
+    <Grid size={{ xs: 12, md: 7 }}  id="projects">
       <Typography variant="h4" sx={{ mb: 3, textAlign: 'center' }}>
         Projects
       </Typography>

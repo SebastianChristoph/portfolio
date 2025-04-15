@@ -5,7 +5,7 @@ export default function GitStats() {
   const username = "SebastianChristoph";
 
   return (
-    <Grid size={{ xs: 12, md: 6 }}>
+    <Grid size={{ xs: 12, md: 6 }} id="gitstats">
       <Typography variant="h4" sx={{ mb: 3, textAlign: 'center' }}>
         GitHub Stats
       </Typography>

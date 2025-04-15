@@ -37,7 +37,7 @@ export default function TechStack() {
     : skills.filter(skill => skill.category === selectedCategory);
 
     return (
-        <Grid size={{ xs: 12, md: 5 }}>
+        <Grid size={{ xs: 12, md: 5 }} id="techstack">
    
       <Typography variant="h4" sx={{ mb: 3, textAlign: 'center' }}>
         Tech Stack

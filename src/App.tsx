@@ -10,23 +10,44 @@ import Cv from './components/Cv';
 import Contact from './components/Contact';
 import GitStats from './components/GitStats';
 import Footer from './components/Footer';
+import { GlobalStyles } from '@mui/material';
 
 function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+      <GlobalStyles
+        styles={{
+          'html': {
+            scrollPaddingTop: '64px', // Height of the NavBar
+            scrollBehavior: 'smooth',
+          },
+        }}
+      />
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <NavBar />
         <Container maxWidth="xl" sx={{ flex: 1 }}>
-          <Hero /> 
+          <Box id="home">
+            <Hero />
+          </Box>
           <Grid container spacing={4}>
-            <TechStack />
-            <Projects />
+           
+              <TechStack />
+            
+           
+              <Projects />
+           
           </Grid>
-          <Cv />
+          <Box id="cv">
+            <Cv />
+          </Box>
           <Grid container spacing={4}>
-            <Contact />
-            <GitStats />
+           
+              <Contact />
+           
+           
+              <GitStats />
+           
           </Grid>
         </Container>
         <Footer />
