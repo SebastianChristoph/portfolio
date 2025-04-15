@@ -8,7 +8,7 @@ const Footer = () => {
         width: '100%',
         py: 3,
         px: 2,
-        mt: 'auto',
+        mt: 7,
         backgroundColor: 'background.paper',
         borderTop: 1,
         borderColor: 'divider',
