@@ -67,7 +67,7 @@ const projects: Project[] = [
 export default function Projects() {
   return (
     <Grid size={{ xs: 12, md: 9 }}  id="projects">
-      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left',  color: 'text.secondary' }}>
+      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left', color: 'text.secondary' }}>
         Projects
       </Typography>
       <Box sx={{minHeight: '105px'}}>
@@ -78,9 +78,10 @@ export default function Projects() {
       <Box sx={{ 
         height: 550,
         overflowY: 'auto',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: 1,
+        borderColor: 'divider',
         borderRadius: 2,
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: 'background.paper',
         p: 3,
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
@@ -90,14 +91,14 @@ export default function Projects() {
           width: '8px',
         },
         '&::-webkit-scrollbar-track': {
-          background: 'rgba(255, 255, 255, 0.1)',
+          background: 'background.default',
           borderRadius: '4px',
         },
         '&::-webkit-scrollbar-thumb': {
-          background: 'rgba(255, 255, 255, 0.2)',
+          background: 'divider',
           borderRadius: '4px',
           '&:hover': {
-            background: 'rgba(255, 255, 255, 0.3)',
+            background: 'text.secondary',
           },
         },
       }}>
@@ -122,8 +123,9 @@ export default function Projects() {
               flexDirection: 'column',
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'background.paper',
+              border: 1,
+              borderColor: 'divider',
             }}>
               <CardMedia
                 component="img"
@@ -133,7 +135,7 @@ export default function Projects() {
                 sx={{ 
                   p: 3,
                   objectFit: 'contain',
-                  backgroundColor: 'rgba(255, 255, 255, 0.02)',
+                  backgroundColor: 'background.default',
                 }}
               />
               <CardContent sx={{ 
@@ -142,7 +144,7 @@ export default function Projects() {
                 flexDirection: 'column',
               }}>
                 <Box sx={{ minHeight: "80px" }}>
-                  <Typography gutterBottom variant="h5" component="div">
+                  <Typography gutterBottom variant="h5" component="div" color="text.primary">
                     {project.title}
                   </Typography>
                 </Box>
@@ -163,14 +165,14 @@ export default function Projects() {
                       icon={getTechIcon(tech)}
                       label={tech}
                       sx={{
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                        backgroundColor: 'background.default',
                         color: 'text.primary',
                         '& .MuiChip-icon': {
                           color: 'inherit',
                           marginLeft: '8px'
                         },
                         '&:hover': {
-                          backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                          backgroundColor: 'action.hover',
                         }
                       }}
                     />
@@ -192,8 +194,9 @@ export default function Projects() {
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
               transform: 'rotateY(180deg)',
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backgroundColor: 'background.paper',
+              border: 1,
+              borderColor: 'divider',
             }}>
               <Button
                 component="a"
@@ -204,7 +207,7 @@ export default function Projects() {
                 startIcon={<FaExternalLinkAlt />}
                 sx={{
                   backgroundColor: 'primary.main',
-                  color: 'white',
+                  color: 'primary.contrastText',
                   '&:hover': {
                     backgroundColor: 'primary.dark',
                   }

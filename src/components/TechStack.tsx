@@ -54,10 +54,10 @@ export default function TechStack() {
           justifyContent: 'start',
           gap: 1,
           '& .MuiButton-root': {
-            borderColor: 'rgba(255, 255, 255, 0.2)',
+            borderColor: 'divider',
             color: 'text.primary',
             '&:hover': {
-              borderColor: 'rgba(255, 255, 255, 0.4)',
+              borderColor: 'text.secondary',
             }
           }
         }}
@@ -71,7 +71,7 @@ export default function TechStack() {
               minWidth: '120px',
               backgroundColor: selectedCategory === category ? 'primary.main' : 'transparent',
               '&:hover': {
-                backgroundColor: selectedCategory === category ? 'primary.dark' : 'rgba(255, 255, 255, 0.05)',
+                backgroundColor: selectedCategory === category ? 'primary.dark' : 'action.hover',
               }
             }}
           >
@@ -83,21 +83,21 @@ export default function TechStack() {
       <Box sx={{ 
            height: 550,
         overflowY: 'auto',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        border: 1,
         borderRadius: 2,
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        backgroundColor: 'background.paper',
         '&::-webkit-scrollbar': {
           width: '8px',
         },
         '&::-webkit-scrollbar-track': {
-          background: 'rgba(255, 255, 255, 0.1)',
+          background: 'background.default',
           borderRadius: '4px',
         },
         '&::-webkit-scrollbar-thumb': {
-          background: 'rgba(255, 255, 255, 0.2)',
+          background: 'divider',
           borderRadius: '4px',
           '&:hover': {
-            background: 'rgba(255, 255, 255, 0.3)',
+            background: 'text.secondary',
           },
         },
       }}>

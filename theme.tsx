@@ -17,7 +17,7 @@ export const lightTheme = createTheme({
     mode: "light",
     
     primary: {
-      main: "#2563EB",     // Modern blue - primary brand color
+      main: "#0080ff",     // Modern blue - primary brand color
       light: "#60A5FA",    // Lighter blue for hover states
       dark: "#1D4ED8",     // Darker blue for active states
       contrastText: "#FFFFFF",

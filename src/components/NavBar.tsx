@@ -57,52 +57,12 @@ const NavBar = () => {
     { icon: <LinkedInIcon />, url: 'https://www.linkedin.com/in/sebastian-christoph-9500a4118/', label: 'LinkedIn' }
   ];
 
-  const drawer = (
-    <List>
-      {menuItems.map((item) => (
-        <ListItem 
-          key={item.id} 
-          onClick={() => scrollToSection(item.id)}
-          sx={{ 
-            width: '100%', 
-            textAlign: 'left', 
-            p: 2,
-            cursor: 'pointer',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            }
-          }}
-        >
-          <ListItemIcon sx={{ minWidth: 40, color: 'inherit' }}>
-            {item.icon}
-          </ListItemIcon>
-          <ListItemText primary={item.label} />
-        </ListItem>
-      ))}
-      <Divider sx={{ my: 2 }} />
-      <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, p: 2 }}>
-        {socialLinks.map((social) => (
-          <IconButton
-            key={social.label}
-            color="inherit"
-            href={social.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={social.label}
-          >
-            {social.icon}
-          </IconButton>
-        ))}
-      </Box>
-    </List>
-  );
-
   return (
     <>
       <AppBar 
         position="sticky" 
         sx={{ 
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: theme.palette.background.paper,
           boxShadow: 'none',
           borderBottom: `1px solid ${theme.palette.divider}`,
         }}
@@ -111,7 +71,7 @@ const NavBar = () => {
           <IconButton
             size="large"
             edge="start"
-            color="inherit"
+            color="primary"
             aria-label="menu"
             sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
             onClick={handleDrawerToggle}
@@ -122,6 +82,7 @@ const NavBar = () => {
             <Typography 
               variant="h6" 
               onClick={() => scrollToSection('home')}
+              color="text.primary"
               sx={{ 
                 flexGrow: 1,
                 cursor: 'pointer',
@@ -137,13 +98,13 @@ const NavBar = () => {
             {menuItems.map((item) => (
               <Button 
                 key={item.id} 
-                color="inherit"
+                color="primary"
                 onClick={() => scrollToSection(item.id)}
                 startIcon={item.icon}
                 sx={{
                   mx: 1,
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: theme.palette.action.hover,
                   }
                 }}
               >
@@ -164,14 +125,14 @@ const NavBar = () => {
             {socialLinks.map((social) => (
               <IconButton
                 key={social.label}
-                color="inherit"
+                color="primary"
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.label}
                 sx={{
                   '&:hover': {
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    backgroundColor: theme.palette.action.hover,
                   }
                 }}
               >
@@ -183,11 +144,16 @@ const NavBar = () => {
                 <Switch
                   checked={isDarkMode}
                   onChange={toggleTheme}
-                  color="default"
+                  color="primary"
                 />
               }
               label="Dark Mode"
-              sx={{ ml: 2 }}
+              sx={{ 
+                ml: 2,
+                '& .MuiFormControlLabel-label': {
+                  color: theme.palette.text.primary
+                }
+              }}
             />
           </Box>
         </Toolbar>
@@ -205,11 +171,55 @@ const NavBar = () => {
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: 240,
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: theme.palette.background.paper,
           },
         }}
       >
-        {drawer}
+        <List>
+          {menuItems.map((item) => (
+            <ListItem 
+              key={item.id} 
+              onClick={() => scrollToSection(item.id)}
+              sx={{ 
+                width: '100%', 
+                textAlign: 'left', 
+                p: 2,
+                cursor: 'pointer',
+                '&:hover': {
+                  backgroundColor: theme.palette.action.hover,
+                }
+              }}
+            >
+              <ListItemIcon sx={{ minWidth: 40, color: theme.palette.primary.main }}>
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText 
+                primary={item.label} 
+                primaryTypographyProps={{ color: 'text.primary' }}
+              />
+            </ListItem>
+          ))}
+          <Divider sx={{ my: 2 }} />
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, p: 2 }}>
+            {socialLinks.map((social) => (
+              <IconButton
+                key={social.label}
+                color="primary"
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.label}
+                sx={{
+                  '&:hover': {
+                    backgroundColor: theme.palette.action.hover,
+                  }
+                }}
+              >
+                {social.icon}
+              </IconButton>
+            ))}
+          </Box>
+        </List>
         <Divider sx={{ my: 2 }} />
         <ListItem 
           sx={{ 
@@ -223,11 +233,16 @@ const NavBar = () => {
               <Switch
                 checked={isDarkMode}
                 onChange={toggleTheme}
-                color="default"
+                color="primary"
               />
             }
             label="Dark Mode"
-            sx={{ width: '100%' }}
+            sx={{ 
+              width: '100%',
+              '& .MuiFormControlLabel-label': {
+                color: theme.palette.text.primary
+              }
+            }}
           />
         </ListItem>
       </Drawer>
