@@ -37,7 +37,7 @@
   },
   "projects": {
     "title": "Projekte",
-    "description": "Hier finden Sie einen Überblick über meine wichtigsten Projekte, die verschiedene Technologien und Lösungen zeigen, mit denen ich gearbeitet habe. Jedes Projekt demonstriert unterschiedliche technische Fähigkeiten und Implementierungsansätze.",
+    "description": "Hier sind einige meiner aktuellen Projekte",
     "viewProject": "Projekt ansehen",
     "ecommerce": {
       "title": "E-Commerce Plattform",
@@ -50,6 +50,14 @@
     "portfolio": {
       "title": "Portfolio Website",
       "description": "Moderne Portfolio-Website, entwickelt mit Next.js und Material-UI"
+    },
+    "fritz": {
+      "title": "Fritz - Dezember 2024",
+      "description": "Mein wertvollstes Projekt - die Geburt meines Sohnes Fritz. Ein neues Kapitel im Leben, voller Liebe, Freude und endloser Möglichkeiten."
+    },
+    "marktzone": {
+      "title": "MarktZone.io",
+      "description": "Innovative E-Commerce-Plattform mit modernster Technologie-Stack für nahtloses Online-Shopping und Verkaufserlebnis."
     }
   },
   "contact": {

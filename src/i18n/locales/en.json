@@ -37,7 +37,7 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "Here you'll find an overview of my key projects, showcasing various technologies and solutions I've worked with. Each project demonstrates different technical skills and implementation approaches.",
+    "description": "Here are some of my recent projects",
     "viewProject": "View Project",
     "ecommerce": {
       "title": "E-Commerce Platform",
@@ -50,6 +50,14 @@
     "portfolio": {
       "title": "Portfolio Website",
       "description": "Modern portfolio website built with Next.js and Material-UI"
+    },
+    "fritz": {
+      "title": "Fritz - December 2024",
+      "description": "My most precious project - the birth of my son Fritz. A new chapter in life, filled with love, joy, and endless possibilities."
+    },
+    "marktzone": {
+      "title": "MarktZone.io",
+      "description": "Innovative e-commerce platform with cutting-edge tech stack for seamless online shopping and selling experience."
     }
   },
   "contact": {

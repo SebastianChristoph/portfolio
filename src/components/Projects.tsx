@@ -1,11 +1,26 @@
-import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button } from "@mui/material";
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3 } from "react-icons/fa";
-import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs } from "react-icons/si";
+import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme } from "@mui/material";
+import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker } from "react-icons/fa";
+import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql } from "react-icons/si";
+import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
 import { useTranslation } from 'react-i18next';
 
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
   switch (tech.toLowerCase()) {
+    case 'python':
+      return <FaPython />;
+    case 'docker':
+      return <FaDocker />;
+    case 'postgresql':
+      return <SiPostgresql />;
+    case 'babyscript':
+      return <FaBaby />;
+    case 'milk.js':
+      return <GiMilkCarton />;
+    case 'cuddle.io':
+      return <FaCode />;
+    case 'sleep.api':
+      return <GiNightSleep />;
     case 'react':
     case 'react native':
       return <FaReact />;
@@ -40,33 +55,35 @@ interface Project {
   link: string;
 }
 
-// Dummy data for projects
-const projects: Project[] = [
-  {
-    titleKey: "projects.ecommerce.title",
-    descriptionKey: "projects.ecommerce.description",
-    image: "/placeholder.png",
-    technologies: ["React", "Node.js", "MongoDB", "Express", "Redux"],
-    link: "https://project-url.com"
-  },
-  {
-    titleKey: "projects.taskmanager.title",
-    descriptionKey: "projects.taskmanager.description",
-    image: "/placeholder.png",
-    technologies: ["React Native", "Firebase", "TypeScript", "Redux"],
-    link: "https://task-manager-url.com"
-  },
-  {
-    titleKey: "projects.portfolio.title",
-    descriptionKey: "projects.portfolio.description",
-    image: "/placeholder.png",
-    technologies: ["React", "Material-UI", "TypeScript", "CSS"],
-    link: "https://portfolio-url.com"
-  }
-];
-
 export default function Projects() {
   const { t } = useTranslation();
+  const theme = useTheme();
+
+  // Dummy data for projects
+  const projects: Project[] = [
+    {
+      titleKey: "projects.fritz.title",
+      descriptionKey: "projects.fritz.description",
+      image: theme.palette.mode === 'dark' ? '/logo_baby_dark.png' : '/logo_baby_light.png',
+      technologies: ["BabyScript", "Milk.js", "Cuddle.io", "Sleep.API"],
+      link: "#"
+    },
+    {
+      titleKey: "projects.marktzone.title",
+      descriptionKey: "projects.marktzone.description",
+      image: "/logo_marktzone.png",
+      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL"],
+      link: "https://marktzone.io"
+    },
+    {
+      titleKey: "projects.taskmanager.title",
+      descriptionKey: "projects.taskmanager.description",
+      image: "/placeholder.png",
+      technologies: ["React Native", "Firebase", "TypeScript", "Redux"],
+      link: "https://task-manager-url.com"
+    },
+   
+  ];
 
   return (
     <Grid size={{ xs: 12, md: 9 }}  id="projects">
