@@ -84,7 +84,7 @@ export default function TechStack() {
           mb: 3, 
           display: 'flex', 
           flexWrap: 'wrap',
-          justifyContent: 'start',
+          justifyContent: { xs: 'center', md: 'start' },
           gap: 1,
           '& .MuiButton-root': {
             borderColor: 'divider',
