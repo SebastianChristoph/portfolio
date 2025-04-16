@@ -5,12 +5,6 @@ import { useState, useEffect } from 'react';
 export default function GitStats() {
   const username = "SebastianChristoph";
   const [isLoading, setIsLoading] = useState(true);
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
-
-  const scale = isSmallScreen ? 0.7 : (isMediumScreen ? 0.85 : 1);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);

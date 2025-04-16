@@ -2,7 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
-import { lightTheme, darkTheme } from '../theme';
+import { darkTheme } from '../theme';
 import { Container, Grid, Box } from "@mui/material";
 import TechStack from './components/TechStack';
 import Projects from './components/Projects';

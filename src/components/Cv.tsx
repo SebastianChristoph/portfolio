@@ -1,7 +1,7 @@
-import { Box, Grid, Typography, Tooltip, Paper } from "@mui/material";
-import { useState } from "react";
 import SchoolIcon from '@mui/icons-material/School';
+import { Box, Paper, Typography } from "@mui/material";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 interface TimelinePoint {

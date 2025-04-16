@@ -1,9 +1,9 @@
-import { Box, Typography, Button, ButtonGroup, Grid } from "@mui/material";
+import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import TechStackSkill from "./TechStackSkill";
-import { FaReact, FaMobileAlt, FaJs, FaCss3Alt, FaNodeJs, FaJava, FaCode } from "react-icons/fa";
-import { SiTypescript, SiMongodb, SiRedux, SiPython, SiExpress, SiPostgresql } from "react-icons/si";
+import { FaCss3Alt, FaJava, FaJs, FaMobileAlt, FaNodeJs, FaReact } from "react-icons/fa";
 import { MdDevices } from "react-icons/md";
+import { SiExpress, SiMongodb, SiPostgresql, SiPython, SiRedux, SiTypescript } from "react-icons/si";
+import TechStackSkill from "./TechStackSkill";
 
 // Categories for skills
 export const categories = {

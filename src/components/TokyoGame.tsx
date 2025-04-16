@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Box, Typography, TextField } from '@mui/material';
+import { Box, TextField, Typography } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
 
 interface TokyoGameProps {
   onExit: () => void;
@@ -75,16 +75,12 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [gameState, setGameState] = useState<'warning' | 'admin' | 'code' | 'files' | 'file_super_secret' | 'file_do_not_open'>('warning');
   const [selectedFile, setSelectedFile] = useState<string | null>(null);
   const [files, setFiles] = useState(INITIAL_FILES);
-  const [showCode, setShowCode] = useState(true);
   const [countdown, setCountdown] = useState(10);
-  const codeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const destroyTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [codeInput, setCodeInput] = useState('');
   const [codeState, setCodeState] = useState<'idle' | 'wrong' | 'correct' | 'nuke'>('idle');
   const [codeCountdown, setCodeCountdown] = useState(10);
   const codeCountdownRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [nukeText, setNukeText] = useState('');
-  const [selectedAbortReason, setSelectedAbortReason] = useState('');
   const nukeMessages = [
     'deleting internet in UK...',
     'launching nuclear warheads...',
@@ -94,7 +90,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [nukeStep, setNukeStep] = useState(0);
   const [undoText, setUndoText] = useState('');
   const [wifiPhase, setWifiPhase] = useState<'search' | 'notfound' | 'undo' | null>(null);
-  const [fadeOut, setFadeOut] = useState(false);
   const [confirmPhase, setConfirmPhase] = useState(false);
   const [correctCodePhase, setCorrectCodePhase] = useState<'countdown' | 'error' | null>(null);
   const [spyPhase, setSpyPhase] = useState(false);
@@ -106,7 +101,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
 
   useEffect(() => {
     if (gameState === 'file_super_secret') {
-      setShowCode(true);
       setCountdown(10);
       // Start countdown
       const interval = setInterval(() => {
@@ -141,13 +135,10 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   useEffect(() => {
     if (codeState === 'nuke') {
       // Pick random abort reason when nuke sequence starts
-      setSelectedAbortReason(ABORT_REASONS[Math.floor(Math.random() * ABORT_REASONS.length)]);
-      
       setNukeText('');
       setNukeStep(0);
       setUndoText('');
       setWifiPhase(null);
-      setFadeOut(false);
       setConfirmPhase(false);
       let msgIdx = 0;
       let charIdx = 0;
@@ -173,7 +164,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               
               // Windows 3.1 error after 2 seconds
               await new Promise(resolve => setTimeout(resolve, 2000));
-              setNukeText(ABORT_REASONS[0]);  // Explicitly use the Windows 3.1 message
+              setNukeText(ABORT_REASONS[0]);
               
               // Reverse protocol after 5 seconds
               await new Promise(resolve => setTimeout(resolve, 5000));
@@ -320,7 +311,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
       } else if (gameState === 'code') {
         if (value === 'exit') {
           setGameState('admin');
-          setCodeInput('');
           setCodeState('idle');
         } else if (value) {
           if (value === '1234') {
@@ -328,7 +318,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
           } else {
             setCodeState('wrong');
           }
-          setCodeInput('');
         }
       } else if (gameState === 'files') {
         if (value.startsWith('open ')) {
@@ -658,6 +647,30 @@ ${files.map(f => `> - ${f}`).join('\n')}
 > Type 'EXIT' to return to previous menu${selectedFile && !files.includes(selectedFile) ? `\n\n> File not found or already destroyed.` : ''}`}
           </Typography>
         );
+      case 'file_super_secret':
+        return (
+          <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
+              {`${MI6_HEADER}
+> FILE: super_secret_code.txt
+
+> CONTENT:
+> The code is: 1234`}
+            </Typography>
+            <Typography 
+              sx={{ 
+                fontFamily: 'Consolas, "Courier New", monospace', 
+                fontSize: '14px', 
+                color: '#ff6b6b', 
+                whiteSpace: 'pre',
+                mt: 'auto',
+                pt: 2
+              }}
+            >
+              {`> This message will self-destruct in ${countdown} seconds...`}
+            </Typography>
+          </Box>
+        );
       default:
         return null;
     }
@@ -709,7 +722,8 @@ ${files.map(f => `> - ${f}`).join('\n')}
           {!(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error')) && 
            codeState !== 'nuke' && 
            codeState !== 'wrong' &&
-           !spyPhase && (
+           !spyPhase &&
+           gameState !== 'file_super_secret' && (
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
               <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', mr: 1 }}>
                 {gameState === 'warning' ? 'C:\\Users\\guest>' : 'Agent Bond  >'}
