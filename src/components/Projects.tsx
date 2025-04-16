@@ -1,4 +1,4 @@
-import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme } from "@mui/material";
+import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme, useMediaQuery } from "@mui/material";
 import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker, FaCloud, FaGitAlt } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql, SiSelenium, SiSharp, SiDotnet, SiSqlite } from "react-icons/si";
 import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
@@ -70,6 +70,7 @@ interface Project {
 export default function Projects() {
   const { t } = useTranslation();
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Dummy data for projects
   const projects: Project[] = [
@@ -97,25 +98,28 @@ export default function Projects() {
   ];
 
   return (
-    <Grid size={{ xs: 12, md: 9 }}  id="projects">
-      <Typography variant="h2" sx={{ mb: 8.5, textAlign: 'left', color: 'text.secondary' }}>
+    <Grid size={{ xs: 12, md: 9 }} id="projects" sx={{ mt: { xs: 8, md: 0 } }}>
+      <Typography variant="h2" sx={{ mb: 2, textAlign: 'left', color: 'text.secondary' }}>
         {t('projects.title')}
       </Typography>
-      <Box sx={{minHeight: '105px'}}>
+      <Box sx={{ minHeight: '105px', mb: 4 }}>
         <Typography variant="body1" sx={{ textAlign: 'left', paddingLeft: 2, color: 'text.secondary' }}>
           {t('projects.description')}
         </Typography>
       </Box>
       <Box sx={{ 
-        height: 550,
-        overflowY: 'auto',
+        height: { xs: 'auto', sm: 550 },
+        overflowY: { xs: 'visible', sm: 'auto' },
         border: 1,
         borderColor: 'divider',
         borderRadius: 2,
         backgroundColor: 'background.paper',
         p: 3,
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gridTemplateColumns: {
+          xs: '1fr',
+          sm: 'repeat(auto-fit, minmax(250px, 1fr))'
+        },
         gridAutoRows: '1fr',
         gap: 3,
         '&::-webkit-scrollbar': {
