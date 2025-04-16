@@ -10,7 +10,7 @@ const HeroContainer = styled(Box)(({ }) => ({
   justifyContent: 'center',
   position: 'relative',
   overflow: 'hidden',
-  marginBottom: "100px",
+  marginBottom: "10px",
 }));
 
 const ContentWrapper = styled(Box)(({ theme }) => ({
