@@ -1,6 +1,6 @@
 import SchoolIcon from '@mui/icons-material/School';
 import { Box, Paper, Typography } from "@mui/material";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 
