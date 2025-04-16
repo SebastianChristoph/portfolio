@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider, Fade } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider, Fade, Switch, FormControlLabel } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import CodeIcon from '@mui/icons-material/Code';
@@ -9,9 +9,11 @@ import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useState, useEffect } from 'react';
+import { useThemeContext } from '../context/ThemeContext';
 
 const NavBar = () => {
   const theme = useTheme();
+  const { isDarkMode, toggleTheme } = useThemeContext();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
 
@@ -155,7 +157,8 @@ const NavBar = () => {
               ml: 4, 
               gap: 1,
               borderLeft: `1px solid ${theme.palette.divider}`,
-              pl: 4
+              pl: 4,
+              alignItems: 'center'
             }}
           >
             {socialLinks.map((social) => (
@@ -175,6 +178,17 @@ const NavBar = () => {
                 {social.icon}
               </IconButton>
             ))}
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={isDarkMode}
+                  onChange={toggleTheme}
+                  color="default"
+                />
+              }
+              label="Dark Mode"
+              sx={{ ml: 2 }}
+            />
           </Box>
         </Toolbar>
       </AppBar>
@@ -196,6 +210,26 @@ const NavBar = () => {
         }}
       >
         {drawer}
+        <Divider sx={{ my: 2 }} />
+        <ListItem 
+          sx={{ 
+            width: '100%', 
+            textAlign: 'left', 
+            p: 2,
+          }}
+        >
+          <FormControlLabel
+            control={
+              <Switch
+                checked={isDarkMode}
+                onChange={toggleTheme}
+                color="default"
+              />
+            }
+            label="Dark Mode"
+            sx={{ width: '100%' }}
+          />
+        </ListItem>
       </Drawer>
     </>
   );
