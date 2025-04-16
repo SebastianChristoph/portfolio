@@ -11,7 +11,13 @@ import Footer from './components/Footer';
 import { GlobalStyles } from '@mui/material';
 import { ThemeContextProvider } from './context/ThemeContext';
 import AboutMe from './components/AboutMe';
+import { useEffect } from 'react';
+
 function App() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <ThemeContextProvider>
       <CssBaseline />

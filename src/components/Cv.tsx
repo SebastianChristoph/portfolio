@@ -60,8 +60,29 @@ export default function Cv() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <Typography variant="h2" sx={{ mb: 12, textAlign: 'left',  color: 'text.secondary' }}>
+        <Typography variant="h2" sx={{ mb: 2, textAlign: 'left',  color: 'text.secondary' }}>
           Education & Certificates
+        </Typography>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        viewport={{ once: true }}
+      >
+        <Typography 
+          variant="body1" 
+          sx={{ 
+            mb: 12, 
+            maxWidth: '800px', 
+          
+            textAlign: 'left',
+            color: 'text.secondary',
+            lineHeight: 1.8
+          }}
+        >
+          My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.
         </Typography>
       </motion.div>
       
