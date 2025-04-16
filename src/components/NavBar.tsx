@@ -195,7 +195,7 @@ const NavBar = () => {
                 }
               }}
             >
-              <ListItemIcon sx={{ minWidth: 40, color: theme.palette.primary.main }}>
+              <ListItemIcon sx={{ minWidth: 40, color: 'text.primary' }}>
                 {item.icon}
               </ListItemIcon>
               <ListItemText 
@@ -215,6 +215,7 @@ const NavBar = () => {
                 rel="noopener noreferrer"
                 aria-label={social.label}
                 sx={{
+                  color: 'text.primary',
                   '&:hover': {
                     backgroundColor: theme.palette.action.hover,
                   }
