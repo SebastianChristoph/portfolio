@@ -59,6 +59,10 @@
     "marktzone": {
       "title": "MarktZone.io",
       "description": "Innovative e-commerce platform with cutting-edge tech stack for seamless online shopping and selling experience."
+    },
+    "checkdiepreise": {
+      "title": "check-die-preise.de",
+      "description": "Online price comparison platform built with modern web technologies and data scraping capabilities."
     }
   },
   "contact": {

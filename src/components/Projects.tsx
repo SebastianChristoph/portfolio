@@ -1,6 +1,6 @@
 import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme } from "@mui/material";
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker } from "react-icons/fa";
-import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql } from "react-icons/si";
+import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker, FaCloud } from "react-icons/fa";
+import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql, SiSelenium, SiSharp, SiDotnet, SiSqlite } from "react-icons/si";
 import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
 import { useTranslation } from 'react-i18next';
 
@@ -13,6 +13,16 @@ const getTechIcon = (tech: string) => {
       return <FaDocker />;
     case 'postgresql':
       return <SiPostgresql />;
+    case 'selenium':
+      return <SiSelenium />;
+    case 'c#':
+      return <SiSharp />;
+    case 'asp.net':
+      return <SiDotnet />;
+    case 'azure':
+      return <FaCloud />;
+    case 'sqlite':
+      return <SiSqlite />;
     case 'babyscript':
       return <FaBaby />;
     case 'milk.js':
@@ -72,17 +82,16 @@ export default function Projects() {
       titleKey: "projects.marktzone.title",
       descriptionKey: "projects.marktzone.description",
       image: "/logo_marktzone.png",
-      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL"],
+      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL", "Selenium"],
       link: "https://marktzone.io"
     },
     {
-      titleKey: "projects.taskmanager.title",
-      descriptionKey: "projects.taskmanager.description",
-      image: "/placeholder.png",
-      technologies: ["React Native", "Firebase", "TypeScript", "Redux"],
-      link: "https://task-manager-url.com"
+      titleKey: "projects.checkdiepreise.title",
+      descriptionKey: "projects.checkdiepreise.description",
+      image: "/logo_checkdiepreise.png",
+      technologies: ["Python", "Beautiful Soup", "Blazor", "ASP.NET", "C#", "SQLite", "Azure"],
+      link: "https://check-die-preise.de"
     },
-   
   ];
 
   return (
