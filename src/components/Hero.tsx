@@ -1,7 +1,7 @@
-import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import BackgroundAnimation from "./BackgroundAnimation";
 import { useTranslation } from 'react-i18next';
+import BackgroundAnimation from "./BackgroundAnimation";
 
 const HeroContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -101,8 +101,6 @@ const GraphicElement = styled(Box)(({ theme }) => ({
 
 export default function Hero() {
   const { t } = useTranslation();
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <HeroContainer>

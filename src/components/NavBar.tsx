@@ -12,7 +12,7 @@ import WorkIcon from '@mui/icons-material/Work';
 import { AppBar, Box, Button, Divider, Drawer, FormControlLabel, IconButton, List, ListItem, ListItemIcon, ListItemText, Switch, Toolbar, useTheme } from '@mui/material';
 import DE from 'country-flag-icons/react/3x2/DE';
 import GB from 'country-flag-icons/react/3x2/GB';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../context/ThemeContext';
 
@@ -21,21 +21,6 @@ const NavBar = () => {
   const { isDarkMode, toggleTheme } = useThemeContext();
   const { i18n, t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showTitle, setShowTitle] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      setShowTitle(scrollPosition > 100); // Show title after scrolling 100px
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check initial position
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);

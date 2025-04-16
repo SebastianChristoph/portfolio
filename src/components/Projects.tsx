@@ -1,8 +1,8 @@
-import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme, useMediaQuery } from "@mui/material";
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker, FaCloud, FaGitAlt } from "react-icons/fa";
-import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql, SiSelenium, SiSharp, SiDotnet, SiSqlite } from "react-icons/si";
-import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
+import { Box, Button, Card, CardContent, CardMedia, Chip, Grid, Typography, useTheme } from "@mui/material";
 import { useTranslation } from 'react-i18next';
+import { FaBaby, FaCloud, FaCode, FaCss3, FaDatabase, FaDocker, FaExternalLinkAlt, FaGitAlt, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
+import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
+import { SiDotnet, SiExpress, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiPostgresql, SiRedux, SiSelenium, SiSharp, SiSqlite, SiTypescript } from "react-icons/si";
 
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
@@ -70,7 +70,6 @@ interface Project {
 export default function Projects() {
   const { t } = useTranslation();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   // Dummy data for projects
   const projects: Project[] = [

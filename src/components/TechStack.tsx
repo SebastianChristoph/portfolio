@@ -1,13 +1,13 @@
 import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import { FaCss3Alt, FaJava, FaJs, FaPython, FaReact } from "react-icons/fa";
-import { SiDart, SiDjango, SiFlask, SiHtml5, SiPostgresql, SiSelenium, SiSharp, SiSpring, SiSqlite } from "react-icons/si";
-import { DiDocker, DiLinux, DiVisualstudio } from "react-icons/di";
-import { BsDatabase } from "react-icons/bs";
-import { AiOutlineCloud } from "react-icons/ai";
-import { GiCrystalBall } from "react-icons/gi";
-import TechStackSkill from "./TechStackSkill";
 import { useTranslation } from 'react-i18next';
+import { AiOutlineCloud } from "react-icons/ai";
+import { BsDatabase } from "react-icons/bs";
+import { DiDocker, DiLinux, DiVisualstudio } from "react-icons/di";
+import { FaCss3Alt, FaJava, FaJs, FaPython, FaReact } from "react-icons/fa";
+import { GiCrystalBall } from "react-icons/gi";
+import { SiDart, SiDjango, SiFlask, SiHtml5, SiSelenium, SiSharp, SiSpring, SiSqlite } from "react-icons/si";
+import TechStackSkill from "./TechStackSkill";
 
 // Categories for skills
 export const categories = {

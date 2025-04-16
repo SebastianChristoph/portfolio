@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button, Typography } from '@mui/material';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@mui/material';
 
 interface LegalModalProps {
   open: boolean;

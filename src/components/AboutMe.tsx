@@ -1,12 +1,11 @@
-import { Box, Paper, Typography, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Paper, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
 export default function AboutMe() {
   const theme = useTheme();
   const { t } = useTranslation();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
+ 
   const wordVariants = {
     hidden: { opacity: 0, x: 20 },
     visible: (custom: number) => ({
