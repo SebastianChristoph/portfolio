@@ -5,10 +5,10 @@ interface TokyoGameProps {
   onExit: () => void;
 }
 
-const MI6_HEADER = `╔═══════════════════════════════╗
-║    MI6 AGENT VIEW _______________║     
-║ TOP SECRET-LEVEL ALPHA _______║ 
-╚═══════════════════════════════╝\n`;
+const MI6_HEADER = `═══════════════════════════════
+    MI6 AGENT VIEW   
+  TOP SECRET-LEVEL ALPHA 
+═══════════════════════════════\n`;
 
 const INITIAL_FILES = [
   'super_secret_code.txt',
@@ -103,37 +103,41 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               typeInterval = setInterval(typeNextChar, 60);
             }, msgIdx === nukeMessages.length - 2 ? 2400 : 900);
           } else {
-            // WiFi search phase
-            setWifiPhase('search');
-            setNukeText('Searching wifi signal ...');
+            // Add 2 second delay before WiFi search
             setTimeout(() => {
-              setWifiPhase('notfound');
-              setNukeText('Searching wifi signal ...\n');
+              // WiFi search phase
+              setWifiPhase('search');
+              setNukeText('Searching wifi signal ...');
               setTimeout(() => {
-                setWifiPhase('undo');
-                setUndoText('');
-                let undo = '';
-                let dots = 0;
-                const undoInterval = setInterval(() => {
-                  dots = (dots + 1) % 4;
-                  undo = 'reverse protocol "global fallout"' + '.'.repeat(dots);
-                  setUndoText(undo);
-                }, 350);
+                setWifiPhase('notfound');
+                setNukeText('Searching wifi signal ...\n');
                 setTimeout(() => {
-                  clearInterval(undoInterval);
+                  setWifiPhase('undo');
                   setUndoText('');
-                  setConfirmPhase(true);
+                  let undo = '';
+                  let dots = 0;
+                  const undoInterval = setInterval(() => {
+                    dots = (dots + 1) % 4;
+                    undo = 'reverse protocol "global fallout"' + '.'.repeat(dots);
+                    setUndoText(undo);
+                  }, 350);
                   setTimeout(() => {
-                    setFadeOut(true);
+                    clearInterval(undoInterval);
+                    setUndoText('');
+                    setConfirmPhase(true);
                     setTimeout(() => {
-                      setCodeState('idle');
-                      setGameState('warning');
-                      setConfirmPhase(false);
-                    }, 700);
+                      setFadeOut(true);
+                      setTimeout(() => {
+                        setCodeState('idle');
+                        setGameState('warning');
+                        setConfirmPhase(false);
+                        onExit();
+                      }, 700);
+                    }, 5000);
                   }, 5000);
-                }, 5000);
-              }, 4500);
-            }, 3000);
+                }, 4500);
+              }, 3000);
+            }, 2000);
           }
         }
       };
@@ -385,10 +389,13 @@ ${showCode ? '> CODE: 1234\n' : ''}
   return (
     <Box sx={{ mt: 2 }}>
       {renderContent()}
-      {!(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error')) && codeState !== 'nuke' && !spyPhase && (
+      {!(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error')) && 
+       codeState !== 'nuke' && 
+       codeState !== 'wrong' &&
+       !spyPhase && (
         <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
           <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', mr: 1 }}>
-            {gameState === 'warning' ? 'C:\Users\guest>' : 'Agent Bond  >'}
+            {gameState === 'warning' ? 'C:\\Users\\guest>' : 'Agent Bond  >'}
           </Typography>
           <TextField
             value={input}
