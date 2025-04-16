@@ -1,6 +1,7 @@
 import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button } from "@mui/material";
 import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3 } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs } from "react-icons/si";
+import { useTranslation } from 'react-i18next';
 
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
@@ -32,8 +33,8 @@ const getTechIcon = (tech: string) => {
 };
 
 interface Project {
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
   image: string;
   technologies: string[];
   link: string;
@@ -42,22 +43,22 @@ interface Project {
 // Dummy data for projects
 const projects: Project[] = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-stack e-commerce solution with shopping cart and payment integration",
+    titleKey: "projects.ecommerce.title",
+    descriptionKey: "projects.ecommerce.description",
     image: "/placeholder.png",
     technologies: ["React", "Node.js", "MongoDB", "Express", "Redux"],
     link: "https://project-url.com"
   },
   {
-    title: "Task Management App",
-    description: "Mobile task manager with real-time updates and team collaboration features",
+    titleKey: "projects.taskmanager.title",
+    descriptionKey: "projects.taskmanager.description",
     image: "/placeholder.png",
     technologies: ["React Native", "Firebase", "TypeScript", "Redux"],
     link: "https://task-manager-url.com"
   },
   {
-    title: "Portfolio Website",
-    description: "Modern portfolio website built with Next.js and Material-UI",
+    titleKey: "projects.portfolio.title",
+    descriptionKey: "projects.portfolio.description",
     image: "/placeholder.png",
     technologies: ["React", "Material-UI", "TypeScript", "CSS"],
     link: "https://portfolio-url.com"
@@ -65,14 +66,16 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
+  const { t } = useTranslation();
+
   return (
     <Grid size={{ xs: 12, md: 9 }}  id="projects">
       <Typography variant="h2" sx={{ mb: 3, textAlign: 'left', color: 'text.secondary' }}>
-        Projects
+        {t('projects.title')}
       </Typography>
       <Box sx={{minHeight: '105px'}}>
         <Typography variant="body1" sx={{ textAlign: 'left', paddingLeft: 2, color: 'text.secondary' }}>
-          Here you'll find an overview of my key projects, showcasing various technologies and solutions I've worked with. Each project demonstrates different technical skills and implementation approaches.
+          {t('projects.description')}
         </Typography>
       </Box>
       <Box sx={{ 
@@ -127,7 +130,7 @@ export default function Projects() {
                 component="img"
                 height="160"
                 image={project.image}
-                alt={project.title}
+                alt={t(project.titleKey)}
                 sx={{ 
                   p: 3,
                   objectFit: 'contain',
@@ -141,12 +144,12 @@ export default function Projects() {
               }}>
                 <Box sx={{ minHeight: "80px" }}>
                   <Typography gutterBottom variant="h5" component="div" color="text.primary">
-                    {project.title}
+                    {t(project.titleKey)}
                   </Typography>
                 </Box>
                 <Box sx={{ minHeight: "70px" }}>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    {project.description}
+                    {t(project.descriptionKey)}
                   </Typography>
                 </Box>
                 <Box sx={{ 
@@ -198,24 +201,20 @@ export default function Projects() {
             >
               <Button
                 component="a"
-                variant="contained"
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
+                variant="contained"
                 startIcon={<FaExternalLinkAlt />}
                 sx={{
-                  backgroundColor: (theme) => theme.palette.mode === 'dark' 
-                    ? 'primary.main' 
-                    : 'primary.dark',
-                  color: 'primary.contrastText',
+                  backgroundColor: 'primary.main',
+                  color: 'white',
                   '&:hover': {
-                    backgroundColor: (theme) => theme.palette.mode === 'dark' 
-                      ? 'primary.dark' 
-                      : 'primary.main',
+                    backgroundColor: 'primary.dark',
                   }
                 }}
               >
-                View Project
+                {t('projects.viewProject')}
               </Button>
             </Box>
           </Box>

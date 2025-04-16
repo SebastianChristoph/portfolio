@@ -12,6 +12,7 @@ import { GlobalStyles } from '@mui/material';
 import { ThemeContextProvider } from './context/ThemeContext';
 import AboutMe from './components/AboutMe';
 import { useEffect } from 'react';
+import './i18n/i18n';
 
 function App() {
   useEffect(() => {

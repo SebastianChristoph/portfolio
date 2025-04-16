@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über mich",
+    "projects": "Projekte",
+    "cv": "Lebenslauf",
+    "contact": "Kontakt",
+    "techstack": "Technologien",
+    "gitstats": "GitHub Stats"
+  },
+  "hero": {
+    "greeting": "Hallo, ich bin",
+    "role": "Full Stack Entwickler",
+    "description": "Leidenschaftlich engagiert in der Entwicklung innovativer Lösungen und der Bereitstellung außergewöhnlicher Benutzererlebnisse durch sauberen, effizienten Code und moderne Technologien.",
+    "hire": "Kontaktieren",
+    "portfolio": "Portfolio",
+    "profileAlt": "Profilbild von Sebastian Christoph"
+  },
+  "about": {
+    "title": "Über mich",
+    "paragraph1": "Als Full Stack Entwickler verbinde ich technische Expertise mit kreativem Problemlösungsdenken, um moderne, effiziente Webanwendungen zu entwickeln. Mein Weg in der Softwareentwicklung hat mir ein tiefes Verständnis sowohl für Frontend- als auch Backend-Technologien vermittelt.",
+    "paragraph2": "Ich setze mich leidenschaftlich für die Erstellung von sauberem, wartbarem Code und die Implementierung von Best Practices in der Softwareentwicklung ein. Mein Ansatz konzentriert sich darauf, Lösungen zu liefern, die nicht nur technische Anforderungen erfüllen, sondern auch außergewöhnliche Benutzererlebnisse bieten.",
+    "paragraph3": "Ob bei selbstständiger Arbeit oder im Team bringe ich Engagement, Kreativität und innovatives Denken in jedes Projekt ein. Ich lerne ständig dazu und passe mich neuen Technologien an, um an der Spitze der Webentwicklung zu bleiben.",
+    "word1": "ENGAGIERT",
+    "word2": "KREATIV",
+    "word3": "INNOVATIV"
+  },
+  "techstack": {
+    "title": "Technologien",
+    "categories": {
+      "all": "Alle",
+      "programming": "Programmiersprachen",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Datenbanken"
+    }
+  },
+  "projects": {
+    "title": "Projekte",
+    "description": "Hier finden Sie einen Überblick über meine wichtigsten Projekte, die verschiedene Technologien und Lösungen zeigen, mit denen ich gearbeitet habe. Jedes Projekt demonstriert unterschiedliche technische Fähigkeiten und Implementierungsansätze.",
+    "viewProject": "Projekt ansehen",
+    "ecommerce": {
+      "title": "E-Commerce Plattform",
+      "description": "Eine Full-Stack E-Commerce-Lösung mit Warenkorb und Zahlungsintegration"
+    },
+    "taskmanager": {
+      "title": "Aufgabenverwaltungs-App",
+      "description": "Mobile Aufgabenverwaltung mit Echtzeit-Updates und Team-Kollaborationsfunktionen"
+    },
+    "portfolio": {
+      "title": "Portfolio Website",
+      "description": "Moderne Portfolio-Website, entwickelt mit Next.js und Material-UI"
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "send": "Nachricht senden"
+  },
+  "cv": {
+    "title": "Ausbildung & Zertifikate",
+    "description": "Mein Bildungsweg spiegelt meine Leidenschaft für Technologie und kontinuierliches Lernen wider. Beginnend mit einer soliden Grundlage in Mathematik und Physik habe ich mich in die Informatik und moderne Webtechnologien weiterentwickelt. Durch formale Bildung und Berufszertifizierungen habe ich mir vielfältige Fähigkeiten angeeignet, die theoretisches Wissen mit praktischer Expertise in Cloud Computing und Webentwicklung verbinden.",
+    "education": {
+      "abitur": {
+        "title": "Abitur",
+        "description": "Abschluss mit Schwerpunkt Mathematik und Physik"
+      },
+      "bachelor": {
+        "title": "Bachelor of Science",
+        "description": "Abgeschlossenes Informatikstudium an der XYZ Universität"
+      },
+      "internship": {
+        "title": "Praktikum",
+        "description": "6-monatiges Praktikum bei TechCompany GmbH in der Softwareentwicklung"
+      }
+    },
+    "certificates": {
+      "aws": {
+        "description": "Zertifizierung in Cloud Computing Grundlagen"
+      },
+      "react": {
+        "description": "Fortgeschrittene React-Kenntnisse und Best Practices"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Sebastian Christoph. Alle Rechte vorbehalten.",
+    "links": {
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
+    }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Impressum",
+      "content": "Diese Website wird betrieben von Sebastian Christoph. Für Anfragen nutzen Sie bitte das auf dieser Website bereitgestellte Kontaktformular."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "content": "Diese Website verwendet Cookies, um Ihr Surferlebnis zu verbessern. Wir erheben keine personenbezogenen Daten ohne Ihre ausdrückliche Zustimmung. Für weitere Informationen darüber, wie wir mit Ihren Daten umgehen, kontaktieren Sie uns bitte über das bereitgestellte Kontaktformular."
+    }
+  }
+} 

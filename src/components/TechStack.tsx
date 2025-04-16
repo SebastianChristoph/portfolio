@@ -4,14 +4,15 @@ import { FaCss3Alt, FaJava, FaJs, FaMobileAlt, FaNodeJs, FaReact } from "react-i
 import { MdDevices } from "react-icons/md";
 import { SiExpress, SiMongodb, SiPostgresql, SiPython, SiRedux, SiTypescript } from "react-icons/si";
 import TechStackSkill from "./TechStackSkill";
+import { useTranslation } from 'react-i18next';
 
 // Categories for skills
 export const categories = {
-  ALL: "All",
-  PROGRAMMING: "Programming Languages",
-  FRONTEND: "Frontend",
-  BACKEND: "Backend",
-  DATABASE: "Database",
+  ALL: "techstack.categories.all",
+  PROGRAMMING: "techstack.categories.programming",
+  FRONTEND: "techstack.categories.frontend",
+  BACKEND: "techstack.categories.backend",
+  DATABASE: "techstack.categories.database",
 } as const;
 
 // Dummy data for skills with categories
@@ -33,6 +34,7 @@ const skills = [
 
 export default function TechStack() {
   const [selectedCategory, setSelectedCategory] = useState<string>(categories.ALL);
+  const { t } = useTranslation();
 
   const filteredSkills = selectedCategory === categories.ALL
     ? skills
@@ -42,7 +44,7 @@ export default function TechStack() {
         <Grid size={{ xs: 12, md: 3 }} id="techstack">
    
       <Typography variant="h2" sx={{ mb: 3, textAlign: 'left', color: 'text.secondary' }}>
-        Tech Stack
+        {t('techstack.title')}
       </Typography>
       
       <ButtonGroup 
@@ -75,7 +77,7 @@ export default function TechStack() {
               }
             }}
           >
-            {category}
+            {t(category)}
           </Button>
         ))}
       </ButtonGroup>

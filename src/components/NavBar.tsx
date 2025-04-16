@@ -1,21 +1,25 @@
-import { AppBar, Toolbar, Typography, Button, Box, IconButton, useTheme, Drawer, List, ListItem, ListItemText, ListItemIcon, Divider, Fade, Switch, FormControlLabel } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
-import HomeIcon from '@mui/icons-material/Home';
-import CodeIcon from '@mui/icons-material/Code';
-import WorkIcon from '@mui/icons-material/Work';
 import ArticleIcon from '@mui/icons-material/Article';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import CodeIcon from '@mui/icons-material/Code';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import HomeIcon from '@mui/icons-material/Home';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
-import { useState, useEffect } from 'react';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import MenuIcon from '@mui/icons-material/Menu';
+import WorkIcon from '@mui/icons-material/Work';
+import { AppBar, Box, Button, Divider, Drawer, FormControlLabel, IconButton, List, ListItem, ListItemIcon, ListItemText, Switch, Toolbar, useTheme } from '@mui/material';
+import DE from 'country-flag-icons/react/3x2/DE';
+import GB from 'country-flag-icons/react/3x2/GB';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../context/ThemeContext';
 
 const NavBar = () => {
   const theme = useTheme();
   const { isDarkMode, toggleTheme } = useThemeContext();
+  const { i18n, t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
 
@@ -45,13 +49,17 @@ const NavBar = () => {
     }
   };
 
+  const handleLanguageChange = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en');
+  };
+
   const menuItems = [
-    { label: 'Home', id: 'home', icon: <HomeIcon /> },
-    { label: 'TechStack', id: 'techstack', icon: <CodeIcon /> },
-    { label: 'Projects', id: 'projects', icon: <WorkIcon /> },
-    { label: 'CV', id: 'cv', icon: <ArticleIcon /> },
-    { label: 'GitStats', id: 'gitstats', icon: <BarChartIcon /> },
-    { label: 'Contact', id: 'contact', icon: <EmailIcon /> }
+    { label: t('nav.home'), id: 'home', icon: <HomeIcon /> },
+    { label: t('nav.techstack'), id: 'techstack', icon: <CodeIcon /> },
+    { label: t('nav.projects'), id: 'projects', icon: <WorkIcon /> },
+    { label: t('nav.cv'), id: 'cv', icon: <ArticleIcon /> },
+    { label: t('nav.gitstats'), id: 'gitstats', icon: <BarChartIcon /> },
+    { label: t('nav.contact'), id: 'contact', icon: <EmailIcon /> }
   ];
 
   const socialLinks = [
@@ -69,60 +77,47 @@ const NavBar = () => {
           borderBottom: `1px solid ${theme.palette.divider}`,
         }}
       >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="primary"
-            aria-label="menu"
-            sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
-            onClick={handleDrawerToggle}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Fade in={showTitle}>
-            <Typography 
-              variant="h6" 
-              onClick={() => scrollToSection('home')}
-              color="text.primary"
-              sx={{ 
-                flexGrow: 1,
-                cursor: 'pointer',
-                '&:hover': {
-                  opacity: 0.8
-                }
-              }}
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <IconButton
+              size="large"
+              edge="start"
+              color="primary"
+              aria-label="menu"
+              sx={{ mr: 2, display: { xs: 'block', md: 'none' } }}
+              onClick={handleDrawerToggle}
             >
-              Portfolio
-            </Typography>
-          </Fade>
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {menuItems.map((item) => (
-              <Button 
-                key={item.id} 
-                color="primary"
-                onClick={() => scrollToSection(item.id)}
-                startIcon={item.icon}
-                sx={{
-                  mx: 1,
-                  color: 'text.primary',
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  }
-                }}
-              >
-                {item.label}
-              </Button>
-            ))}
+              <MenuIcon />
+            </IconButton>
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              {menuItems.map((item) => (
+                <Button 
+                  key={item.id} 
+                  color="primary"
+                  onClick={() => scrollToSection(item.id)}
+                  startIcon={item.icon}
+                  sx={{
+                    mx: 1,
+                    color: 'text.primary',
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover,
+                    }
+                  }}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </Box>
           </Box>
+
           <Box 
             sx={{ 
               display: { xs: 'none', md: 'flex' }, 
-              ml: 4, 
+              alignItems: 'center',
               gap: 1,
               borderLeft: `1px solid ${theme.palette.divider}`,
-              pl: 4,
-              alignItems: 'center'
+              borderRight: `1px solid ${theme.palette.divider}`,
+              px: 4,
             }}
           >
             {socialLinks.map((social) => (
@@ -142,6 +137,9 @@ const NavBar = () => {
                 {social.icon}
               </IconButton>
             ))}
+          </Box>
+
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
             <FormControlLabel
               control={
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -155,16 +153,25 @@ const NavBar = () => {
                 </Box>
               }
               label=""
-              sx={{ 
-                ml: 2,
-                '& .MuiFormControlLabel-label': {
-                  color: theme.palette.text.primary
-                }
-              }}
+            />
+            <FormControlLabel
+              control={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <GB style={{ width: '20px', height: '14px', marginRight: '8px', opacity: i18n.language === 'en' ? 1 : 0.5 }} />
+                  <Switch
+                    checked={i18n.language === 'de'}
+                    onChange={handleLanguageChange}
+                    color="primary"
+                  />
+                  <DE style={{ width: '20px', height: '14px', marginLeft: '8px', opacity: i18n.language === 'de' ? 1 : 0.5 }} />
+                </Box>
+              }
+              label=""
             />
           </Box>
         </Toolbar>
       </AppBar>
+
       <Drawer
         variant="temporary"
         anchor="left"
@@ -226,36 +233,40 @@ const NavBar = () => {
               </IconButton>
             ))}
           </Box>
-        </List>
-        <Divider sx={{ my: 2 }} />
-        <ListItem 
-          sx={{ 
-            width: '100%', 
-            textAlign: 'left', 
-            p: 2,
-          }}
-        >
-          <FormControlLabel
-            control={
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
-                <Switch
-                  checked={isDarkMode}
-                  onChange={toggleTheme}
-                  color="primary"
-                />
-                <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
-              </Box>
-            }
-            label=""
-            sx={{ 
-              width: '100%',
-              '& .MuiFormControlLabel-label': {
-                color: theme.palette.text.primary
+          <Divider sx={{ my: 2 }} />
+          <ListItem>
+            <FormControlLabel
+              control={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
+                  <Switch
+                    checked={isDarkMode}
+                    onChange={toggleTheme}
+                    color="primary"
+                  />
+                  <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
+                </Box>
               }
-            }}
-          />
-        </ListItem>
+              label=""
+            />
+          </ListItem>
+          <ListItem>
+            <FormControlLabel
+              control={
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <GB style={{ width: '20px', height: '14px', marginRight: '8px', opacity: i18n.language === 'en' ? 1 : 0.5 }} />
+                  <Switch
+                    checked={i18n.language === 'de'}
+                    onChange={handleLanguageChange}
+                    color="primary"
+                  />
+                  <DE style={{ width: '20px', height: '14px', marginLeft: '8px', opacity: i18n.language === 'de' ? 1 : 0.5 }} />
+                </Box>
+              }
+              label=""
+            />
+          </ListItem>
+        </List>
       </Drawer>
     </>
   );

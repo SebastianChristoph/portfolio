@@ -1,0 +1,102 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "cv": "CV",
+    "contact": "Contact",
+    "techstack": "Tech Stack",
+    "gitstats": "GitHub Stats"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Full Stack Developer",
+    "description": "Passionate about creating innovative solutions and delivering exceptional user experiences through clean, efficient code and modern technologies.",
+    "hire": "Hire Me",
+    "portfolio": "Portfolio",
+    "profileAlt": "Profile picture of Sebastian Christoph"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraph1": "As a Full Stack Developer, I combine technical expertise with creative problem-solving to build modern, efficient web applications. My journey in software development has equipped me with a deep understanding of both front-end and back-end technologies.",
+    "paragraph2": "I'm passionate about creating clean, maintainable code and implementing best practices in software development. My approach focuses on delivering solutions that not only meet technical requirements but also provide exceptional user experiences.",
+    "paragraph3": "Whether working independently or as part of a team, I bring dedication, creativity, and innovative thinking to every project. I'm constantly learning and adapting to new technologies to stay at the forefront of web development.",
+    "word1": "DEDICATED",
+    "word2": "CREATIVE",
+    "word3": "INNOVATIVE"
+  },
+  "techstack": {
+    "title": "Tech Stack",
+    "categories": {
+      "all": "All",
+      "programming": "Programming Languages",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Database"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "description": "Here you'll find an overview of my key projects, showcasing various technologies and solutions I've worked with. Each project demonstrates different technical skills and implementation approaches.",
+    "viewProject": "View Project",
+    "ecommerce": {
+      "title": "E-Commerce Platform",
+      "description": "A full-stack e-commerce solution with shopping cart and payment integration"
+    },
+    "taskmanager": {
+      "title": "Task Management App",
+      "description": "Mobile task manager with real-time updates and team collaboration features"
+    },
+    "portfolio": {
+      "title": "Portfolio Website",
+      "description": "Modern portfolio website built with Next.js and Material-UI"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "send": "Send Message"
+  },
+  "cv": {
+    "title": "Education & Certificates",
+    "description": "My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.",
+    "education": {
+      "abitur": {
+        "title": "High School Diploma",
+        "description": "Graduated with focus on mathematics and physics"
+      },
+      "bachelor": {
+        "title": "Bachelor of Science",
+        "description": "Completed Bachelor's degree in Computer Science at XYZ University"
+      },
+      "internship": {
+        "title": "Internship",
+        "description": "6-month internship at TechCompany GmbH in software development"
+      }
+    },
+    "certificates": {
+      "aws": {
+        "description": "Certification in cloud computing fundamentals"
+      },
+      "react": {
+        "description": "Advanced React knowledge and best practices"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Sebastian Christoph. All rights reserved.",
+    "links": {
+      "imprint": "Imprint",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "legal": {
+    "imprint": {
+      "title": "Imprint",
+      "content": "This website is operated by Sebastian Christoph. For any inquiries, please use the contact form provided on this website."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "content": "This website uses cookies to enhance your browsing experience. We do not collect any personal data without your explicit consent. For more information about how we handle your data, please contact us through the provided contact form."
+    }
+  }
+} 

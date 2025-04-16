@@ -1,6 +1,7 @@
 import { Box, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import BackgroundAnimation from "./BackgroundAnimation";
+import { useTranslation } from 'react-i18next';
 
 const HeroContainer = styled(Box)(({ }) => ({
   width: '100%',
@@ -62,6 +63,8 @@ const GraphicElement = styled(Box)(({ theme }) => ({
 }));
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <HeroContainer>
       <BackgroundAnimation />
@@ -76,7 +79,7 @@ export default function Hero() {
               mb: 1
             }}
           >
-            Sebastian Christoph
+            {t('hero.greeting')} Sebastian Christoph
           </Typography>
           <Typography 
             variant="h2" 
@@ -87,7 +90,7 @@ export default function Hero() {
               fontWeight: 'normal'
             }}
           >
-            Full-Stack Software Developer
+            {t('hero.role')}
           </Typography>
           <Typography 
             variant="body1" 
@@ -97,7 +100,7 @@ export default function Hero() {
               maxWidth: '600px'
             }}
           >
-            Passionate about creating innovative solutions and delivering exceptional user experiences through clean, efficient code and modern technologies.
+            {t('hero.description')}
           </Typography>
           <Box>
             <StyledButton 
@@ -107,7 +110,7 @@ export default function Hero() {
                 '&:hover': { backgroundColor: 'primary.dark' }
               }}
             >
-              Hire Me
+              {t('hero.hire')}
             </StyledButton>
             <StyledButton 
               variant="outlined" 
@@ -116,14 +119,14 @@ export default function Hero() {
                 '&:hover': { borderColor: 'secondary.dark' }
               }}
             >
-              Portfolio
+              {t('hero.portfolio')}
             </StyledButton>
           </Box>
         </TextContent>
         <ProfileImage>
           <img
             src="/profil2_header_2500px.jpg"
-            alt="Profile"
+            alt={t('hero.profileAlt')}
           />
         </ProfileImage>
       </ContentWrapper>

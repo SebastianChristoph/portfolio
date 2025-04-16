@@ -3,49 +3,53 @@ import { Box, Paper, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from 'react-i18next';
 
 interface TimelinePoint {
   year: string;
-  title: string;
-  description: string;
+  titleKey?: string;
+  title?: string;
+  descriptionKey: string;
   type: 'education' | 'certificate';
 }
 
 const timelineData: TimelinePoint[] = [
   {
     year: "2020",
-    title: "Abitur",
-    description: "Abschluss des Abiturs mit Schwerpunkt in Mathematik und Physik",
+    titleKey: "cv.education.abitur.title",
+    descriptionKey: "cv.education.abitur.description",
     type: 'education'
   },
   {
     year: "2022",
-    title: "Bachelor of Arts",
-    description: "Abschluss des Bachelorstudiums in Informatik an der Universität XYZ",
+    titleKey: "cv.education.bachelor.title",
+    descriptionKey: "cv.education.bachelor.description",
     type: 'education'
   },
   {
     year: "2023",
-    title: "Praktikum",
-    description: "6-monatiges Praktikum bei TechCompany GmbH im Bereich Softwareentwicklung",
+    titleKey: "cv.education.internship.title",
+    descriptionKey: "cv.education.internship.description",
     type: 'education'
   },
   {
     year: "2024",
     title: "AWS Cloud Practitioner",
-    description: "Zertifizierung in Cloud Computing Grundlagen",
+    descriptionKey: "cv.certificates.aws.description",
     type: 'certificate'
   },
   {
     year: "2024",
     title: "React Advanced",
-    description: "Fortgeschrittene React-Kenntnisse und Best Practices",
+    descriptionKey: "cv.certificates.react.description",
     type: 'certificate'
   }
 ];
 
 export default function Cv() {
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+  const { t } = useTranslation();
+
   return (
     <Box sx={{ 
       width: '100%', 
@@ -61,7 +65,7 @@ export default function Cv() {
         viewport={{ once: true }}
       >
         <Typography variant="h2" sx={{ mb: 2, textAlign: 'left',  color: 'text.secondary' }}>
-          Education & Certificates
+          {t('cv.title')}
         </Typography>
       </motion.div>
 
@@ -76,13 +80,12 @@ export default function Cv() {
           sx={{ 
             mb: 12, 
             maxWidth: '800px', 
-          
             textAlign: 'left',
             color: 'text.secondary',
             lineHeight: 1.8
           }}
         >
-          My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.
+          {t('cv.description')}
         </Typography>
       </motion.div>
       
@@ -179,7 +182,7 @@ export default function Cv() {
                       color: 'text.secondary'
                     }}
                   >
-                    {point.title}
+                    {point.titleKey ? t(point.titleKey) : point.title}
                   </Typography>
                 </Box>
               </Box>
@@ -199,20 +202,17 @@ export default function Cv() {
                     elevation={3}
                     sx={{
                       position: 'absolute',
-                      top: '-120px',
+                      top: point.type === 'certificate' ? '40px' : '-60px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      width: '200px',
-                      p: 2,
+                      padding: 2,
+                      width: 'max-content',
+                      maxWidth: '300px',
                       backgroundColor: 'background.paper',
-                      zIndex: 10
                     }}
                   >
-                    <Typography variant="h6" sx={{ mb: 1 }}>
-                      {point.title}
-                    </Typography>
                     <Typography variant="body2">
-                      {point.description}
+                      {t(point.descriptionKey)}
                     </Typography>
                   </Paper>
                 </motion.div>

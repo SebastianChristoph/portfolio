@@ -1,8 +1,10 @@
 import { Box, Paper, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 export default function AboutMe() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const wordVariants = {
     hidden: { opacity: 0, x: 20 },
@@ -39,16 +41,16 @@ export default function AboutMe() {
       >
         <Box sx={{width: '70%'}}>
           <Typography variant="h4" gutterBottom>
-            About Me
+            {t('about.title')}
           </Typography>
           <Typography variant="body1" paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            {t('about.paragraph1')}
           </Typography>
           <Typography variant="body1" paragraph>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            {t('about.paragraph2')}
           </Typography>
           <Typography variant="body1">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+            {t('about.paragraph3')}
           </Typography>
         </Box>
         
@@ -78,7 +80,7 @@ export default function AboutMe() {
                 '&::after': { display: 'none' }
               }}
             >
-              DEDICATED
+              {t('about.word1')}
             </Typography>
           </motion.div>
 
@@ -98,7 +100,7 @@ export default function AboutMe() {
                 '&::after': { display: 'none' }
               }}
             >
-              CREATIVE
+              {t('about.word2')}
             </Typography>
           </motion.div>
 
@@ -118,7 +120,7 @@ export default function AboutMe() {
                 '&::after': { display: 'none' }
               }}
             >
-              INNOVATIVE
+              {t('about.word3')}
             </Typography>
           </motion.div>
         </Box>
