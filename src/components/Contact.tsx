@@ -1,9 +1,11 @@
 import { Box, TextField, Button, Typography, Grid, useTheme } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import TokyoGame from "./TokyoGame";
 
 export default function Contact() {
   const theme = useTheme();
+  const { t } = useTranslation();
   const isDarkMode = theme.palette.mode === 'dark';
   const terminalBg = isDarkMode ? '#101935' : '#F8FAFC';
   const terminalText = isDarkMode ? '#CCCCCC' : '#1E293B';
@@ -95,7 +97,7 @@ export default function Contact() {
     return (
       <Grid size={{ xs: 12, md: 5 }} id="contact">
         <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
-          Contact
+          {t('contact.title')}
         </Typography>
         <Box 
           sx={{ 
@@ -139,7 +141,7 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
     return (
       <Grid size={{ xs: 12, md: 5 }} id="contact">
         <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
-          Contact
+          {t('contact.title')}
         </Typography>
         <Box 
           sx={{ 
@@ -188,9 +190,9 @@ Long message inserted! That's what she said!
 
   return (
     <Grid size={{ xs: 12, md: 5 }} id="contact">
-       <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
-          Contact
-        </Typography>
+      <Typography variant="h2" sx={{ mb:2, textAlign: 'left', color: 'text.secondary' }}>
+        {t('contact.title')}
+      </Typography>
      
       <Box 
         sx={{ 
@@ -216,7 +218,7 @@ Long message inserted! That's what she said!
                 whiteSpace: 'pre'
               }}
             >
-              {`Contact Form - Ping me like a Pro\nPlease follow the steps below to send me a message:\n\n1. Enter your email and press Enter\n\n2. Type your message and press Enter\n\n3. Click 'send' to submit`}
+              {`${t('contact.form.header')}\n${t('contact.form.instructions')}\n\n1. ${t('contact.form.steps.1')}\n\n2. ${t('contact.form.steps.2')}\n\n3. ${t('contact.form.steps.3')}`}
             </Typography>
 
             <Typography 
@@ -227,145 +229,143 @@ Long message inserted! That's what she said!
                 color: terminalPrompt
               }}
             >
-              {`> NOTICE: The keyword "tokyo" is restricted to civilian access. Standard contact form users should ignore this warning and should not type "tokyo" in the email field and press enter.`}
+              {t('contact.form.notice')}
             </Typography>
 
-            <Box component="form" onSubmit={handleSubmit}>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <Typography 
-                    sx={{ 
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography 
+                  sx={{ 
+                    fontFamily: 'Consolas, "Courier New", monospace',
+                    fontSize: '14px',
+                    color: terminalPrompt,
+                    mr: 1
+                  }}
+                >
+                  C:\Users\guest&gt;
+                </Typography>
+                <TextField
+                  value={email}
+                  onChange={handleEmailChange}
+                  onKeyDown={handleEmailSubmit}
+                  placeholder={t('contact.form.email.placeholder')}
+                  disabled={step !== 1}
+                  autoFocus={step === 1}
+                  error={emailError}
+                  sx={{
+                    '& .MuiInputBase-root': {
                       fontFamily: 'Consolas, "Courier New", monospace',
                       fontSize: '14px',
-                      color: terminalPrompt,
-                      mr: 1
-                    }}
-                  >
-                    C:\Users\guest&gt;
-                  </Typography>
-                  <TextField
-                    value={email}
-                    onChange={handleEmailChange}
-                    onKeyDown={handleEmailSubmit}
-                    placeholder="Enter your email"
-                    disabled={step !== 1}
-                    autoFocus={step === 1}
-                    error={emailError}
-                    sx={{
-                      '& .MuiInputBase-root': {
+                      color: terminalText,
+                      backgroundColor: 'transparent',
+                      '&:before, &:after': { display: 'none' },
+                      '& .MuiInputBase-input': {
+                        p: 0,
+                        height: 'auto',
+                        '&::placeholder': {
+                          color: placeholderColor,
+                          opacity: 1
+                        }
+                      }
+                    },
+                    '& .MuiOutlinedInput-notchedOutline': { display: 'none' },
+                    '& .Mui-error': {
+                      color: theme.palette.error.main
+                    }
+                  }}
+                />
+              </Box>
+
+              {emailError && (
+                <Typography
+                  sx={{
+                    fontFamily: 'Consolas, "Courier New", monospace',
+                    fontSize: '14px',
+                    color: theme.palette.error.main,
+                    mt: 1
+                  }}
+                >
+                  {t('contact.form.email.invalid')}
+                </Typography>
+              )}
+
+              {step >= 2 && (
+                <>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+                    <Typography 
+                      sx={{ 
                         fontFamily: 'Consolas, "Courier New", monospace',
                         fontSize: '14px',
-                        color: terminalText,
-                        backgroundColor: 'transparent',
-                        '&:before, &:after': { display: 'none' },
-                        '& .MuiInputBase-input': {
-                          p: 0,
-                          height: 'auto',
-                          '&::placeholder': {
-                            color: placeholderColor,
-                            opacity: 1
-                          }
-                        }
-                      },
-                      '& .MuiOutlinedInput-notchedOutline': { display: 'none' },
-                      '& .Mui-error': {
-                        color: theme.palette.error.main
-                      }
-                    }}
-                  />
-                </Box>
-
-                {emailError && (
-                  <Typography
-                    sx={{
-                      fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '14px',
-                      color: theme.palette.error.main,
-                      mt: 1
-                    }}
-                  >
-                    Error: Please enter a valid email address (example@domain.com)
-                  </Typography>
-                )}
-
-                {step >= 2 && (
-                  <>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
-                      <Typography 
-                        sx={{ 
-                          fontFamily: 'Consolas, "Courier New", monospace',
-                          fontSize: '14px',
-                          color: terminalPrompt,
-                          mr: 1
-                        }}
-                      >
-                        C:\Users\guest&gt;
-                      </Typography>
-                      <TextField
-                        multiline
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Enter your message"
-                        disabled={step !== 2}
-                        inputRef={messageInputRef}
-                        autoFocus={step === 2}
-                        sx={{
-                          flex: 1,
-                          '& .MuiInputBase-root': {
-                            fontFamily: 'Consolas, "Courier New", monospace',
-                            fontSize: '14px',
-                            color: terminalText,
-                            backgroundColor: 'transparent',
-                            '&:before, &:after': { display: 'none' },
-                            '& .MuiInputBase-input': {
-                              p: 0,
-                              '&::placeholder': {
-                                color: placeholderColor,
-                                opacity: 1
-                              }
-                            }
-                          },
-                          '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
-                        }}
-                      />
-                    </Box>
-
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Typography 
-                        sx={{ 
-                          fontFamily: 'Consolas, "Courier New", monospace',
-                          fontSize: '14px',
-                          color: terminalPrompt,
-                          mr: 1
-                        }}
-                      >
-                        C:\Users\guest&gt;
-                      </Typography>
-                      <Button
-                        type="submit"
-                        disabled={!email || !message}
-                        sx={{ 
+                        color: terminalPrompt,
+                        mr: 1
+                      }}
+                    >
+                      C:\Users\guest&gt;
+                    </Typography>
+                    <TextField
+                      multiline
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder={t('contact.form.message.placeholder')}
+                      disabled={step !== 2}
+                      inputRef={messageInputRef}
+                      autoFocus={step === 2}
+                      sx={{
+                        flex: 1,
+                        '& .MuiInputBase-root': {
                           fontFamily: 'Consolas, "Courier New", monospace',
                           fontSize: '14px',
                           color: terminalText,
                           backgroundColor: 'transparent',
-                          p: 0,
-                          minWidth: 0,
-                          '&:hover': {
-                            backgroundColor: 'transparent',
-                            textDecoration: 'underline'
-                          },
-                          '&.Mui-disabled': {
-                            color: placeholderColor
+                          '&:before, &:after': { display: 'none' },
+                          '& .MuiInputBase-input': {
+                            p: 0,
+                            '&::placeholder': {
+                              color: placeholderColor,
+                              opacity: 1
+                            }
                           }
-                        }}
-                      >
-                        send (click me)
-                      </Button>
-                    </Box>
-                  </>
-                )}
-              </Box>
+                        },
+                        '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
+                      }}
+                    />
+                  </Box>
+
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Typography 
+                      sx={{ 
+                        fontFamily: 'Consolas, "Courier New", monospace',
+                        fontSize: '14px',
+                        color: terminalPrompt,
+                        mr: 1
+                      }}
+                    >
+                      C:\Users\guest&gt;
+                    </Typography>
+                    <Button
+                      onClick={handleSubmit}
+                      disabled={!email || !message}
+                      sx={{ 
+                        fontFamily: 'Consolas, "Courier New", monospace',
+                        fontSize: '14px',
+                        color: terminalText,
+                        backgroundColor: 'transparent',
+                        p: 0,
+                        minWidth: 0,
+                        '&:hover': {
+                          backgroundColor: 'transparent',
+                          textDecoration: 'underline'
+                        },
+                        '&.Mui-disabled': {
+                          color: placeholderColor
+                        }
+                      }}
+                    >
+                      {t('contact.send')}
+                    </Button>
+                  </Box>
+                </>
+              )}
             </Box>
           </>
         )}

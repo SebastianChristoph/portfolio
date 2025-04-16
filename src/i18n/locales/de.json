@@ -54,7 +54,42 @@
   },
   "contact": {
     "title": "Kontakt",
-    "send": "Nachricht senden"
+    "description": "Ich freue mich über Ihre Nachricht. Füllen Sie einfach das Formular aus, und ich werde mich zeitnah bei Ihnen melden.",
+    "form": {
+      "header": "Kontaktformular - Schreiben Sie mir wie ein Profi",
+      "instructions": "Bitte folgen Sie den untenstehenden Schritten, um mir eine Nachricht zu senden:",
+      "steps": {
+        "1": "Geben Sie Ihre E-Mail-Adresse ein und drücken Sie Enter",
+        "2": "Schreiben Sie Ihre Nachricht und drücken Sie Enter",
+        "3": "Klicken Sie auf 'Senden' zum Absenden"
+      },
+      "notice": "HINWEIS: Das Schlüsselwort \"tokyo\" ist nur für zivilen Zugriff eingeschränkt. Normale Benutzer des Kontaktformulars sollten diese Warnung ignorieren und \"tokyo\" nicht in das E-Mail-Feld eingeben und Enter drücken.",
+      "prompt": "Geben Sie Ihre E-Mail-Adresse ein",
+      "name": {
+        "label": "Name",
+        "placeholder": "Ihr Name",
+        "required": "Bitte geben Sie Ihren Namen ein"
+      },
+      "email": {
+        "label": "E-Mail",
+        "placeholder": "ihre.email@beispiel.de",
+        "required": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+        "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+      },
+      "subject": {
+        "label": "Betreff",
+        "placeholder": "Worum geht es?",
+        "required": "Bitte geben Sie einen Betreff ein"
+      },
+      "message": {
+        "label": "Nachricht",
+        "placeholder": "Ihre Nachricht an mich...",
+        "required": "Bitte geben Sie eine Nachricht ein"
+      }
+    },
+    "send": "Nachricht senden",
+    "success": "Vielen Dank für Ihre Nachricht! Ich werde mich so schnell wie möglich bei Ihnen melden.",
+    "error": "Entschuldigung, beim Senden der Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
   },
   "cv": {
     "title": "Ausbildung & Zertifikate",
