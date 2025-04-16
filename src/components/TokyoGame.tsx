@@ -166,32 +166,40 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               typeInterval = setInterval(typeNextChar, 60);
             }, msgIdx === nukeMessages.length - 2 ? 2400 : 900);
           } else {
-            // System check phase
-            setWifiPhase('search');
-            setNukeText('Searching system status...');
-            setTimeout(() => {
-              // Show Windows 3.1 error
-              setNukeText(selectedAbortReason);
-              setTimeout(() => {
-                setWifiPhase('undo');
-                let dots = 0;
-                const undoInterval = setInterval(() => {
-                  dots = (dots + 1) % 4;
-                  setUndoText('reverse protocol "global fallout"' + '.'.repeat(dots));
-                }, 350);
-                setTimeout(() => {
-                  clearInterval(undoInterval);
-                  setUndoText('');
-                  setConfirmPhase(true);
-                  setTimeout(() => {
-                    setShowWhiteScreen(true);
-                    setTimeout(() => {
-                      onExit();
-                    }, 6000);
-                  }, 5000);
-                }, 5000);
-              }, 5000);  // Increased to 5000 to show Windows 3.1 error longer
-            }, 2000);
+            const showMessage = async () => {
+              // First message
+              setWifiPhase('search');
+              setNukeText('Searching system status...');
+              
+              // Windows 3.1 error after 2 seconds
+              await new Promise(resolve => setTimeout(resolve, 2000));
+              setNukeText(ABORT_REASONS[0]);  // Explicitly use the Windows 3.1 message
+              
+              // Reverse protocol after 5 seconds
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              setWifiPhase('undo');
+              let dots = 0;
+              const undoInterval = setInterval(() => {
+                dots = (dots + 1) % 4;
+                setUndoText('reverse protocol "global fallout"' + '.'.repeat(dots));
+              }, 350);
+
+              // Show abort message after 5 seconds
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              clearInterval(undoInterval);
+              setUndoText('');
+              setConfirmPhase(true);
+
+              // Show white screen after 5 seconds
+              await new Promise(resolve => setTimeout(resolve, 5000));
+              setShowWhiteScreen(true);
+
+              // Exit after 6 seconds
+              await new Promise(resolve => setTimeout(resolve, 6000));
+              onExit();
+            };
+
+            showMessage();
           }
         }
       };
