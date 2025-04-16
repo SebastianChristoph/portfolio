@@ -1,5 +1,5 @@
 import SchoolIcon from '@mui/icons-material/School';
-import { Box, Paper, Typography } from "@mui/material";
+import { Box, Typography, useTheme, useMediaQuery, Drawer } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useInView } from "react-intersection-observer";
@@ -7,55 +7,82 @@ import { useTranslation } from 'react-i18next';
 
 interface TimelinePoint {
   year: string;
-  titleKey?: string;
-  title?: string;
+  titleKey: string;  // Key for translation
   descriptionKey: string;
   type: 'education' | 'certificate';
 }
 
 const timelineData: TimelinePoint[] = [
   {
-    year: "2020",
-    titleKey: "cv.education.abitur.title",
-    descriptionKey: "cv.education.abitur.description",
+    year: "2013",
+    titleKey: "cv.education.bta.title",
+    descriptionKey: "cv.education.bta.description",
     type: 'education'
   },
   {
-    year: "2022",
+    year: "2016",
     titleKey: "cv.education.bachelor.title",
     descriptionKey: "cv.education.bachelor.description",
     type: 'education'
   },
   {
-    year: "2023",
-    titleKey: "cv.education.internship.title",
-    descriptionKey: "cv.education.internship.description",
+    year: "2019",
+    titleKey: "cv.education.master.title",
+    descriptionKey: "cv.education.master.description",
+    type: 'education'
+  },
+  {
+    year: "2021",
+    titleKey: "cv.education.frontend.title",
+    descriptionKey: "cv.education.frontend.description",
+    type: 'certificate'
+  },
+  {
+    year: "2021",
+    titleKey: "cv.experience.instructor.title",
+    descriptionKey: "cv.experience.instructor.description",
+    type: 'education'
+  },
+  {
+    year: "2022",
+    titleKey: "cv.experience.fullstack.title",
+    descriptionKey: "cv.experience.fullstack.description",
     type: 'education'
   },
   {
     year: "2024",
-    title: "AWS Cloud Practitioner",
+    titleKey: "cv.certificates.aws.title",
     descriptionKey: "cv.certificates.aws.description",
     type: 'certificate'
   },
   {
     year: "2024",
-    title: "React Advanced",
+    titleKey: "cv.certificates.react.title",
     descriptionKey: "cv.certificates.react.description",
     type: 'certificate'
   }
 ];
 
 export default function Cv() {
-  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+  const [selectedPoint, setSelectedPoint] = useState<number | null>(null);
   const { t } = useTranslation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const handlePointClick = (index: number) => {
+    setSelectedPoint(index);
+  };
+
+  const handleDrawerClose = () => {
+    setSelectedPoint(null);
+  };
 
   return (
     <Box sx={{ 
       width: '100%', 
       py: 4,
       position: 'relative',
-      mt: "200px",
+      mt: { xs: "60px", sm: "100px", md: "200px" },
       overflow: 'hidden'
     }}>
       <motion.div
@@ -64,7 +91,7 @@ export default function Cv() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <Typography variant="h2" sx={{ mb: 2, textAlign: 'left',  color: 'text.secondary' }}>
+        <Typography variant="h2" sx={{ mb: 2, textAlign: 'left', color: 'text.secondary' }}>
           {t('cv.title')}
         </Typography>
       </motion.div>
@@ -78,28 +105,41 @@ export default function Cv() {
         <Typography 
           variant="body1" 
           sx={{ 
-            mb: 12, 
+            mb: 4, 
             maxWidth: '800px', 
             textAlign: 'left',
             color: 'text.secondary',
             lineHeight: 1.8
           }}
         >
-          {t('cv.description')}
+          My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.
+        </Typography>
+        <Typography 
+          variant="body2" 
+          sx={{ 
+            mb: 8,
+            maxWidth: '800px',
+            textAlign: 'left',
+            color: 'text.main',
+            fontStyle: 'italic'
+          }}
+        >
+          Click on any point in the timeline to learn more about each milestone.
         </Typography>
       </motion.div>
       
       {/* Timeline line */}
       <Box sx={{
         position: 'relative',
-        height: '4px',
+        height: { xs: '80vh', sm: '4px' },
+        width: { xs: '4px', sm: '90%' },
         backgroundColor: 'primary.main',
-        width: '90%',
-        mx: 'auto',
+        mx: { xs: '0', sm: 'auto' },
+        ml: { xs: '20px', sm: 'auto' },
         mb: 8,
-        mt: 4
+        mt: 4,
+        zIndex: 1
       }}>
-        {/* Timeline points */}
         {timelineData.map((point, index) => {
           const { ref, inView } = useInView({
             triggerOnce: true,
@@ -115,13 +155,21 @@ export default function Cv() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
               style={{
                 position: 'absolute',
-                left: `${(index / (timelineData.length - 1)) * 100}%`,
-                transform: 'translateX(-50%)',
-                top: '-10px',
-                cursor: 'pointer'
+                ...(isMobile
+                  ? {
+                      top: `${(index / (timelineData.length - 1)) * 100}%`,
+                      left: '-9px',
+                      transform: 'translate(-50%, -50%)'
+                    }
+                  : {
+                      left: `${(index / (timelineData.length - 1)) * 100}%`,
+                      transform: 'translateX(-50%)',
+                      top: '-10px'
+                    }),
+                cursor: 'pointer',
+                zIndex: 2
               }}
-              onMouseEnter={() => setHoveredPoint(index)}
-              onMouseLeave={() => setHoveredPoint(null)}
+              onClick={() => handlePointClick(index)}
             >
               <motion.div
                 whileHover={{ scale: 1.2 }}
@@ -154,24 +202,45 @@ export default function Cv() {
               {/* Year and title label */}
               <Box sx={{ 
                 position: 'absolute',
-                top: point.type === 'certificate' ? '-80px' : '30px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                textAlign: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
+                ...(isMobile
+                  ? {
+                      left: '32px',
+                      top: '50%',
+                      transform: 'translateY(-50%)',
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: 1,
+                      ml: 2
+                    }
+                  : {
+                      top: point.type === 'certificate' ? '-80px' : '30px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      textAlign: 'center',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      minWidth: 'max-content'
+                    })
               }}>
                 <Typography 
                   variant="body2" 
                   sx={{ 
                     fontWeight: 'bold',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    color: 'text.primary'
                   }}
                 >
                   {point.year}
                 </Typography>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+                <Box sx={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: 0.5,
+                  flexDirection: { xs: 'row', sm: 'row' },
+                  mt: { xs: 0, sm: 1 }
+                }}>
                   {point.type === 'certificate' && (
                     <SchoolIcon sx={{ fontSize: '1rem', color: 'secondary.main' }} />
                   )}
@@ -179,48 +248,69 @@ export default function Cv() {
                     variant="body2" 
                     sx={{ 
                       whiteSpace: 'nowrap',
-                      color: 'text.secondary'
+                      color: 'text.secondary',
+                      textAlign: 'center'
                     }}
                   >
-                    {point.titleKey ? t(point.titleKey) : point.title}
+                    {t(point.titleKey)}
                   </Typography>
                 </Box>
               </Box>
-
-              {/* Hover tooltip */}
-              {hoveredPoint === index && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                  style={{
-                    position: 'relative',
-                    zIndex: 10
-                  }}
-                >
-                  <Paper 
-                    elevation={3}
-                    sx={{
-                      position: 'absolute',
-                      top: point.type === 'certificate' ? '40px' : '-60px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      padding: 2,
-                      width: 'max-content',
-                      maxWidth: '300px',
-                      backgroundColor: 'background.paper',
-                    }}
-                  >
-                    <Typography variant="body2">
-                      {t(point.descriptionKey)}
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              )}
             </motion.div>
           );
         })}
       </Box>
+
+      {/* Drawer - responsive position based on screen size */}
+      <Drawer
+        anchor={isMobile ? "bottom" : "right"}
+        open={selectedPoint !== null}
+        onClose={handleDrawerClose}
+        sx={{
+          '& .MuiDrawer-paper': {
+            ...(isMobile ? {
+              borderTopLeftRadius: '16px',
+              borderTopRightRadius: '16px',
+              padding: 3,
+              maxHeight: '70vh'
+            } : {
+              width: '400px',
+              padding: 4,
+              bgcolor: 'background.paper'
+            })
+          }
+        }}
+      >
+        {selectedPoint !== null && (
+          <Box>
+            <Box sx={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: 1, 
+              mb: 3,
+              borderBottom: '2px solid',
+              borderColor: 'primary.main',
+              pb: 2
+            }}>
+              {timelineData[selectedPoint].type === 'certificate' && (
+                <SchoolIcon color="secondary" />
+              )}
+              <Typography variant="h6">
+                {t(timelineData[selectedPoint].titleKey)}
+              </Typography>
+              <Typography variant="subtitle1" color="text.secondary" sx={{ ml: 'auto' }}>
+                {timelineData[selectedPoint].year}
+              </Typography>
+            </Box>
+            <Typography variant="body1" color="text.secondary" sx={{ 
+              lineHeight: 1.8,
+              whiteSpace: 'pre-line' 
+            }}>
+              {t(timelineData[selectedPoint].descriptionKey)}
+            </Typography>
+          </Box>
+        )}
+      </Drawer>
     </Box>
   );
 }

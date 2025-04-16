@@ -6,5 +6,47 @@
       "title": "Fritz - December 2024",
       "description": "My most precious project - the birth of my son Fritz. A new chapter in life, filled with love, joy, and endless possibilities."
     }
+  },
+  "cv": {
+    "title": "Education & Certificates",
+    "description": "My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.",
+    "education": {
+      "bta": {
+        "title": "Biological Technical Assistant",
+        "description": "Completed training as a Biological Technical Assistant, gaining strong analytical skills and a scientific foundation. This background has proven invaluable in approaching complex technical problems systematically."
+      },
+      "bachelor": {
+        "title": "Bachelor of Science",
+        "description": "Bachelor of Science degree, developing a strong foundation in analytical thinking and problem-solving. Combined theoretical knowledge with practical applications in scientific computing."
+      },
+      "master": {
+        "title": "Master of Science",
+        "description": "Master of Science degree, further specializing in data analysis and computational methods. Enhanced expertise in statistical analysis and data-driven decision making."
+      },
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Intensive training in modern frontend development technologies and best practices during a gap year. Focus on responsive design, modern JavaScript frameworks, and web development best practices."
+      }
+    },
+    "experience": {
+      "fullstack": {
+        "title": "Software Developer",
+        "description": "Full-stack development of modern applications using .NET Core, Entity Framework, Python, and automated testing with Selenium/UIPath. Daily work with Git for version control and close collaboration in agile teams. Key projects include a modular enterprise management app (Blazor, ASP.NET Core, PostgreSQL) and a laboratory middleware system (Spring Boot, Java, Docker)."
+      },
+      "instructor": {
+        "title": "Programming Instructor",
+        "description": "Programming instructor for Python (Basics, Data Science), Dart & Flutter, and HTML5/CSS3 (including SASS). Independently organized and conducted 4-week modules for groups of ~15 participants in full-time online courses."
+      }
+    },
+    "certificates": {
+      "aws": {
+        "title": "AWS Cloud Practitioner",
+        "description": "AWS Certified Cloud Practitioner certification, demonstrating fundamental knowledge of AWS Cloud architecture, services, and operations."
+      },
+      "react": {
+        "title": "React Advanced",
+        "description": "Advanced React certification covering complex state management, performance optimization, custom hooks, and modern React patterns."
+      }
+    }
   }
 } 

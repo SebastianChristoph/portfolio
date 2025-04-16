@@ -74,6 +74,7 @@ const ButtonContainer = styled(Box)(({ theme }) => ({
 const StyledButton = styled(Button)(({ theme }) => ({
   borderRadius: '25px',
   padding: '10px 30px',
+  marginTop: '20px',
   textTransform: 'none',
   fontSize: '1rem',
   [theme.breakpoints.down('md')]: {
@@ -146,6 +147,12 @@ export default function Hero() {
             <StyledButton 
               variant="contained" 
               color="primary"
+              onClick={() => {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               sx={{ 
                 '&:hover': { backgroundColor: 'primary.dark' }
               }}
@@ -155,6 +162,12 @@ export default function Hero() {
             <StyledButton 
               variant="outlined" 
               color="secondary"
+              onClick={() => {
+                const techStackSection = document.getElementById('techstack');
+                if (techStackSection) {
+                  techStackSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
               sx={{ 
                 '&:hover': { borderColor: 'secondary.dark' }
               }}
