@@ -186,7 +186,9 @@ export default function Projects() {
                 left: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                backgroundColor: (theme) => theme.palette.mode === 'dark' 
+                  ? 'rgba(0, 0, 0, 0.7)' 
+                  : 'rgba(255, 255, 255, 0.7)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -202,10 +204,14 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 startIcon={<FaExternalLinkAlt />}
                 sx={{
-                  backgroundColor: 'primary.main',
+                  backgroundColor: (theme) => theme.palette.mode === 'dark' 
+                    ? 'primary.main' 
+                    : 'primary.dark',
                   color: 'primary.contrastText',
                   '&:hover': {
-                    backgroundColor: 'primary.dark',
+                    backgroundColor: (theme) => theme.palette.mode === 'dark' 
+                      ? 'primary.dark' 
+                      : 'primary.main',
                   }
                 }}
               >
