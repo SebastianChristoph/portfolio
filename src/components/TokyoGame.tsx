@@ -1,5 +1,6 @@
 import { Box, TextField, Typography } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 interface TokyoGameProps {
   onExit: () => void;
@@ -98,6 +99,14 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [codeSnippets, setCodeSnippets] = useState<{text: string, top: number, left: number}[]>([]);
   const [spyCountdown, setSpyCountdown] = useState(10);
   const [showWhiteScreen, setShowWhiteScreen] = useState(false);
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  const terminalText = isDarkMode ? '#CCCCCC' : '#1E293B';
+  const terminalPrompt = isDarkMode ? '#8f9ba8' : '#475569';
+  const placeholderColor = isDarkMode ? '#666666' : '#64748B';
+  const warningColor = isDarkMode ? '#ff6b6b' : '#DC2626';
+  const successColor = isDarkMode ? '#00ff99' : '#059669';
 
   useEffect(() => {
     if (gameState === 'file_super_secret') {
@@ -355,14 +364,14 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
       case 'warning':
         return (
           <>
-            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC' }}>
+            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalText }}>
               {`> ATTENTION: The sequence "tokyo" is strictly forbidden!\n> There is absolutely NO secret agent protocol hidden here.\n> We repeat: typing "tokyo" will NOT reveal any classified MI6 systems.\n> Type 'exit' to return to your normal, non-spy life.`}
             </Typography>
           </>
         );
       case 'admin':
         return (
-          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
+          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalText, whiteSpace: 'pre' }}>
             {`${MI6_HEADER}
 > Hello Agent Bond, please make your selection and press Enter:
 
@@ -376,7 +385,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
       case 'code':
         if (codeState === 'idle') {
           return (
-            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre-line' }}>
+            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalText, whiteSpace: 'pre-line' }}>
               {`${MI6_HEADER}
 > Enter the super secret code (type 'exit' to return)
 > WARNING: Entering the wrong code will trigger a security protocol with severe consequences.\n`}
@@ -384,7 +393,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
           );
         } else if (codeState === 'wrong') {
           return (
-            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#ff6b6b', whiteSpace: 'pre' }}>
+            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: warningColor, whiteSpace: 'pre' }}>
               {`${MI6_HEADER}
 > Incorrect code entered!
 > Security protocol initiated. Countdown: ${codeCountdown}`}
@@ -393,7 +402,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
         } else if (codeState === 'correct') {
           if (correctCodePhase === 'countdown') {
             return (
-              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#00ff99', whiteSpace: 'pre' }}>
+              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: successColor, whiteSpace: 'pre' }}>
                 {`${MI6_HEADER}
 > Access granted. Welcome, Agent Bond.
 > You will receive your instructions in  ${codeCountdown} seconds`}
@@ -401,7 +410,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
             );
           } else if (correctCodePhase === 'error') {
             return (
-              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.2rem', color: '#ff6b6b', whiteSpace: 'pre-wrap', wordBreak: 'break-word', textAlign: 'center', width: '100%' }}>
+              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.2rem', color: warningColor, whiteSpace: 'pre-wrap', wordBreak: 'break-word', textAlign: 'center', width: '100%' }}>
                 {`${MI6_HEADER}
 > Transmission error detected, initiating fallout protocol...`}
               </Typography>
@@ -638,7 +647,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
           );
         }
         return (
-          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
+          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalText, whiteSpace: 'pre' }}>
             {`${MI6_HEADER}
 > Available files:
 ${files.map(f => `> - ${f}`).join('\n')}
@@ -650,7 +659,7 @@ ${files.map(f => `> - ${f}`).join('\n')}
       case 'file_super_secret':
         return (
           <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
+            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalText, whiteSpace: 'pre' }}>
               {`${MI6_HEADER}
 > FILE: super_secret_code.txt
 
@@ -725,7 +734,7 @@ ${files.map(f => `> - ${f}`).join('\n')}
            !spyPhase &&
            gameState !== 'file_super_secret' && (
             <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', mr: 1 }}>
+              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: terminalPrompt, mr: 1 }}>
                 {gameState === 'warning' ? 'C:\\Users\\guest>' : 'Agent Bond  >'}
               </Typography>
               <TextField
@@ -737,14 +746,14 @@ ${files.map(f => `> - ${f}`).join('\n')}
                   '& .MuiInputBase-root': {
                     fontFamily: 'Consolas, "Courier New", monospace',
                     fontSize: '14px',
-                    color: '#CCCCCC',
+                    color: terminalText,
                     backgroundColor: 'transparent',
                     '&:before, &:after': { display: 'none' },
                     '& .MuiInputBase-input': {
                       p: 0,
                       height: 'auto',
                       '&::placeholder': {
-                        color: '#666666',
+                        color: placeholderColor,
                         opacity: 1
                       }
                     }

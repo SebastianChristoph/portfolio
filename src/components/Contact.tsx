@@ -1,8 +1,15 @@
-import { Box, TextField, Button, Typography, Grid } from "@mui/material";
+import { Box, TextField, Button, Typography, Grid, useTheme } from "@mui/material";
 import { useState, useRef, useEffect } from "react";
 import TokyoGame from "./TokyoGame";
 
 export default function Contact() {
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+  const terminalBg = isDarkMode ? '#101935' : '#F8FAFC';
+  const terminalText = isDarkMode ? '#CCCCCC' : '#1E293B';
+  const terminalPrompt = isDarkMode ? '#8f9ba8' : '#64748B';
+  const placeholderColor = isDarkMode ? '#666666' : '#94A3B8';
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [step, setStep] = useState(1);
@@ -92,12 +99,13 @@ export default function Contact() {
         </Typography>
         <Box 
           sx={{ 
-            backgroundColor: '#0C0C0C',
-            color: '#CCCCCC',
+            backgroundColor: terminalBg,
+            color: terminalText,
             p: 1,
             borderRadius: '4px',
             width: '100%',
-            height: "700px"
+            height: "700px",
+            border: `1px solid ${theme.palette.divider}`
           }}
         >
           <Typography 
@@ -135,12 +143,13 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
         </Typography>
         <Box 
           sx={{ 
-            backgroundColor: '#0C0C0C',
-            color: '#CCCCCC',
+            backgroundColor: terminalBg,
+            color: terminalText,
             p: 1,
             borderRadius: '4px',
             width: '100%',
-            height: "500px"
+            height: "500px",
+            border: `1px solid ${theme.palette.divider}`
           }}
         >
           <Typography 
@@ -155,21 +164,22 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
 
 Thank you for your message. I will get back to you soon.
 
-    ⠀⠀⠀⠀⠀⠀⠀⢀⣠⣤⣤⣤⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⢀⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀
-    ⠀⠀⠀⣴⣿⣿⣿⣿⠟⣿⣿⣿⣿⣿⣿⠻⣿⣿⣿⣿⣦⠀⠀⠀
-    ⠀⢀⣾⣿⣿⣿⣿⣿⣄⣿⣿⣿⣿⣿⣿⣀⣿⣿⣿⣿⣿⣷⡀⠀
-    ⢠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄
-    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-    ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
-    ⢿⣿⣿⣿⠀⠀⠀⠀⠉⠛⠿⢿⣿⣿⠿⠛⠉⠀⠀⠀⠀⣿⣿⡿
-    ⠈⢿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⡿⠁
-    ⠀⠀⠻⣿⣿⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⣿⣿⠟⠀⠀
-    ⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+Message sent! That's what she said!
 
-Message sent! That's what she said! 😉`}
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣿⣿⣿⣿⣿⣿⣷⣶⣶⣶⣤⣤⣀⡀⠀⠀
+⠀⣀⣀⣀⣀⡀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⠀
+⢰⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣅⠀
+⢸⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠄
+⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀
+⣿⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀
+⢸⣿⣿⣿⣿⡇⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠋⠀⠀
+⢸⣿⣿⣿⣿⡇⠀⠀⠙⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠃⠀⠀⠀
+⠀⠛⠛⠛⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`}
           </Typography>
         </Box>
       </Grid>
@@ -184,13 +194,14 @@ Message sent! That's what she said! 😉`}
      
       <Box 
         sx={{ 
-          backgroundColor: '#0C0C0C',
-          color: '#CCCCCC',
+          backgroundColor: terminalBg,
+          color: terminalText,
           p: 1,
           mt: 3, 
           borderRadius: '4px',
           width: '100%',
-          height: "450px"
+          height: "450px",
+          border: `1px solid ${theme.palette.divider}`
         }}
       >
         {showGame ? (
@@ -213,7 +224,7 @@ Message sent! That's what she said! 😉`}
                 fontFamily: 'Consolas, "Courier New", monospace',
                 fontSize: '14px',
                 mb: 2,
-                color: '#CCCCCC'
+                color: terminalPrompt
               }}
             >
               {`> NOTICE: The keyword "tokyo" is restricted to civilian access. Standard contact form users should ignore this warning and should not type "tokyo" in the email field and press enter.`}
@@ -226,7 +237,7 @@ Message sent! That's what she said! 😉`}
                     sx={{ 
                       fontFamily: 'Consolas, "Courier New", monospace',
                       fontSize: '14px',
-                      color: '#CCCCCC',
+                      color: terminalPrompt,
                       mr: 1
                     }}
                   >
@@ -244,37 +255,38 @@ Message sent! That's what she said! 😉`}
                       '& .MuiInputBase-root': {
                         fontFamily: 'Consolas, "Courier New", monospace',
                         fontSize: '14px',
-                        color: '#CCCCCC',
+                        color: terminalText,
                         backgroundColor: 'transparent',
                         '&:before, &:after': { display: 'none' },
                         '& .MuiInputBase-input': {
                           p: 0,
                           height: 'auto',
                           '&::placeholder': {
-                            color: '#666666',
+                            color: placeholderColor,
                             opacity: 1
                           }
                         }
                       },
                       '& .MuiOutlinedInput-notchedOutline': { display: 'none' },
                       '& .Mui-error': {
-                        color: '#ff6b6b'
+                        color: theme.palette.error.main
                       }
                     }}
                   />
-                  {emailError && (
-                    <Typography
-                      sx={{
-                        fontFamily: 'Consolas, "Courier New", monospace',
-                        fontSize: '14px',
-                        color: '#ff6b6b',
-                        mt: 1
-                      }}
-                    >
-                      Error: Please enter a valid email address (example@domain.com)
-                    </Typography>
-                  )}
                 </Box>
+
+                {emailError && (
+                  <Typography
+                    sx={{
+                      fontFamily: 'Consolas, "Courier New", monospace',
+                      fontSize: '14px',
+                      color: theme.palette.error.main,
+                      mt: 1
+                    }}
+                  >
+                    Error: Please enter a valid email address (example@domain.com)
+                  </Typography>
+                )}
 
                 {step >= 2 && (
                   <>
@@ -283,7 +295,7 @@ Message sent! That's what she said! 😉`}
                         sx={{ 
                           fontFamily: 'Consolas, "Courier New", monospace',
                           fontSize: '14px',
-                          color: '#CCCCCC',
+                          color: terminalPrompt,
                           mr: 1
                         }}
                       >
@@ -302,13 +314,13 @@ Message sent! That's what she said! 😉`}
                           '& .MuiInputBase-root': {
                             fontFamily: 'Consolas, "Courier New", monospace',
                             fontSize: '14px',
-                            color: '#CCCCCC',
+                            color: terminalText,
                             backgroundColor: 'transparent',
                             '&:before, &:after': { display: 'none' },
                             '& .MuiInputBase-input': {
                               p: 0,
                               '&::placeholder': {
-                                color: '#666666',
+                                color: placeholderColor,
                                 opacity: 1
                               }
                             }
@@ -323,7 +335,7 @@ Message sent! That's what she said! 😉`}
                         sx={{ 
                           fontFamily: 'Consolas, "Courier New", monospace',
                           fontSize: '14px',
-                          color: '#CCCCCC',
+                          color: terminalPrompt,
                           mr: 1
                         }}
                       >
@@ -335,7 +347,7 @@ Message sent! That's what she said! 😉`}
                         sx={{ 
                           fontFamily: 'Consolas, "Courier New", monospace',
                           fontSize: '14px',
-                          color: '#CCCCCC',
+                          color: terminalText,
                           backgroundColor: 'transparent',
                           p: 0,
                           minWidth: 0,
@@ -344,7 +356,7 @@ Message sent! That's what she said! 😉`}
                             textDecoration: 'underline'
                           },
                           '&.Mui-disabled': {
-                            color: '#666666'
+                            color: placeholderColor
                           }
                         }}
                       >
