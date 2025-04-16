@@ -66,6 +66,10 @@ const MATRIX_CHARS = '01アイウエオカキクケコサシスセソタチツ�
 const getRandomChar = () => MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)];
 const getRandomSnippet = () => CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
 
+const ABORT_REASONS = [
+  'FATAL: Quantum computer needs Windows 3.1 update...'
+];
+
 export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [input, setInput] = useState('');
   const [gameState, setGameState] = useState<'warning' | 'admin' | 'code' | 'files' | 'file_super_secret' | 'file_do_not_open'>('warning');
@@ -80,6 +84,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [codeCountdown, setCodeCountdown] = useState(10);
   const codeCountdownRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [nukeText, setNukeText] = useState('');
+  const [selectedAbortReason, setSelectedAbortReason] = useState('');
   const nukeMessages = [
     'deleting internet in UK...',
     'launching nuclear warheads...',
@@ -96,6 +101,8 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [matrixChars, setMatrixChars] = useState<string[]>([]);
   const [codeSnippets, setCodeSnippets] = useState<{text: string, top: number, left: number}[]>([]);
+  const [spyCountdown, setSpyCountdown] = useState(10);
+  const [showWhiteScreen, setShowWhiteScreen] = useState(false);
 
   useEffect(() => {
     if (gameState === 'file_super_secret') {
@@ -133,6 +140,9 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
 
   useEffect(() => {
     if (codeState === 'nuke') {
+      // Pick random abort reason when nuke sequence starts
+      setSelectedAbortReason(ABORT_REASONS[Math.floor(Math.random() * ABORT_REASONS.length)]);
+      
       setNukeText('');
       setNukeStep(0);
       setUndoText('');
@@ -156,40 +166,31 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               typeInterval = setInterval(typeNextChar, 60);
             }, msgIdx === nukeMessages.length - 2 ? 2400 : 900);
           } else {
-            // Add 2 second delay before WiFi search
+            // System check phase
+            setWifiPhase('search');
+            setNukeText('Searching system status...');
             setTimeout(() => {
-              // WiFi search phase
-              setWifiPhase('search');
-              setNukeText('Searching wifi signal ...');
+              // Show Windows 3.1 error
+              setNukeText(selectedAbortReason);
               setTimeout(() => {
-                setWifiPhase('notfound');
-                setNukeText('Searching wifi signal ...\n');
+                setWifiPhase('undo');
+                let dots = 0;
+                const undoInterval = setInterval(() => {
+                  dots = (dots + 1) % 4;
+                  setUndoText('reverse protocol "global fallout"' + '.'.repeat(dots));
+                }, 350);
                 setTimeout(() => {
-                  setWifiPhase('undo');
+                  clearInterval(undoInterval);
                   setUndoText('');
-                  let undo = '';
-                  let dots = 0;
-                  const undoInterval = setInterval(() => {
-                    dots = (dots + 1) % 4;
-                    undo = 'reverse protocol "global fallout"' + '.'.repeat(dots);
-                    setUndoText(undo);
-                  }, 350);
+                  setConfirmPhase(true);
                   setTimeout(() => {
-                    clearInterval(undoInterval);
-                    setUndoText('');
-                    setConfirmPhase(true);
+                    setShowWhiteScreen(true);
                     setTimeout(() => {
-                      setFadeOut(true);
-                      setTimeout(() => {
-                        setCodeState('idle');
-                        setGameState('warning');
-                        setConfirmPhase(false);
-                        onExit();
-                      }, 700);
-                    }, 5000);
+                      onExit();
+                    }, 6000);
                   }, 5000);
-                }, 4500);
-              }, 3000);
+                }, 5000);
+              }, 5000);  // Increased to 5000 to show Windows 3.1 error longer
             }, 2000);
           }
         }
@@ -227,17 +228,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   }, [codeState]);
 
   useEffect(() => {
-    // Autofocus when input is possible
-    if (
-      !spyPhase &&
-      codeState !== 'nuke' &&
-      !(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error'))
-    ) {
-      inputRef.current?.focus();
-    }
-  }, [gameState, codeState, spyPhase, correctCodePhase]);
-
-  useEffect(() => {
     if (codeState === 'nuke') {
       // Initialize matrix effect
       const chars = Array(100).fill('').map(() => getRandomChar());
@@ -271,6 +261,27 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
       };
     }
   }, [codeState]);
+
+  useEffect(() => {
+    if (spyPhase) {
+      setSpyCountdown(10);
+      const interval = setInterval(() => {
+        setSpyCountdown(prev => prev - 1);
+      }, 1000);
+      return () => clearInterval(interval);
+    }
+  }, [spyPhase]);
+
+  useEffect(() => {
+    // Autofocus when input is possible
+    if (
+      !spyPhase &&
+      codeState !== 'nuke' &&
+      !(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error'))
+    ) {
+      inputRef.current?.focus();
+    }
+  }, [gameState, codeState, spyPhase, correctCodePhase]);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -324,7 +335,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               setSpyPhase(false);
               setCodeState('nuke');
               setGameState('code');
-            }, 3000);
+            }, 10000);
           } else {
             setSelectedFile(filename);
           }
@@ -348,7 +359,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
         return (
           <>
             <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC' }}>
-              {`> Oh, you must have accidentally typed "tokyo". As I said, do not type "tokyo" here\n> Type 'exit' to return to the contact form.`}
+              {`> ATTENTION: The sequence "tokyo" is strictly forbidden!\n> There is absolutely NO secret agent protocol hidden here.\n> We repeat: typing "tokyo" will NOT reveal any classified MI6 systems.\n> Type 'exit' to return to your normal, non-spy life.`}
             </Typography>
           </>
         );
@@ -401,7 +412,19 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
           }
         } else if (codeState === 'nuke') {
           return (
-            <Box sx={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', bgcolor: 'black', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'opacity 0.7s', opacity: fadeOut ? 0 : 1 }}>
+            <Box sx={{ 
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              bgcolor: 'black',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              visibility: showWhiteScreen ? 'hidden' : 'visible'
+            }}>
               <Box 
                 sx={{ 
                   background: '#111',
@@ -531,21 +554,6 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                   </>
                 )}
                 
-                {wifiPhase === 'notfound' && !confirmPhase && (
-                  <Typography sx={{
-                    fontFamily: 'Consolas, "Courier New", monospace',
-                    fontSize: '2rem',
-                    color: '#ff6b6b',
-                    whiteSpace: 'pre',
-                    mt: 1,
-                    textAlign: 'center',
-                    width: '100%',
-                    textShadow: '0 0 10px #ff6b6b'
-                  }}>
-                    not found..
-                  </Typography>
-                )}
-                
                 {wifiPhase === 'undo' && !confirmPhase && (
                   <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                     <Typography sx={{
@@ -587,10 +595,49 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
       case 'files':
         if (spyPhase) {
           return (
-            <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.2rem', color: '#ff6b6b', whiteSpace: 'pre-wrap', wordBreak: 'break-word', textAlign: 'center', width: '100%' }}>
-              {`${MI6_HEADER}
-> Spy detected! Initiating fallout protocol...`}
-            </Typography>
+            <Box sx={{ position: 'relative' }}>
+              <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                border: '2px solid #ff0000',
+                animation: 'warningBlink 0.5s infinite',
+                '@keyframes warningBlink': {
+                  '0%': { opacity: 0 },
+                  '50%': { opacity: 1 },
+                  '100%': { opacity: 0 }
+                },
+                pointerEvents: 'none'
+              }} />
+              
+              <Typography sx={{
+                fontFamily: 'Consolas, "Courier New", monospace',
+                fontSize: '1.2rem',
+                color: '#ff6b6b',
+                whiteSpace: 'pre-wrap',
+                wordBreak: 'break-word',
+                textAlign: 'left',
+                width: '100%',
+                animation: 'textPulse 2s infinite',
+                '@keyframes textPulse': {
+                  '0%': { color: '#ff6b6b' },
+                  '50%': { color: '#ff0000' },
+                  '100%': { color: '#ff6b6b' }
+                }
+              }}>
+                {`${MI6_HEADER}
+> SECURITY PROTOCOL 6.2.1
+> ACCESS BREACH DETECTED
+
+> SPY IDENTIFIED
+> THREAT: CRITICAL
+
+> SYSTEM FAILURE 0xDEADBEEF
+> INITIATING PURGE: ${spyCountdown}s`}
+              </Typography>
+            </Box>
           );
         }
         return (
@@ -603,63 +650,90 @@ ${files.map(f => `> - ${f}`).join('\n')}
 > Type 'EXIT' to return to previous menu${selectedFile && !files.includes(selectedFile) ? `\n\n> File not found or already destroyed.` : ''}`}
           </Typography>
         );
-      case 'file_super_secret':
-        return (
-          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
-            {`${MI6_HEADER}
-> Opening super_secret_code.txt...
-${showCode ? '> CODE: 1234\n' : ''}
-> This message will self-destruct in ${countdown} seconds.`}
-          </Typography>
-        );
-      case 'file_do_not_open':
-        return (
-          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', whiteSpace: 'pre' }}>
-            {`${MI6_HEADER}
-> Opening do_not_open_me.txt...
-> [REDACTED CONTENT]\n> Type 'EXIT' to return to previous menu.`}
-          </Typography>
-        );
+      default:
+        return null;
     }
   };
 
   return (
     <Box sx={{ mt: 2 }}>
-      {renderContent()}
-      {!(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error')) && 
-       codeState !== 'nuke' && 
-       codeState !== 'wrong' &&
-       !spyPhase && (
-        <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
-          <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', mr: 1 }}>
-            {gameState === 'warning' ? 'C:\\Users\\guest>' : 'Agent Bond  >'}
-          </Typography>
-          <TextField
-            value={input}
-            onChange={handleInput}
-            onKeyDown={handleKeyDown}
-            inputRef={inputRef}
+      {showWhiteScreen ? (
+        <Box 
+          sx={{ 
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            backgroundColor: '#fff',
+            zIndex: 99999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            animation: 'fadeOutWhite 6s forwards',
+            '@keyframes fadeOutWhite': {
+              '0%': { opacity: 1 },
+              '80%': { opacity: 1 },
+              '100%': { opacity: 0 }
+            }
+          }}
+        >
+          <Typography 
             sx={{
-              '& .MuiInputBase-root': {
-                fontFamily: 'Consolas, "Courier New", monospace',
-                fontSize: '14px',
-                color: '#CCCCCC',
-                backgroundColor: 'transparent',
-                '&:before, &:after': { display: 'none' },
-                '& .MuiInputBase-input': {
-                  p: 0,
-                  height: 'auto',
-                  '&::placeholder': {
-                    color: '#666666',
-                    opacity: 1
-                  }
-                }
-              },
-              '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
+              fontFamily: 'Consolas, "Courier New", monospace',
+              fontSize: '1.5rem',
+              color: '#333',
+              textAlign: 'center',
+              animation: 'pulseText 2s infinite',
+              '@keyframes pulseText': {
+                '0%': { opacity: 0.7 },
+                '50%': { opacity: 1 },
+                '100%': { opacity: 0.7 }
+              }
             }}
-          />
+          >
+            Rolling back to civilian mode...
+          </Typography>
         </Box>
+      ) : (
+        <>
+          {renderContent()}
+          {!(codeState === 'correct' && (correctCodePhase === 'countdown' || correctCodePhase === 'error')) && 
+           codeState !== 'nuke' && 
+           codeState !== 'wrong' &&
+           !spyPhase && (
+            <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
+              <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '14px', color: '#CCCCCC', mr: 1 }}>
+                {gameState === 'warning' ? 'C:\\Users\\guest>' : 'Agent Bond  >'}
+              </Typography>
+              <TextField
+                value={input}
+                onChange={handleInput}
+                onKeyDown={handleKeyDown}
+                inputRef={inputRef}
+                sx={{
+                  '& .MuiInputBase-root': {
+                    fontFamily: 'Consolas, "Courier New", monospace',
+                    fontSize: '14px',
+                    color: '#CCCCCC',
+                    backgroundColor: 'transparent',
+                    '&:before, &:after': { display: 'none' },
+                    '& .MuiInputBase-input': {
+                      p: 0,
+                      height: 'auto',
+                      '&::placeholder': {
+                        color: '#666666',
+                        opacity: 1
+                      }
+                    }
+                  },
+                  '& .MuiOutlinedInput-notchedOutline': { display: 'none' }
+                }}
+              />
+            </Box>
+          )}
+        </>
       )}
     </Box>
   );
-} 
+}

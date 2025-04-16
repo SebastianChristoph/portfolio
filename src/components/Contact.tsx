@@ -216,7 +216,7 @@ Message sent! That's what she said! 😉`}
                 color: '#CCCCCC'
               }}
             >
-              {`> Whatever you do, do not type "tokyo" in the email field and press enter`}
+              {`> NOTICE: The keyword "tokyo" is restricted to civilian access. Standard contact form users should ignore this warning and should not type "tokyo" in the email field and press enter.`}
             </Typography>
 
             <Box component="form" onSubmit={handleSubmit}>
