@@ -60,9 +60,11 @@ export const lightTheme = createTheme({
       letterSpacing: "-0.025em",
     },
     h2: {
-      fontSize: "1.875rem",
+      fontSize: "1.6rem",
       fontWeight: 600,
-      letterSpacing: "-0.025em",
+      letterSpacing: "0.1em",
+      textTransform: "uppercase",
+      fontFamily: '"Share Tech Mono", monospace',
     },
     h3: {
       fontSize: "1.5rem",
@@ -128,37 +130,17 @@ export const lightTheme = createTheme({
       }
     },
     MuiTypography: {
-      defaultProps: {
-        variantMapping: {
-          body2: 'div',
-        },
-      },
       styleOverrides: {
-        root: {
-          '&[class*="MuiTypography-root"]': {
-            '&[style*="color: white"]': {
-              color: "#FFFFFF !important",
-            }
-          }
-        },
         h2: {
+          position: 'relative',
           '&::after': {
             content: '""',
             display: 'block',
-            width: '50px',
-            height: '2px',
-            backgroundColor: 'primary.main',
-            marginTop: '8px'
-          }
-        },
-        h4: {
-          '&::after': {
-            content: '""',
-            display: 'block',
-            width: '50px',
-            height: '2px',
-            backgroundColor: 'primary.main',
-            marginTop: '8px'
+            width: '80px',
+            height: '3px',
+            backgroundColor: '#0080ff',
+            marginTop: '12px',
+            borderRadius: '2px'
           }
         }
       }

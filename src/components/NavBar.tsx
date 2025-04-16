@@ -103,6 +103,7 @@ const NavBar = () => {
                 startIcon={item.icon}
                 sx={{
                   mx: 1,
+                  color: 'text.primary',
                   '&:hover': {
                     backgroundColor: theme.palette.action.hover,
                   }
