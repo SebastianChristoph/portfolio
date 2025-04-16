@@ -176,7 +176,7 @@ export default function Hero() {
         </TextContent>
         <ProfileImage>
           <img
-            src="/profil2_header_2500px.jpg"
+            src="/profile.png"
             alt={t('hero.profileAlt')}
           />
         </ProfileImage>

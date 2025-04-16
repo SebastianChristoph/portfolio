@@ -115,7 +115,9 @@ export default function Contact() {
               fontFamily: 'Consolas, "Courier New", monospace',
               fontSize: '14px',
               mb: 2,
-              whiteSpace: 'pre'
+              whiteSpace: { xs: 'pre-wrap', sm: 'pre' },
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word'
             }}
           >
             {`> Initiating contact form submission...
@@ -159,7 +161,9 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
               fontFamily: 'Consolas, "Courier New", monospace',
               fontSize: '14px',
               mb: 2,
-              whiteSpace: 'pre'
+              whiteSpace: { xs: 'pre-wrap', sm: 'pre' },
+              overflowWrap: 'break-word',
+              wordBreak: 'break-word'
             }}
           >
             {`Email sent successfully!
@@ -198,12 +202,14 @@ Long message inserted! That's what she said!
         sx={{ 
           backgroundColor: terminalBg,
           color: terminalText,
-          p: 1,
+          p: { xs: 1.5, sm: 2 },
           mt: 3, 
           borderRadius: '4px',
           width: '100%',
-          height: "450px",
-          border: `1px solid ${theme.palette.divider}`
+          height: "auto",
+          minHeight: { xs: "300px", sm: "450px" },
+          border: `1px solid ${theme.palette.divider}`,
+          overflow: 'hidden'
         }}
       >
         {showGame ? (
@@ -213,9 +219,12 @@ Long message inserted! That's what she said!
             <Typography 
               sx={{ 
                 fontFamily: 'Consolas, "Courier New", monospace',
-                fontSize: '14px',
+                fontSize: { xs: '12px', sm: '14px' },
                 mb: 2,
-                whiteSpace: 'pre'
+                whiteSpace: 'pre-wrap',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word',
+                maxWidth: '100%'
               }}
             >
               {`${t('contact.form.header')}\n${t('contact.form.instructions')}\n\n1. ${t('contact.form.steps.1')}\n\n2. ${t('contact.form.steps.2')}\n\n3. ${t('contact.form.steps.3')}`}
@@ -224,22 +233,32 @@ Long message inserted! That's what she said!
             <Typography 
               sx={{ 
                 fontFamily: 'Consolas, "Courier New", monospace',
-                fontSize: '14px',
+                fontSize: { xs: '12px', sm: '14px' },
                 mb: 2,
-                color: terminalPrompt
+                color: terminalPrompt,
+                whiteSpace: 'pre-wrap',
+                overflowWrap: 'break-word',
+                wordBreak: 'break-word',
+                maxWidth: '100%'
               }}
             >
               {t('contact.form.notice')}
             </Typography>
 
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, maxWidth: '100%' }}>
+              <Box sx={{ 
+                display: 'flex', 
+                alignItems: 'flex-start',
+                flexWrap: 'wrap',
+                gap: 1,
+                maxWidth: '100%'
+              }}>
                 <Typography 
                   sx={{ 
                     fontFamily: 'Consolas, "Courier New", monospace',
-                    fontSize: '14px',
+                    fontSize: { xs: '12px', sm: '14px' },
                     color: terminalPrompt,
-                    mr: 1
+                    flexShrink: 0
                   }}
                 >
                   C:\Users\guest&gt;
@@ -253,9 +272,11 @@ Long message inserted! That's what she said!
                   autoFocus={step === 1}
                   error={emailError}
                   sx={{
+                    flex: 1,
+                    minWidth: 0,
                     '& .MuiInputBase-root': {
                       fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '14px',
+                      fontSize: { xs: '12px', sm: '14px' },
                       color: terminalText,
                       backgroundColor: 'transparent',
                       '&:before, &:after': { display: 'none' },
