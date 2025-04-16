@@ -1,10 +1,11 @@
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography, useTheme, useMediaQuery } from "@mui/material";
 import { motion } from "framer-motion";
 import { useTranslation } from 'react-i18next';
 
 export default function AboutMe() {
   const theme = useTheme();
   const { t } = useTranslation();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const wordVariants = {
     hidden: { opacity: 0, x: 20 },
@@ -29,9 +30,9 @@ export default function AboutMe() {
       <Paper 
         elevation={0} 
         sx={{ 
-          p: 4,
+          p: { xs: 2, md: 4 },
           width: '100%',
-          mb: "100px",
+          mb: { xs: "50px", md: "100px" },
           mx: 'auto',
           position: 'relative',
           bgcolor: theme.palette.background.paper,
@@ -39,7 +40,10 @@ export default function AboutMe() {
           justifyContent: 'space-between'
         }}
       >
-        <Box sx={{width: '70%'}}>
+        <Box sx={{
+          width: { xs: '100%', md: '70%' },
+          zIndex: 1
+        }}>
           <Typography variant="h4" gutterBottom>
             {t('about.title')}
           </Typography>
@@ -59,7 +63,7 @@ export default function AboutMe() {
           right: '40px',
           top: '50%',
           transform: 'translateY(-50%)',
-          display: 'flex',
+          display: { xs: 'none', md: 'flex' },
           flexDirection: 'column',
           gap: 4,
           alignItems: 'flex-end'

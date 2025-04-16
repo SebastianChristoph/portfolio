@@ -1,17 +1,22 @@
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, useTheme, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import BackgroundAnimation from "./BackgroundAnimation";
 import { useTranslation } from 'react-i18next';
 
-const HeroContainer = styled(Box)(({ }) => ({
+const HeroContainer = styled(Box)(({ theme }) => ({
   width: '100%',
-  height: '400px',
+  minHeight: '400px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
   position: 'relative',
   overflow: 'hidden',
   marginBottom: "10px",
+  padding: theme.spacing(2),
+  [theme.breakpoints.down('md')]: {
+    minHeight: '600px',
+    padding: theme.spacing(4, 2),
+  },
 }));
 
 const ContentWrapper = styled(Box)(({ theme }) => ({
@@ -23,10 +28,18 @@ const ContentWrapper = styled(Box)(({ theme }) => ({
   gap: theme.spacing(4),
   position: 'relative',
   zIndex: 1,
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column-reverse',
+    textAlign: 'center',
+    gap: theme.spacing(3),
+  },
 }));
 
-const TextContent = styled(Box)(({ }) => ({
+const TextContent = styled(Box)(({ theme }) => ({
   flex: 1,
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+  },
 }));
 
 const ProfileImage = styled(Box)(({ theme }) => ({
@@ -41,7 +54,21 @@ const ProfileImage = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-  }
+  },
+  [theme.breakpoints.down('md')]: {
+    width: '200px',
+    height: '200px',
+  },
+}));
+
+const ButtonContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  gap: theme.spacing(2),
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  },
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -49,7 +76,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
   padding: '10px 30px',
   textTransform: 'none',
   fontSize: '1rem',
-  marginRight: theme.spacing(2),
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    maxWidth: '300px',
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 const GraphicElement = styled(Box)(({ theme }) => ({
@@ -60,10 +91,17 @@ const GraphicElement = styled(Box)(({ theme }) => ({
   borderRadius: '10px',
   backdropFilter: 'blur(5px)',
   background: theme.palette.background.paper,
+  [theme.breakpoints.down('md')]: {
+    width: '150px',
+    height: '150px',
+    display: 'none',
+  },
 }));
 
 export default function Hero() {
   const { t } = useTranslation();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <HeroContainer>
@@ -73,10 +111,11 @@ export default function Hero() {
           <Typography 
             variant="h1" 
             sx={{ 
-              fontSize: '3.5rem', 
+              fontSize: { xs: '2.5rem', md: '3.5rem' }, 
               fontWeight: 'bold',
               color: 'text.primary',
-              mb: 1
+              mb: 1,
+              wordBreak: 'break-word',
             }}
           >
             {t('hero.greeting')} Sebastian Christoph
@@ -84,7 +123,7 @@ export default function Hero() {
           <Typography 
             variant="h2" 
             sx={{ 
-              fontSize: '1.75rem',
+              fontSize: { xs: '1.5rem', md: '1.75rem' },
               color: 'text.secondary',
               mb: 2,
               fontWeight: 'normal'
@@ -97,12 +136,13 @@ export default function Hero() {
             sx={{ 
               color: 'text.secondary',
               mb: 3,
-              maxWidth: '600px'
+              maxWidth: { xs: '100%', md: '600px' },
+              margin: { xs: '0 auto', md: 'initial' },
             }}
           >
             {t('hero.description')}
           </Typography>
-          <Box>
+          <ButtonContainer>
             <StyledButton 
               variant="contained" 
               color="primary"
@@ -121,7 +161,7 @@ export default function Hero() {
             >
               {t('hero.portfolio')}
             </StyledButton>
-          </Box>
+          </ButtonContainer>
         </TextContent>
         <ProfileImage>
           <img
