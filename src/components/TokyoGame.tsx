@@ -15,6 +15,57 @@ const INITIAL_FILES = [
   'do_not_open_me.txt',
 ];
 
+const SKULL_ART = ` @@@@@                                        @@@@@
+@@@@@@@                                      @@@@@@@
+@@@@@@@           @@@@@@@@@@@@@@@            @@@@@@@
+ @@@@@@@@       @@@@@@@@@@@@@@@@@@@        @@@@@@@@
+     @@@@@     @@@@@@@@@@@@@@@@@@@@@     @@@@@
+       @@@@@  @@@@@@@@@@@@@@@@@@@@@@@  @@@@@
+         @@  @@@@@@@@@@@@@@@@@@@@@@@@@  @@
+            @@@@@@@    @@@@@@    @@@@@@
+            @@@@@@      @@@@      @@@@@
+            @@@@@@      @@@@      @@@@@
+             @@@@@@    @@@@@@    @@@@@
+              @@@@@@@@@@@  @@@@@@@@@@
+               @@@@@@@@@@  @@@@@@@@@
+           @@   @@@@@@@@@@@@@@@@@   @@
+           @@@@  @@@@ @ @ @ @ @@@@  @@@@
+          @@@@@   @@@ @ @ @ @ @@@   @@@@@
+        @@@@@      @@@@@@@@@@@@@      @@@@@
+      @@@@          @@@@@@@@@@@          @@@@
+   @@@@@              @@@@@@@              @@@@@
+  @@@@@@@                                 @@@@@@@
+   @@@@@                                   @@@@@`;
+
+const CODE_SNIPPETS = [
+  'if (system.status === "compromised") {',
+  '  initiate_global_shutdown();',
+  '  delete_all_records();',
+  '}',
+  'class Apocalypse {',
+  '  constructor() {',
+  '    this.countdown = 10;',
+  '  }',
+  '}',
+  'async function destroyWorld() {',
+  '  await launchMissiles();',
+  '}',
+  'ERROR: System breach detected',
+  'WARNING: Security protocols failed',
+  'kernel_panic: system halted',
+  'FATAL: Unable to contain breach',
+  'rm -rf /*',
+  'deltree c:\\',
+  'format c: /y',
+  '> Initiating doomsday sequence...',
+  '> Bypassing security...',
+  '> Overriding safeguards...'
+];
+
+const MATRIX_CHARS = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヰヱヲン';
+const getRandomChar = () => MATRIX_CHARS[Math.floor(Math.random() * MATRIX_CHARS.length)];
+const getRandomSnippet = () => CODE_SNIPPETS[Math.floor(Math.random() * CODE_SNIPPETS.length)];
+
 export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [input, setInput] = useState('');
   const [gameState, setGameState] = useState<'warning' | 'admin' | 'code' | 'files' | 'file_super_secret' | 'file_do_not_open'>('warning');
@@ -43,6 +94,8 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
   const [correctCodePhase, setCorrectCodePhase] = useState<'countdown' | 'error' | null>(null);
   const [spyPhase, setSpyPhase] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [matrixChars, setMatrixChars] = useState<string[]>([]);
+  const [codeSnippets, setCodeSnippets] = useState<{text: string, top: number, left: number}[]>([]);
 
   useEffect(() => {
     if (gameState === 'file_super_secret') {
@@ -184,6 +237,41 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
     }
   }, [gameState, codeState, spyPhase, correctCodePhase]);
 
+  useEffect(() => {
+    if (codeState === 'nuke') {
+      // Initialize matrix effect
+      const chars = Array(100).fill('').map(() => getRandomChar());
+      setMatrixChars(chars);
+
+      // Initialize code snippets
+      const snippets = Array(8).fill('').map(() => ({
+        text: getRandomSnippet(),
+        top: Math.random() * 100,
+        left: Math.random() * 100
+      }));
+      setCodeSnippets(snippets);
+
+      // Update matrix characters
+      const matrixInterval = setInterval(() => {
+        setMatrixChars(prev => prev.map((_, i) => Math.random() > 0.7 ? getRandomChar() : prev[i]));
+      }, 100);
+
+      // Update code snippets
+      const snippetsInterval = setInterval(() => {
+        setCodeSnippets(prev => prev.map(snippet => ({
+          text: Math.random() > 0.8 ? getRandomSnippet() : snippet.text,
+          top: (snippet.top + 1) % 100,
+          left: snippet.left
+        })));
+      }, 50);
+
+      return () => {
+        clearInterval(matrixInterval);
+        clearInterval(snippetsInterval);
+      };
+    }
+  }, [codeState]);
+
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
@@ -314,30 +402,179 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
         } else if (codeState === 'nuke') {
           return (
             <Box sx={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', bgcolor: 'black', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'opacity 0.7s', opacity: fadeOut ? 0 : 1 }}>
-              <Box sx={{ background: '#111', border: '2px solid #00ff99', borderRadius: 2, p: 4, width: 800, height: 260, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', boxSizing: 'border-box', overflow: 'hidden' }}>
-                <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.1rem', color: '#00ff99', whiteSpace: 'pre', mb: 2 }}>
+              <Box 
+                sx={{ 
+                  background: '#111',
+                  border: '2px solid #ff0000',
+                  borderRadius: 2,
+                  p: 4,
+                  width: 800,
+                  height: 400,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'flex-start',
+                  boxSizing: 'border-box',
+                  overflow: 'hidden',
+                  position: 'relative',
+                  animation: 'borderBlink 1s infinite',
+                  '@keyframes borderBlink': {
+                    '0%': { borderColor: '#ff0000' },
+                    '50%': { borderColor: '#660000' },
+                    '100%': { borderColor: '#ff0000' }
+                  }
+                }}
+              >
+                {/* Matrix effect background */}
+                <Box sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  opacity: 0.1,
+                  color: '#00ff00',
+                  fontFamily: 'monospace',
+                  fontSize: '10px',
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  overflow: 'hidden',
+                  pointerEvents: 'none'
+                }}>
+                  {matrixChars.map((char, i) => (
+                    <span key={i} style={{ margin: '0 2px' }}>{char}</span>
+                  ))}
+                </Box>
+
+                {/* Add scrolling code snippets */}
+                <Box sx={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  overflow: 'hidden',
+                  pointerEvents: 'none'
+                }}>
+                  {codeSnippets.map((snippet, i) => (
+                    <Typography
+                      key={i}
+                      sx={{
+                        position: 'absolute',
+                        top: `${snippet.top}%`,
+                        left: `${snippet.left}%`,
+                        color: '#ff000066',
+                        fontSize: '10px',
+                        fontFamily: 'monospace',
+                        whiteSpace: 'nowrap',
+                        transform: 'translateX(-50%)',
+                        transition: 'top 0.05s linear'
+                      }}
+                    >
+                      {snippet.text}
+                    </Typography>
+                  ))}
+                </Box>
+
+                <Typography sx={{ 
+                  fontFamily: 'Consolas, "Courier New", monospace',
+                  fontSize: '1.1rem',
+                  color: '#ff0000',
+                  whiteSpace: 'pre',
+                  mb: 2,
+                  textShadow: '0 0 10px #ff0000',
+                  animation: 'textBlink 0.5s infinite',
+                  '@keyframes textBlink': {
+                    '0%': { opacity: 1 },
+                    '50%': { opacity: 0.7 },
+                    '100%': { opacity: 1 }
+                  }
+                }}>
                   {MI6_HEADER}
                 </Typography>
+
                 {wifiPhase !== 'undo' && !confirmPhase && (
-                  <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '2rem', color: '#00ff99', whiteSpace: 'pre-wrap', textAlign: 'center', width: '100%', flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    {nukeText || ' '}
-                  </Typography>
+                  <>
+                    {nukeStep === nukeMessages.length - 1 && (
+                      <Typography sx={{
+                        fontFamily: 'monospace',
+                        fontSize: '10px',
+                        color: '#ff0000',
+                        whiteSpace: 'pre',
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        opacity: 0.4,
+                        textShadow: '0 0 5px #ff0000'
+                      }}>
+                        {SKULL_ART}
+                      </Typography>
+                    )}
+                    <Typography sx={{
+                      fontFamily: 'Consolas, "Courier New", monospace',
+                      fontSize: '2rem',
+                      color: '#ff0000',
+                      whiteSpace: 'pre-wrap',
+                      textAlign: 'center',
+                      width: '100%',
+                      flex: 1,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textShadow: '0 0 10px #ff0000',
+                      position: 'relative',
+                      zIndex: 1
+                    }}>
+                      {nukeText || ' '}
+                    </Typography>
+                  </>
                 )}
+                
                 {wifiPhase === 'notfound' && !confirmPhase && (
-                  <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '2rem', color: '#ff6b6b', whiteSpace: 'pre', mt: 1, textAlign: 'center', width: '100%' }}>
+                  <Typography sx={{
+                    fontFamily: 'Consolas, "Courier New", monospace',
+                    fontSize: '2rem',
+                    color: '#ff6b6b',
+                    whiteSpace: 'pre',
+                    mt: 1,
+                    textAlign: 'center',
+                    width: '100%',
+                    textShadow: '0 0 10px #ff6b6b'
+                  }}>
                     not found..
                   </Typography>
                 )}
+                
                 {wifiPhase === 'undo' && !confirmPhase && (
                   <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                    <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.5rem', color: '#00ff99', whiteSpace: 'pre', mt: 2, textAlign: 'center', width: '100%' }}>
+                    <Typography sx={{
+                      fontFamily: 'Consolas, "Courier New", monospace',
+                      fontSize: '1.5rem',
+                      color: '#00ff99',
+                      whiteSpace: 'pre',
+                      mt: 2,
+                      textAlign: 'center',
+                      width: '100%',
+                      textShadow: '0 0 10px #00ff99'
+                    }}>
                       {undoText}
                     </Typography>
                   </Box>
                 )}
+                
                 {confirmPhase && (
                   <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
-                    <Typography sx={{ fontFamily: 'Consolas, "Courier New", monospace', fontSize: '1.5rem', color: '#00ff99', whiteSpace: 'pre', mt: 2, textAlign: 'center', width: '100%' }}>
+                    <Typography sx={{
+                      fontFamily: 'Consolas, "Courier New", monospace',
+                      fontSize: '1.5rem',
+                      color: '#00ff99',
+                      whiteSpace: 'pre',
+                      mt: 2,
+                      textAlign: 'center',
+                      width: '100%',
+                      textShadow: '0 0 10px #00ff99'
+                    }}>
                       global fallout aborted, protocol terminated
                     </Typography>
                   </Box>
