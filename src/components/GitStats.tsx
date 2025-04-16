@@ -1,6 +1,6 @@
-import { Box, Typography, Grid, Card, CardContent, CircularProgress, useTheme, useMediaQuery } from "@mui/material";
+import { Box, Card, CardContent, CircularProgress, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from 'react';
 import GitHubCalendar from 'react-github-calendar';
-import { useState, useEffect } from 'react';
 
 export default function GitStats() {
   const username = "SebastianChristoph";

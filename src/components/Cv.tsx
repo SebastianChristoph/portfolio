@@ -46,9 +46,6 @@ const timelineData: TimelinePoint[] = [
 
 export default function Cv() {
   const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
-  const { scrollYProgress } = useScroll();
-  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
-
   return (
     <Box sx={{ 
       width: '100%', 
