@@ -60,8 +60,8 @@ export default function Cv() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <Typography variant="h2" sx={{ mb: 12, textAlign: 'left' }}>
-          Meine Ausbildung & Zertifikate
+        <Typography variant="h2" sx={{ mb: 12, textAlign: 'left',  color: 'text.secondary' }}>
+          Education & Certificates
         </Typography>
       </motion.div>
       

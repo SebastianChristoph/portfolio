@@ -87,7 +87,7 @@ export default function Contact() {
 
     return (
       <Grid size={{ xs: 12, md: 5 }} id="contact">
-        <Typography variant="h2" sx={{ mb:2, textAlign: 'left' }}>
+        <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
           Contact
         </Typography>
         <Box 
@@ -130,7 +130,7 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
   if (sent) {
     return (
       <Grid size={{ xs: 12, md: 5 }} id="contact">
-        <Typography variant="h2" sx={{ mb:2, textAlign: 'left' }}>
+        <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
           Contact
         </Typography>
         <Box 
@@ -178,9 +178,9 @@ Message sent! That's what she said! 😉`}
 
   return (
     <Grid size={{ xs: 12, md: 5 }} id="contact">
-      <Typography variant="h2" sx={{ mb:2, textAlign: 'left' }}>
-        Contact
-      </Typography>
+       <Typography variant="h2" sx={{ mb:2, textAlign: 'left',  color: 'text.secondary' }}>
+          Contact
+        </Typography>
      
       <Box 
         sx={{ 

@@ -15,7 +15,7 @@ export default function GitStats() {
 
   return (
     <Grid size={{ xs: 12, md: 6 }} id="gitstats">
-      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left' }}>
+      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left',  color: 'text.secondary' }}>
         GitHub Stats
       </Typography>
       <Grid container spacing={4}>
