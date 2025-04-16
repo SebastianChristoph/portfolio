@@ -30,9 +30,10 @@
     "categories": {
       "all": "Alle",
       "programming": "Programmiersprachen",
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "database": "Datenbanken"
+      "frameworks": "Frameworks & Web",
+      "data_cloud": "Daten & Cloud",
+      "tools": "Tools & IDEs",
+      "other": "Weitere Skills"
     }
   },
   "projects": {

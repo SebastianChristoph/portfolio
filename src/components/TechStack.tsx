@@ -1,8 +1,11 @@
 import { Box, Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
-import { FaCss3Alt, FaJava, FaJs, FaMobileAlt, FaNodeJs, FaReact } from "react-icons/fa";
-import { MdDevices } from "react-icons/md";
-import { SiExpress, SiMongodb, SiPostgresql, SiPython, SiRedux, SiTypescript } from "react-icons/si";
+import { FaCss3Alt, FaJava, FaJs, FaPython, FaReact } from "react-icons/fa";
+import { SiDart, SiDjango, SiFlask, SiHtml5, SiPostgresql, SiSelenium, SiSharp, SiSpring, SiSqlite } from "react-icons/si";
+import { DiDocker, DiLinux, DiVisualstudio } from "react-icons/di";
+import { BsDatabase } from "react-icons/bs";
+import { AiOutlineCloud } from "react-icons/ai";
+import { GiCrystalBall } from "react-icons/gi";
 import TechStackSkill from "./TechStackSkill";
 import { useTranslation } from 'react-i18next';
 
@@ -10,26 +13,52 @@ import { useTranslation } from 'react-i18next';
 export const categories = {
   ALL: "techstack.categories.all",
   PROGRAMMING: "techstack.categories.programming",
-  FRONTEND: "techstack.categories.frontend",
-  BACKEND: "techstack.categories.backend",
-  DATABASE: "techstack.categories.database",
+  FRAMEWORKS: "techstack.categories.frameworks",
+  DATA_CLOUD: "techstack.categories.data_cloud",
+  TOOLS: "techstack.categories.tools",
+  OTHER: "techstack.categories.other",
 } as const;
 
-// Dummy data for skills with categories
+// Skills data with categories
 const skills = [
-  { icon: <FaReact />, skill: "React", experience: 4, category: categories.FRONTEND },
-  { icon: <FaMobileAlt />, skill: "React Native", experience: 3, category: categories.FRONTEND },
-  { icon: <SiTypescript />, skill: "TypeScript", experience: 4, category: categories.PROGRAMMING },
-  { icon: <FaCss3Alt />, skill: "CSS", experience: 4, category: categories.FRONTEND },
-  { icon: <FaNodeJs />, skill: "Node.js", experience: 3, category: categories.BACKEND },
-  { icon: <SiMongodb />, skill: "MongoDB", experience: 3, category: categories.DATABASE },
-  { icon: <FaJs />, skill: "REST APIs", experience: 4, category: categories.BACKEND },
-  { icon: <SiRedux />, skill: "Redux", experience: 3, category: categories.FRONTEND },
-  { icon: <MdDevices />, skill: "Responsive Design", experience: 4, category: categories.FRONTEND },
-  { icon: <SiPython />, skill: "Python", experience: 3, category: categories.PROGRAMMING },
+  // Programming Languages
+  { icon: <FaPython />, skill: "Python", experience: 5, category: categories.PROGRAMMING },
+  { icon: <SiHtml5 />, skill: "HTML5", experience: 4, category: categories.PROGRAMMING },
+  { icon: <FaCss3Alt />, skill: "CSS/Sass/SCSS", experience: 4, category: categories.PROGRAMMING },
+  { icon: <SiSharp />, skill: "C#", experience: 4, category: categories.PROGRAMMING },
+  { icon: <FaJs />, skill: "JavaScript", experience: 3, category: categories.PROGRAMMING },
+  { icon: <GiCrystalBall />, skill: "Gherkin", experience: 3, category: categories.PROGRAMMING },
   { icon: <FaJava />, skill: "Java", experience: 2, category: categories.PROGRAMMING },
-  { icon: <SiExpress />, skill: "Express.js", experience: 3, category: categories.BACKEND },
-  { icon: <SiPostgresql />, skill: "PostgreSQL", experience: 3, category: categories.DATABASE },
+  { icon: <SiDart />, skill: "Dart", experience: 3, category: categories.PROGRAMMING },
+
+  // Frameworks & Web Development
+  { icon: <SiSpring />, skill: "Spring Boot", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <SiFlask />, skill: "Flask", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <SiDjango />, skill: "Django", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <FaReact />, skill: "React", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <SiSelenium />, skill: "Selenium", experience: 4, category: categories.FRAMEWORKS },
+
+  // Data & Cloud
+  { icon: <BsDatabase />, skill: "PostgreSQL", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <SiSqlite />, skill: "SQLite", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure SQL", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Data Factory", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Synapse Analytics", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Data Lake Storage", experience: 4, category: categories.DATA_CLOUD },
+
+  // Tools & IDEs
+  { icon: <DiVisualstudio />, skill: "Visual Studio", experience: 4, category: categories.TOOLS },
+  { icon: <DiVisualstudio />, skill: "Visual Studio Code", experience: 4, category: categories.TOOLS },
+  { icon: <DiDocker />, skill: "Docker", experience: 4, category: categories.TOOLS },
+  { icon: <DiLinux />, skill: "Linux", experience: 4, category: categories.TOOLS },
+
+  // Other Skills
+  { icon: <BsDatabase />, skill: "InterSystems Caché", experience: 4, category: categories.OTHER },
+  { icon: <BsDatabase />, skill: "InterSystems HealthShare", experience: 4, category: categories.OTHER },
+  { icon: <AiOutlineCloud />, skill: "Azure DevOps", experience: 4, category: categories.OTHER },
+  { icon: <AiOutlineCloud />, skill: "Jenkins", experience: 4, category: categories.OTHER },
+  { icon: <AiOutlineCloud />, skill: "Gradle", experience: 4, category: categories.OTHER },
+  { icon: <AiOutlineCloud />, skill: "Maven", experience: 4, category: categories.OTHER },
 ];
 
 export default function TechStack() {
@@ -37,8 +66,10 @@ export default function TechStack() {
   const { t } = useTranslation();
 
   const filteredSkills = selectedCategory === categories.ALL
-    ? skills
-    : skills.filter(skill => skill.category === selectedCategory);
+    ? [...skills].sort((a, b) => b.experience - a.experience)
+    : [...skills]
+        .filter(skill => skill.category === selectedCategory)
+        .sort((a, b) => b.experience - a.experience);
 
     return (
         <Grid size={{ xs: 12, md: 3 }} id="techstack">
