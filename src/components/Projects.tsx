@@ -108,21 +108,17 @@ export default function Projects() {
             sx={{
               position: 'relative',
               height: '100%',
-              transformStyle: 'preserve-3d',
-              transition: 'transform 0.8s',
-              '&:hover': {
-                transform: 'rotateY(180deg)',
+              '&:hover .overlay': {
+                opacity: 1,
               },
             }}
           >
-            {/* Front of card */}
+            {/* Project card */}
             <Card sx={{ 
               position: 'relative',
               height: '100%',
               display: 'flex',
               flexDirection: 'column',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
               backgroundColor: 'background.paper',
               border: 1,
               borderColor: 'divider',
@@ -181,23 +177,23 @@ export default function Projects() {
               </CardContent>
             </Card>
 
-            {/* Back of card */}
-            <Card sx={{ 
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden',
-              transform: 'rotateY(180deg)',
-              backgroundColor: 'background.paper',
-              border: 1,
-              borderColor: 'divider',
-            }}>
+            {/* Hover overlay */}
+            <Box
+              className="overlay"
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100%',
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: 0,
+                transition: 'opacity 0.3s ease',
+              }}
+            >
               <Button
                 component="a"
                 variant="contained"
@@ -215,7 +211,7 @@ export default function Projects() {
               >
                 View Project
               </Button>
-            </Card>
+            </Box>
           </Box>
         ))}
       </Box>

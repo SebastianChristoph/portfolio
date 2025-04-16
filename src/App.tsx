@@ -10,7 +10,7 @@ import GitStats from './components/GitStats';
 import Footer from './components/Footer';
 import { GlobalStyles } from '@mui/material';
 import { ThemeContextProvider } from './context/ThemeContext';
-
+import AboutMe from './components/AboutMe';
 function App() {
   return (
     <ThemeContextProvider>
@@ -29,6 +29,7 @@ function App() {
           <Box id="home">
             <Hero />
           </Box>
+          <AboutMe />
           <Grid container spacing={4}>
            
               <TechStack />

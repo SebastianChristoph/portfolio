@@ -164,7 +164,7 @@ Status: ${progress < 100 ? 'Processing...' : 'Complete!'}`}
 
 Thank you for your message. I will get back to you soon.
 
-Message sent! That's what she said!
+Long message inserted! That's what she said!
 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⣿⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
