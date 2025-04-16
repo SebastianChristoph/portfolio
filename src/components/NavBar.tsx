@@ -8,6 +8,8 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { useState, useEffect } from 'react';
 import { useThemeContext } from '../context/ThemeContext';
 
@@ -142,13 +144,17 @@ const NavBar = () => {
             ))}
             <FormControlLabel
               control={
-                <Switch
-                  checked={isDarkMode}
-                  onChange={toggleTheme}
-                  color="primary"
-                />
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
+                  <Switch
+                    checked={isDarkMode}
+                    onChange={toggleTheme}
+                    color="primary"
+                  />
+                  <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
+                </Box>
               }
-              label="Dark Mode"
+              label=""
               sx={{ 
                 ml: 2,
                 '& .MuiFormControlLabel-label': {
@@ -231,13 +237,17 @@ const NavBar = () => {
         >
           <FormControlLabel
             control={
-              <Switch
-                checked={isDarkMode}
-                onChange={toggleTheme}
-                color="primary"
-              />
+              <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
+                <Switch
+                  checked={isDarkMode}
+                  onChange={toggleTheme}
+                  color="primary"
+                />
+                <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
+              </Box>
             }
-            label="Dark Mode"
+            label=""
             sx={{ 
               width: '100%',
               '& .MuiFormControlLabel-label': {
