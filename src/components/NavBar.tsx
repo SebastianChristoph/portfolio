@@ -89,7 +89,7 @@ const NavBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>
               {menuItems.map((item) => (
                 <Button 
                   key={item.id} 
@@ -107,36 +107,27 @@ const NavBar = () => {
                   {item.label}
                 </Button>
               ))}
+              <Divider orientation="vertical" flexItem sx={{ mx: 2 }} />
+              {socialLinks.map((social) => (
+                <IconButton
+                  key={social.label}
+                  color="primary"
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  sx={{
+                    mx: 1,
+                    color: 'text.primary',
+                    '&:hover': {
+                      backgroundColor: theme.palette.action.hover,
+                    }
+                  }}
+                >
+                  {social.icon}
+                </IconButton>
+              ))}
             </Box>
-          </Box>
-
-          <Box 
-            sx={{ 
-              display: { xs: 'none', md: 'flex' }, 
-              alignItems: 'center',
-              gap: 1,
-              borderLeft: `1px solid ${theme.palette.divider}`,
-              borderRight: `1px solid ${theme.palette.divider}`,
-              px: 4,
-            }}
-          >
-            {socialLinks.map((social) => (
-              <IconButton
-                key={social.label}
-                color="primary"
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                sx={{
-                  '&:hover': {
-                    backgroundColor: theme.palette.action.hover,
-                  }
-                }}
-              >
-                {social.icon}
-              </IconButton>
-            ))}
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>

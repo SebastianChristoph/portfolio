@@ -38,7 +38,7 @@
   },
   "projects": {
     "title": "Projects",
-    "description": "Here are some of my recent projects",
+    "description": "Here are some of my recent projects. From developing innovative e-commerce solutions to advanced web scraping tools, these projects reflect my passion for modern web technologies and efficient software solutions. Each project presents its own technical challenges and learning opportunities.",
     "viewProject": "View Project",
     "ecommerce": {
       "title": "E-Commerce Platform",

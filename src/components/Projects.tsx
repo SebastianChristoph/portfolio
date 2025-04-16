@@ -1,5 +1,5 @@
 import { Grid, Typography, Box, Card, CardContent, CardMedia, Chip, Button, useTheme } from "@mui/material";
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker, FaCloud } from "react-icons/fa";
+import { FaExternalLinkAlt, FaReact, FaNodeJs, FaDatabase, FaCss3, FaBaby, FaCode, FaPython, FaDocker, FaCloud, FaGitAlt } from "react-icons/fa";
 import { SiTypescript, SiMongodb, SiRedux, SiFirebase, SiExpress, SiMui, SiNextdotjs, SiPostgresql, SiSelenium, SiSharp, SiDotnet, SiSqlite } from "react-icons/si";
 import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
 import { useTranslation } from 'react-i18next';
@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
   switch (tech.toLowerCase()) {
+    case 'git':
+      return <FaGitAlt />;
     case 'python':
       return <FaPython />;
     case 'docker':
@@ -82,21 +84,21 @@ export default function Projects() {
       titleKey: "projects.marktzone.title",
       descriptionKey: "projects.marktzone.description",
       image: "/logo_marktzone.png",
-      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL", "Selenium"],
+      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL", "Selenium", "Git"],
       link: "https://marktzone.io"
     },
     {
       titleKey: "projects.checkdiepreise.title",
       descriptionKey: "projects.checkdiepreise.description",
       image: "/logo_checkdiepreise.png",
-      technologies: ["Python", "Beautiful Soup", "Blazor", "ASP.NET", "C#", "SQLite", "Azure"],
+      technologies: ["Python", "Beautiful Soup", "Blazor", "ASP.NET", "C#", "SQLite", "Azure", "Git"],
       link: "https://check-die-preise.de"
     },
   ];
 
   return (
     <Grid size={{ xs: 12, md: 9 }}  id="projects">
-      <Typography variant="h2" sx={{ mb: 3, textAlign: 'left', color: 'text.secondary' }}>
+      <Typography variant="h2" sx={{ mb: 8.5, textAlign: 'left', color: 'text.secondary' }}>
         {t('projects.title')}
       </Typography>
       <Box sx={{minHeight: '105px'}}>
