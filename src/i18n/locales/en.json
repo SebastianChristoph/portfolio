@@ -108,25 +108,41 @@
     "title": "Education & Certificates",
     "description": "My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.",
     "education": {
-      "abitur": {
-        "title": "High School Diploma",
-        "description": "Graduated with focus on mathematics and physics"
+      "bta": {
+        "title": "Biological Technical Assistant",
+        "description": "Training as a Biological Technical Assistant. Acquisition of solid analytical skills and scientific foundations that have proven valuable for the systematic approach to complex technical problems."
       },
       "bachelor": {
         "title": "Bachelor of Science",
-        "description": "Completed Bachelor's degree in Computer Science at XYZ University"
+        "description": "Bachelor of Science with focus on analytical thinking and problem-solving. Combination of theoretical knowledge with practical applications in scientific computing."
       },
-      "internship": {
-        "title": "Internship",
-        "description": "6-month internship at TechCompany GmbH in software development"
+      "master": {
+        "title": "Master of Science",
+        "description": "Master of Science with specialization in data analysis and computer-aided methods. In-depth expertise in statistical analysis and data-driven decision making."
+      },
+      "frontend": {
+        "title": "Frontend Development",
+        "description": "Intensive further education in modern frontend development technologies during a gap year. Focus on responsive design, modern JavaScript frameworks, and web development best practices."
+      }
+    },
+    "experience": {
+      "fullstack": {
+        "title": "Software Developer",
+        "description": "Fullstack development of modern applications with .NET Core, Entity Framework, Python, and automated testing (Selenium/UIPath). Daily work with Git for version control and close collaboration in agile teams. Key projects include a modular enterprise management app (Blazor, ASP.NET Core, PostgreSQL) and a laboratory middleware system (Spring Boot, Java, Docker)."
+      },
+      "instructor": {
+        "title": "Programming Instructor",
+        "description": "Programming instructor for Python (basics, Data Science), Dart & Flutter, and HTML5/CSS3 (including SASS). Independent organization and implementation of 4-week modules for groups of approximately 15 participants in full-time online courses."
       }
     },
     "certificates": {
       "aws": {
-        "description": "Certification in cloud computing fundamentals"
+        "title": "AWS Cloud Practitioner",
+        "description": "AWS Certified Cloud Practitioner certification, demonstrating fundamental knowledge of AWS cloud architecture, services, and operations."
       },
       "react": {
-        "description": "Advanced React knowledge and best practices"
+        "title": "React Advanced",
+        "description": "Advanced React certification focusing on complex state management, performance optimization, custom hooks, and modern React patterns."
       }
     }
   },
