@@ -14,27 +14,33 @@ interface TimelinePoint {
 
 const timelineData: TimelinePoint[] = [
   {
-    year: "2013",
+    year: "2010",
     titleKey: "cv.education.bta.title",
     descriptionKey: "cv.education.bta.description",
     type: 'education'
   },
   {
-    year: "2016",
+    year: "2014",
     titleKey: "cv.education.bachelor.title",
     descriptionKey: "cv.education.bachelor.description",
     type: 'education'
   },
   {
-    year: "2019",
+    year: "2016",
     titleKey: "cv.education.master.title",
     descriptionKey: "cv.education.master.description",
     type: 'education'
   },
   {
+    year: "2018",
+    titleKey: "cv.education.teamleader.title",
+    descriptionKey: "cv.education.teamleader.description",
+    type: 'education'
+  },
+  {
     year: "2021",
-    titleKey: "cv.education.frontend.title",
-    descriptionKey: "cv.education.frontend.description",
+    titleKey: "cv.certificates.pcep.title",
+    descriptionKey: "cv.certificates.pcep.description",
     type: 'certificate'
   },
   {
@@ -42,6 +48,14 @@ const timelineData: TimelinePoint[] = [
     titleKey: "cv.experience.instructor.title",
     descriptionKey: "cv.experience.instructor.description",
     type: 'education'
+  },
+  
+
+  {
+    year: "2021",
+    titleKey: "cv.certificates.pcap.title",
+    descriptionKey: "cv.certificates.pcap.description",
+    type: 'certificate'
   },
   {
     year: "2022",
@@ -51,14 +65,14 @@ const timelineData: TimelinePoint[] = [
   },
   {
     year: "2024",
-    titleKey: "cv.certificates.aws.title",
-    descriptionKey: "cv.certificates.aws.description",
+    titleKey: "cv.certificates.az900.title",
+    descriptionKey: "cv.certificates.az900.description",
     type: 'certificate'
   },
   {
     year: "2024",
-    titleKey: "cv.certificates.react.title",
-    descriptionKey: "cv.certificates.react.description",
+    titleKey: "cv.certificates.dp209.title",
+    descriptionKey: "cv.certificates.dp209.description",
     type: 'certificate'
   }
 ];
@@ -117,7 +131,7 @@ export default function Cv() {
         <Typography 
           variant="body2" 
           sx={{ 
-            mb: 8,
+            mb: 16,
             maxWidth: '800px',
             textAlign: 'left',
             color: 'text.main',

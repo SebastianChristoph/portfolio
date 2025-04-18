@@ -11,20 +11,20 @@
   "hero": {
     "greeting": "Hallo, ich bin",
     "role": "Full Stack Entwickler",
-    "description": "Leidenschaftlich engagiert in der Entwicklung innovativer Lösungen und der Bereitstellung außergewöhnlicher Benutzererlebnisse durch sauberen, effizienten Code und moderne Technologien.",
+    "description": "Mit Herz für Daten und Spaß an cleverem Code. Schnell im Kopf, positiv im Team – und immer auf der Suche nach smarten Lösungen.",
     "hire": "Ping mich an",
     "portfolio": "Mein TechStack",
     "profileAlt": "Profilbild von Sebastian Christoph"
   },
   "about": {
-    "title": "Über mich",
-    "paragraph1": "Als Full Stack Entwickler verbinde ich technische Expertise mit kreativem Problemlösungsdenken, um moderne, effiziente Webanwendungen zu entwickeln. Mein Weg in der Softwareentwicklung hat mir ein tiefes Verständnis sowohl für Frontend- als auch Backend-Technologien vermittelt.",
-    "paragraph2": "Ich setze mich leidenschaftlich für die Erstellung von sauberem, wartbarem Code und die Implementierung von Best Practices in der Softwareentwicklung ein. Mein Ansatz konzentriert sich darauf, Lösungen zu liefern, die nicht nur technische Anforderungen erfüllen, sondern auch außergewöhnliche Benutzererlebnisse bieten.",
-    "paragraph3": "Ob bei selbstständiger Arbeit oder im Team bringe ich Engagement, Kreativität und innovatives Denken in jedes Projekt ein. Ich lerne ständig dazu und passe mich neuen Technologien an, um an der Spitze der Webentwicklung zu bleiben.",
-    "word1": "ENGAGIERT",
-    "word2": "KREATIV",
-    "word3": "INNOVATIV"
-  },
+  "title": "Über mich",
+  "paragraph1": "Als Full Stack Developer liebe ich es, überall mitzumischen – warum nur Frontend oder Backend, wenn man beides haben kann? Mein Spezialgebiet: Daten. Sammeln, formen, nutzen. Egal ob im Job oder bei privaten Projekten – ich tüftle ständig an neuen Wegen, Informationen clever zu erfassen und zu verarbeiten.",
+  "paragraph2": "Ich arbeite mich schnell in neue Themen ein und bin mit echter Begeisterung dabei (manchmal ein bisschen zu sehr – fragt mein Team). Diese Energie steckt oft an, und ich bringe gern eine positive, fokussierte und humorvolle Atmosphäre ins Dev-Team.",
+  "paragraph3": "Bevor ich zur Software kam, war ich Tutor, Fotograf und Teamleiter beim DRK. Diese Erfahrungen helfen mir heute, auch mal mit einem anderen Blick auf Dinge zu schauen – und ja, manchmal debugge ich zuerst die Menschen, bevor ich mich an den Code mache.",
+  "word1": "ENGAGIERT",
+  "word2": "KREATIV",
+  "word3": "INNOVATIV"
+},
   "techstack": {
     "title": "Technologien",
     "categories": {
@@ -36,35 +36,24 @@
       "other": "Weitere Skills"
     }
   },
-  "projects": {
-    "title": "Projekte",
-    "description": "Hier sind einige meiner aktuellen Projekte. Von der Entwicklung innovativer E-Commerce-Lösungen bis hin zu fortschrittlichen Web-Scraping-Tools spiegeln diese Projekte meine Leidenschaft für moderne Webtechnologien und effiziente Softwarelösungen wider. Jedes Projekt stellt dabei seine eigenen technischen Herausforderungen und Lernmöglichkeiten dar.",
-    "viewProject": "Projekt ansehen",
-    "ecommerce": {
-      "title": "E-Commerce Plattform",
-      "description": "Eine Full-Stack E-Commerce-Lösung mit Warenkorb und Zahlungsintegration"
-    },
-    "taskmanager": {
-      "title": "Aufgabenverwaltungs-App",
-      "description": "Mobile Aufgabenverwaltung mit Echtzeit-Updates und Team-Kollaborationsfunktionen"
-    },
-    "portfolio": {
-      "title": "Portfolio Website",
-      "description": "Moderne Portfolio-Website, entwickelt mit Next.js und Material-UI"
-    },
-    "fritz": {
-      "title": "Fritz - Dezember 2024",
-      "description": "Mein wertvollstes Projekt - die Geburt meines Sohnes Fritz. Ein neues Kapitel im Leben, voller Liebe, Freude und endloser Möglichkeiten."
-    },
-    "marktzone": {
-      "title": "MarktZone.io",
-      "description": "Innovative E-Commerce-Plattform mit modernster Technologie-Stack für nahtloses Online-Shopping und Verkaufserlebnis."
-    },
-    "checkdiepreise": {
-      "title": "check-die-preise.de",
-      "description": "Online-Preisvergleichsplattform entwickelt mit modernen Webtechnologien und Web-Scraping-Funktionen."
-    }
+ "projects": {
+  "title": "Projekte",
+  "description": "Hier findest du einige meiner aktuellen Projekte. Von innovativen E-Commerce-Lösungen bis hin zu fortschrittlichen Web-Scraping-Tools spiegeln sie meine Leidenschaft für moderne Webtechnologien und effiziente Software wider. Jedes Projekt bringt eigene technische Herausforderungen und Lernchancen mit sich.",
+  "viewProject": "Projekt ansehen",
+  "fritz": {
+    "title": "Fritz – Dezember 2024",
+    "description": "Mein bisher bedeutendster Launch: Projekt Fritz. Gelauncht im Dezember 2024 – voller Liebe, Potenzial und Langzeit-Support. Features: schlaflose Nächte, herzerwärmende Lächeln und eine sich rasant entwickelnde API für Freude."
   },
+  "marktzone": {
+    "title": "MarktZone.io",
+    "description": "Ein smartes Analysetool zur Beobachtung und Auswertung von Amazon-Marktplätzen. Entwickelt, um Trends aufzudecken, Produkte zu verfolgen und spannende Markt-Insights sichtbar zu machen."
+  },
+  "checkdiepreise": {
+    "title": "check-die-preise.de",
+    "description": "Scraped Online-Shops und analysiert historische Preisdaten, um Entwicklungen sichtbar zu machen und gute Deals aufzuspüren. Dein Backend-Detektiv für Preisverläufe und E-Commerce-Intelligenz."
+  }
+}
+,
   "contact": {
     "title": "Kontakt",
     "description": "Ich freue mich über Ihre Nachricht. Füllen Sie einfach das Formular aus, und ich werde mich zeitnah bei Ihnen melden.",
@@ -109,45 +98,54 @@
     "description": "Mein Bildungsweg spiegelt meine Leidenschaft für Technologie und kontinuierliches Lernen wider. Ausgehend von einer soliden Grundlage in Mathematik und Physik habe ich mich in die Informatik und moderne Webtechnologien weiterentwickelt. Durch formale Bildung und professionelle Zertifizierungen habe ich ein vielfältiges Skillset aufgebaut, das theoretisches Wissen mit praktischer Expertise im Cloud Computing und der Webentwicklung verbindet.",
     "education": {
       "bta": {
-        "title": "Biologisch-technischer Assistent",
-        "description": "Ausbildung zum Biologisch-technischen Assistenten. Erwerb fundierter analytischer Fähigkeiten und wissenschaftlicher Grundlagen, die sich als wertvoll für die systematische Herangehensweise an komplexe technische Probleme erwiesen haben."
+        "title": "Biol.Tech. Assistent",
+        "description": "Ausbildung zum staatlich geprüften Biologisch-technischen Assistenten an der Lise-Meitner-Schule in Belrin. Erwerb fundierter analytischer Fähigkeiten und wissenschaftlicher Grundlagen, die sich als wertvoll für die systematische Herangehensweise an komplexe technische Probleme erwiesen haben."
       },
       "bachelor": {
-        "title": "Bachelor of Science",
-        "description": "Bachelor of Science mit Fokus auf analytisches Denken und Problemlösung. Kombination von theoretischem Wissen mit praktischen Anwendungen im wissenschaftlichen Rechnen."
+        "title": "B.A, HU Berlin",
+        "description": "Bachelor of Arts (Geographie) mit Fokus auf analytisches Denken und Problemlösung. Kombination von theoretischem Wissen mit praktischen Anwendungen im wissenschaftlichen Rechnen."
       },
       "master": {
-        "title": "Master of Science",
-        "description": "Master of Science mit Spezialisierung auf Datenanalyse und computergestützte Methoden. Vertiefte Expertise in statistischer Analyse und datengetriebener Entscheidungsfindung."
+        "title": "M.A , University of Illinois, USA",
+        "description": "Master of Science mit Spezialisierung auf Datenanalyse und computergestützte Methoden. Vertiefte Expertise in statistischer Analyse und datengetriebener Entscheidungsfindung. Tutor für Statisitk. "
       },
-      "frontend": {
-        "title": "Frontend-Entwicklung",
-        "description": "Intensive Weiterbildung in modernen Frontend-Entwicklungstechnologien während eines Gap Years. Schwerpunkt auf Responsive Design, moderne JavaScript-Frameworks und Web-Development Best Practices."
-      }
+
+"teamleader": {
+  "title": "Teamleiter",
+  "description": "DRK Flüchtlingshilfe Brandenburg gGmbH, Doberlug-Kirchhain, Sozialbetreuung. Führungsposition und Aufbau eines Teams mit 10 Mitarbeitern, Erstellen von Dienst- und Personalentwicklungsplanung. Zuständig u.a. für Weiterbildungen, Evaluation und Monitoring, Mitarbeitergespräch, Schnittstellenarbeit, Berichtswesen sowie Budgetverantwortlichkeit."
+}
     },
     "experience": {
       "fullstack": {
-        "title": "Software-Entwickler",
+        "title": "Full Stack Software-Entwickler",
         "description": "Fullstack-Entwicklung moderner Anwendungen mit .NET Core, Entity Framework, Python und automatisierten Tests (Selenium/UIPath). Tägliche Arbeit mit Git zur Versionskontrolle und enge Zusammenarbeit in agilen Teams. Schlüsselprojekte umfassen eine modulare Unternehmensverwaltungs-App (Blazor, ASP.NET Core, PostgreSQL) und ein Labor-Middleware-System (Spring Boot, Java, Docker)."
       },
       "instructor": {
-        "title": "Programmierdozent",
-        "description": "Programmierdozent für Python (Grundlagen, Data Science), Dart & Flutter und HTML5/CSS3 (inkl. SASS). Eigenständige Organisation und Durchführung von 4-Wochen-Modulen für Gruppen von ca. 15 Teilnehmern in Vollzeit-Online-Kursen."
+        "title": "IT Dozent",
+        "description": "cimdata Bildungsakademie GmbH Selbstständiges Organisieren und Halten von 4-Wochen-Modulen mit ca. 15 Teilnehmerinnen und Teilnehmern. Module: Python (Basics, DataScience in Python), Dart & Flutter, HTML5 & CSS3 (Basics und Advanced, inkl. SASS). Vermittlung von Wissen zu den Themen Programmiersprachen und state-of-the-art-Techniken. Vollzeitkurs Montag bis Freitag via Zoom."
       }
     },
     "certificates": {
-      "aws": {
-        "title": "AWS Cloud Practitioner",
-        "description": "AWS Certified Cloud Practitioner Zertifizierung, die fundamentales Wissen über AWS Cloud-Architektur, Services und Betrieb nachweist."
+      "az900": {
+        "title": "AZ 900",
+        "description": "Azure Fundamentals (AZ-900), Microsoft zertifiziert. Cloud-Grundlagen und Vorteile – Skalierbarkeit, Verfügbarkeit, Kosten. Azure-Dienste – Compute, Storage, Netzwerk, Datenbanken im Überblick. Sicherheit, Compliance und Datenschutz in Azure erklärt. Preise, SLAs und Lifecycle im Cloud-Modell verstehen."
       },
-      "react": {
-        "title": "React Advanced",
-        "description": "Advanced React Zertifizierung mit Fokus auf komplexes State Management, Performanceoptimierung, Custom Hooks und moderne React-Patterns."
+      "dp209": {
+        "title": "DP 203",
+        "description": "Microsoft zertifiziert. Azure Data Engineer Associate (DP-203), Daten speichern mit Azure – Lake, Blob, Synapse, wohin damit? Pipelines bauen mit Data Factory & Spark – für saubere Datenflüsse. Modelle optimieren, transformieren – mit SQL, Python, Delta Lake. Sicherheit, Monitoring und Skalierung für stabile Datenplattformen."
+      },
+      "pcap": {
+        "title": "PCAP",
+        "description": "PCAP - Certified Associate Python Programmer, Python Akademie, Datentypen, Variablen, Schleifen und Bedingungen solide beherrschen. Funktionen, Module und Fehlerbehandlung sauber einsetzen. OOP verstehen: Klassen, Vererbung, Methoden und Konstruktoren. Standardbibliotheken nutzen – von Strings bis Dateizugriff."
+      },
+      "pcep": {
+        "title": "PCEP",
+        "description": "PCEP - Certified Entry-Level Python Programmer, Python Akademie, Grundlagen lernen: Syntax, Datentypen, Variablen und Ein-/Ausgabe. Operatoren, Bedingungen und Schleifen sicher anwenden. Funktionen schreiben und einfache Fehler erkennen. Listen, Tupel, Dictionaries und grundlegende Python-Logik verstehen."
       }
     }
   },
   "footer": {
-    "copyright": "© 2024 Sebastian Christoph. Alle Rechte vorbehalten.",
+    "copyright": "© 2025 Sebastian Christoph. Alle Rechte vorbehalten.",
     "links": {
       "imprint": "Impressum",
       "privacy": "Datenschutz"

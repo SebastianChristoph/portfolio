@@ -6,8 +6,9 @@ import { BsDatabase } from "react-icons/bs";
 import { DiDocker, DiLinux, DiVisualstudio } from "react-icons/di";
 import { FaCss3Alt, FaJava, FaJs, FaPython, FaReact } from "react-icons/fa";
 import { GiCrystalBall } from "react-icons/gi";
-import { SiDart, SiDjango, SiFlask, SiHtml5, SiSelenium, SiSharp, SiSpring, SiSqlite } from "react-icons/si";
+import { SiBlazor, SiDart, SiDjango, SiFastapi, SiFlask, SiGithub, SiHtml5, SiIntellijidea, SiJenkins, SiRider, SiSelenium, SiSharp, SiSpring, SiSqlite, SiStreamlit, SiTypescript } from "react-icons/si";
 import TechStackSkill from "./TechStackSkill";
+import { VscAzureDevops } from "react-icons/vsc";
 
 // Categories for skills
 export const categories = {
@@ -24,41 +25,47 @@ const skills = [
   // Programming Languages
   { icon: <FaPython />, skill: "Python", experience: 5, category: categories.PROGRAMMING },
   { icon: <SiHtml5 />, skill: "HTML5", experience: 4, category: categories.PROGRAMMING },
-  { icon: <FaCss3Alt />, skill: "CSS/Sass/SCSS", experience: 4, category: categories.PROGRAMMING },
+  { icon: <FaCss3Alt />, skill: "CSS", experience: 4, category: categories.PROGRAMMING },
   { icon: <SiSharp />, skill: "C#", experience: 4, category: categories.PROGRAMMING },
   { icon: <FaJs />, skill: "JavaScript", experience: 3, category: categories.PROGRAMMING },
+  { icon: <SiTypescript  />, skill: "TypeScript", experience: 3, category: categories.PROGRAMMING },
   { icon: <GiCrystalBall />, skill: "Gherkin", experience: 3, category: categories.PROGRAMMING },
   { icon: <FaJava />, skill: "Java", experience: 2, category: categories.PROGRAMMING },
   { icon: <SiDart />, skill: "Dart", experience: 3, category: categories.PROGRAMMING },
 
   // Frameworks & Web Development
-  { icon: <SiSpring />, skill: "Spring Boot", experience: 4, category: categories.FRAMEWORKS },
-  { icon: <SiFlask />, skill: "Flask", experience: 4, category: categories.FRAMEWORKS },
-  { icon: <SiDjango />, skill: "Django", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <SiSpring />, skill: "Spring Boot", experience: 3, category: categories.FRAMEWORKS },
+  { icon: <SiFastapi  />, skill: "FastAPI", experience: 3, category: categories.FRAMEWORKS },
+  { icon: <SiBlazor  />, skill: "Asp.NET Blazor", experience: 4, category: categories.FRAMEWORKS },
+  { icon: <SiFlask />, skill: "Flask", experience: 5, category: categories.FRAMEWORKS },
+  { icon: <SiStreamlit  />, skill: "Streamlit", experience: 3, category: categories.FRAMEWORKS },
+  { icon: <SiDjango />, skill: "Django", experience: 2, category: categories.FRAMEWORKS },
   { icon: <FaReact />, skill: "React", experience: 4, category: categories.FRAMEWORKS },
   { icon: <SiSelenium />, skill: "Selenium", experience: 4, category: categories.FRAMEWORKS },
 
   // Data & Cloud
-  { icon: <BsDatabase />, skill: "PostgreSQL", experience: 4, category: categories.DATA_CLOUD },
-  { icon: <SiSqlite />, skill: "SQLite", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <BsDatabase />, skill: "PostgreSQL", experience: 2, category: categories.DATA_CLOUD },
+  { icon: <SiSqlite />, skill: "SQLite", experience: 5, category: categories.DATA_CLOUD },
   { icon: <AiOutlineCloud />, skill: "Azure SQL", experience: 4, category: categories.DATA_CLOUD },
   { icon: <AiOutlineCloud />, skill: "Azure Data Factory", experience: 4, category: categories.DATA_CLOUD },
-  { icon: <AiOutlineCloud />, skill: "Azure Synapse Analytics", experience: 4, category: categories.DATA_CLOUD },
-  { icon: <AiOutlineCloud />, skill: "Azure Data Lake Storage", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Web Apps", experience: 4, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Synapse Analytics", experience: 3, category: categories.DATA_CLOUD },
+  { icon: <AiOutlineCloud />, skill: "Azure Data Lake Storage", experience: 3, category: categories.DATA_CLOUD },
 
   // Tools & IDEs
   { icon: <DiVisualstudio />, skill: "Visual Studio", experience: 4, category: categories.TOOLS },
-  { icon: <DiVisualstudio />, skill: "Visual Studio Code", experience: 4, category: categories.TOOLS },
+  { icon: <SiRider />, skill: "Rider", experience: 3, category: categories.TOOLS },
+  { icon: <SiIntellijidea   />, skill: "IntelliJ Idea", experience: 3, category: categories.TOOLS },
+  { icon: <DiVisualstudio />, skill: "Visual Studio Code", experience: 5, category: categories.TOOLS },
   { icon: <DiDocker />, skill: "Docker", experience: 4, category: categories.TOOLS },
-  { icon: <DiLinux />, skill: "Linux", experience: 4, category: categories.TOOLS },
+  { icon: <DiLinux />, skill: "Linux", experience: 3, category: categories.TOOLS },
 
   // Other Skills
   { icon: <BsDatabase />, skill: "InterSystems Caché", experience: 4, category: categories.OTHER },
   { icon: <BsDatabase />, skill: "InterSystems HealthShare", experience: 4, category: categories.OTHER },
-  { icon: <AiOutlineCloud />, skill: "Azure DevOps", experience: 4, category: categories.OTHER },
-  { icon: <AiOutlineCloud />, skill: "Jenkins", experience: 4, category: categories.OTHER },
-  { icon: <AiOutlineCloud />, skill: "Gradle", experience: 4, category: categories.OTHER },
-  { icon: <AiOutlineCloud />, skill: "Maven", experience: 4, category: categories.OTHER },
+  { icon: <VscAzureDevops  />, skill: "Azure DevOps", experience: 4, category: categories.OTHER },
+  { icon: <SiJenkins  />, skill: "Jenkins", experience: 4, category: categories.OTHER },
+  { icon: <SiGithub />, skill: "GitHub", experience: 4, category: categories.OTHER },
 ];
 
 export default function TechStack() {

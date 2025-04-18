@@ -2,7 +2,7 @@ import { Box, Button, Card, CardContent, CardMedia, Chip, Grid, Typography, useT
 import { useTranslation } from 'react-i18next';
 import { FaBaby, FaCloud, FaCode, FaCss3, FaDatabase, FaDocker, FaExternalLinkAlt, FaGitAlt, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
 import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
-import { SiDotnet, SiExpress, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiPostgresql, SiRedux, SiSelenium, SiSharp, SiSqlite, SiTypescript } from "react-icons/si";
+import { SiDotnet, SiExpress, SiFastapi, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiPostgresql, SiRedux, SiSelenium, SiSharp, SiSqlite, SiTypescript } from "react-icons/si";
 
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
@@ -23,6 +23,8 @@ const getTechIcon = (tech: string) => {
       return <SiDotnet />;
     case 'azure':
       return <FaCloud />;
+    case 'fastapi':
+      return <SiFastapi  />;
     case 'sqlite':
       return <SiSqlite />;
     case 'babyscript':
@@ -84,7 +86,7 @@ export default function Projects() {
       titleKey: "projects.marktzone.title",
       descriptionKey: "projects.marktzone.description",
       image: "/logo_marktzone.png",
-      technologies: ["Python", "React", "TypeScript", "Docker", "PostgreSQL", "Selenium", "Git"],
+      technologies: ["Python", "React", "FastAPI", "TypeScript", "Docker", "PostgreSQL", "Selenium", "Git"],
       link: "https://marktzone.io"
     },
     {
@@ -114,6 +116,7 @@ export default function Projects() {
         borderRadius: 2,
         backgroundColor: 'background.paper',
         p: 3,
+        mt: 6.5,
         display: 'grid',
         gridTemplateColumns: {
           xs: '1fr',

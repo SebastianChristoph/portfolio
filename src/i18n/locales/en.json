@@ -11,16 +11,16 @@
   "hero": {
     "greeting": "Hi, I'm",
     "role": "Full Stack Developer",
-    "description": "Passionate about creating innovative solutions and delivering exceptional user experiences through clean, efficient code and modern technologies.",
+    "description": "With a passion for data and a love for smart, clean code. Quick to learn, positive in teams – always chasing clever solutions.",
     "hire": "Ping me",
     "portfolio": "My TechStack",
     "profileAlt": "Profile picture of Sebastian Christoph"
   },
   "about": {
     "title": "About Me",
-    "paragraph1": "As a Full Stack Developer, I combine technical expertise with creative problem-solving to build modern, efficient web applications. My journey in software development has equipped me with a deep understanding of both front-end and back-end technologies.",
-    "paragraph2": "I'm passionate about creating clean, maintainable code and implementing best practices in software development. My approach focuses on delivering solutions that not only meet technical requirements but also provide exceptional user experiences.",
-    "paragraph3": "Whether working independently or as part of a team, I bring dedication, creativity, and innovative thinking to every project. I'm constantly learning and adapting to new technologies to stay at the forefront of web development.",
+    "paragraph1": "As a Full Stack Developer, I love working across the stack — because why pick just frontend or backend when you can have both? My sweet spot: data. Collecting it, shaping it, using it. Whether at work or in my side projects, I’m always tinkering with new ways to gather and wrangle information.",
+    "paragraph2": "I dive into new topics fast and get genuinely excited about what I do (sometimes too excited — ask my teammates). That enthusiasm usually rubs off, and I try to keep things positive, focused, and fun around the dev table.",
+    "paragraph3": "Before coding, I was a tutor, a photographer, and even a team lead at the Red Cross. All those roles taught me to see things from different angles — and yes, sometimes to debug people problems before code ones.",
     "word1": "DEDICATED",
     "word2": "CREATIVE",
     "word3": "INNOVATIVE"
@@ -40,30 +40,19 @@
     "title": "Projects",
     "description": "Here are some of my recent projects. From developing innovative e-commerce solutions to advanced web scraping tools, these projects reflect my passion for modern web technologies and efficient software solutions. Each project presents its own technical challenges and learning opportunities.",
     "viewProject": "View Project",
-    "ecommerce": {
-      "title": "E-Commerce Platform",
-      "description": "A full-stack e-commerce solution with shopping cart and payment integration"
-    },
-    "taskmanager": {
-      "title": "Task Management App",
-      "description": "Mobile task manager with real-time updates and team collaboration features"
-    },
-    "portfolio": {
-      "title": "Portfolio Website",
-      "description": "Modern portfolio website built with Next.js and Material-UI"
-    },
     "fritz": {
-      "title": "Fritz - December 2024",
-      "description": "My most precious project - the birth of my son Fritz. A new chapter in life, filled with love, joy, and endless possibilities."
-    },
-    "marktzone": {
-      "title": "MarktZone.io",
-      "description": "Innovative e-commerce platform with cutting-edge tech stack for seamless online shopping and selling experience."
-    },
-    "checkdiepreise": {
-      "title": "check-die-preise.de",
-      "description": "Online price comparison platform built with modern web technologies and data scraping capabilities."
-    }
+  "title": "Fritz – December 2024",
+  "description": "My most meaningful launch to date: Project Fritz. Deployed December 2024, full of love, potential, and long-term support plans. Features include sleepless nights, heart-melting smiles, and a rapidly evolving API for joy."
+}
+,
+"marktzone": {
+  "title": "MarktZone.io",
+  "description": "A smart analysis tool for monitoring and comparing Amazon marketplaces. Built to uncover trends, track products, and reveal hidden insights across regional markets."
+},
+"checkdiepreise": {
+  "title": "check-die-preise.de",
+  "description": "Scrapes online shops and analyzes historical price data to track trends and spot deals. Your backend-powered detective for price evolution and e-commerce intel."
+}
   },
   "contact": {
     "title": "Contact",
@@ -104,48 +93,57 @@
     "success": "Thank you for your message! I will get back to you as soon as possible.",
     "error": "Sorry, there was an error sending your message. Please try again later."
   },
-  "cv": {
-    "title": "Education & Certificates",
-    "description": "My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.",
-    "education": {
-      "bta": {
-        "title": "Biological Technical Assistant",
-        "description": "Training as a Biological Technical Assistant. Acquisition of solid analytical skills and scientific foundations that have proven valuable for the systematic approach to complex technical problems."
-      },
-      "bachelor": {
-        "title": "Bachelor of Science",
-        "description": "Bachelor of Science with focus on analytical thinking and problem-solving. Combination of theoretical knowledge with practical applications in scientific computing."
-      },
-      "master": {
-        "title": "Master of Science",
-        "description": "Master of Science with specialization in data analysis and computer-aided methods. In-depth expertise in statistical analysis and data-driven decision making."
-      },
-      "frontend": {
-        "title": "Frontend Development",
-        "description": "Intensive further education in modern frontend development technologies during a gap year. Focus on responsive design, modern JavaScript frameworks, and web development best practices."
-      }
+ "cv": {
+  "title": "Education & Certifications",
+  "description": "My educational path reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I transitioned into computer science and modern web technologies. Through formal education and professional certifications, I have built a diverse skillset that combines theoretical knowledge with practical expertise in cloud computing and web development.",
+  "education": {
+    "bta": {
+      "title": "Bio. Technic. Assistant",
+      "description": "Vocational training as a certified Biological Technical Assistant at Lise-Meitner-Schule in Berlin. Acquired strong analytical skills and scientific foundations that have proven valuable for a systematic approach to complex technical problems."
     },
-    "experience": {
-      "fullstack": {
-        "title": "Software Developer",
-        "description": "Fullstack development of modern applications with .NET Core, Entity Framework, Python, and automated testing (Selenium/UIPath). Daily work with Git for version control and close collaboration in agile teams. Key projects include a modular enterprise management app (Blazor, ASP.NET Core, PostgreSQL) and a laboratory middleware system (Spring Boot, Java, Docker)."
-      },
-      "instructor": {
-        "title": "Programming Instructor",
-        "description": "Programming instructor for Python (basics, Data Science), Dart & Flutter, and HTML5/CSS3 (including SASS). Independent organization and implementation of 4-week modules for groups of approximately 15 participants in full-time online courses."
-      }
+    "bachelor": {
+      "title": "B.A, HU Berlin",
+      "description": "Bachelor of Arts (Geography) with a focus on analytical thinking and problem-solving. Combined theoretical knowledge with practical applications in scientific computing."
     },
-    "certificates": {
-      "aws": {
-        "title": "AWS Cloud Practitioner",
-        "description": "AWS Certified Cloud Practitioner certification, demonstrating fundamental knowledge of AWS cloud architecture, services, and operations."
-      },
-      "react": {
-        "title": "React Advanced",
-        "description": "Advanced React certification focusing on complex state management, performance optimization, custom hooks, and modern React patterns."
-      }
+    "master": {
+      "title": "M.A, University of Illinois, USA",
+      "description": "Master of Science with a specialization in data analysis and computational methods. Gained in-depth expertise in statistical analysis and data-driven decision-making. Worked as a statistics tutor."
+    },
+    "teamleader": {
+      "title": "Team Lead",
+      "description": "DRK Flüchtlingshilfe Brandenburg gGmbH, Doberlug-Kirchhain, social support. Leadership role including building and managing a team of 10 staff members, creating duty and personnel development plans. Responsible for training, evaluation and monitoring, staff appraisals, cross-functional coordination, reporting, and budget accountability."
     }
   },
+  "experience": {
+    "fullstack": {
+      "title": "Full Stack Software Developer",
+      "description": "Fullstack development of modern applications using .NET Core, Entity Framework, Python, and automated testing (Selenium/UIPath). Daily use of Git for version control and close collaboration in agile teams. Key projects include a modular business management app (Blazor, ASP.NET Core, PostgreSQL) and a lab middleware system (Spring Boot, Java, Docker)."
+    },
+    "instructor": {
+      "title": "IT Instructor",
+      "description": "cimdata Bildungsakademie GmbH. Independently organized and taught 4-week modules with around 15 participants. Modules included: Python (Basics, Data Science in Python), Dart & Flutter, HTML5 & CSS3 (Basics and Advanced, including SASS). Delivered knowledge on programming languages and state-of-the-art technologies. Full-time course, Monday to Friday via Zoom."
+    }
+  },
+  "certificates": {
+    "az900": {
+      "title": "AZ 900",
+      "description": "Azure Fundamentals (AZ-900), Microsoft certified. Cloud basics and benefits – scalability, availability, cost. Overview of Azure services – compute, storage, networking, databases. Security, compliance, and data protection in Azure. Understanding pricing, SLAs, and cloud lifecycle."
+    },
+    "dp209": {
+      "title": "DP 203",
+      "description": "Microsoft certified. Azure Data Engineer Associate (DP-203). Storing data in Azure – Lake, Blob, Synapse and more. Building pipelines with Data Factory & Spark for clean data flows. Optimizing and transforming models – using SQL, Python, Delta Lake. Ensuring security, monitoring, and scaling of stable data platforms."
+    },
+    "pcap": {
+      "title": "PCAP",
+      "description": "PCAP – Certified Associate Python Programmer, Python Institute. Mastering data types, variables, loops, and conditionals. Using functions, modules, and handling exceptions properly. Understanding OOP: classes, inheritance, methods, and constructors. Applying standard libraries – from strings to file access."
+    },
+    "pcep": {
+      "title": "PCEP",
+      "description": "PCEP – Certified Entry-Level Python Programmer, Python Institute. Learning fundamentals: syntax, data types, variables, input/output. Applying operators, conditionals, and loops confidently. Writing functions and spotting simple errors. Understanding lists, tuples, dictionaries, and core Python logic."
+    }
+  }
+}
+,
   "footer": {
     "copyright": "© 2024 Sebastian Christoph. All rights reserved.",
     "links": {
