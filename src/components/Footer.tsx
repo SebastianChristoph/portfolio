@@ -1,7 +1,7 @@
-import { Box, Typography, Container, Link } from '@mui/material';
+import { Box, Container, Link, Typography } from '@mui/material';
 import { useState } from 'react';
-import LegalModal from './LegalModal';
 import { useTranslation } from 'react-i18next';
+import LegalModal from './LegalModal';
 
 const Footer = () => {
   const [openImprint, setOpenImprint] = useState(false);

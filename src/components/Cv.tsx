@@ -1,9 +1,9 @@
 import SchoolIcon from '@mui/icons-material/School';
-import { Box, Typography, useTheme, useMediaQuery, Drawer } from "@mui/material";
+import { Box, Drawer, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { useTranslation } from 'react-i18next';
+import { useInView } from "react-intersection-observer";
 
 interface TimelinePoint {
   year: string;
