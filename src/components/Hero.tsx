@@ -56,8 +56,8 @@ const ProfileImage = styled(Box)(({ theme }) => ({
     objectFit: 'cover',
   },
   [theme.breakpoints.down('md')]: {
-    width: '200px',
-    height: '200px',
+    width: '180px',
+    height: '180px',
   },
 }));
 
@@ -151,8 +151,9 @@ export default function Hero() {
                   contactSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              sx={{ 
-                '&:hover': { backgroundColor: 'primary.dark' }
+              sx={{
+                '&:hover': { backgroundColor: 'primary.dark' },
+                mb: { xs: 0, md: 1 }
               }}
             >
               {t('hero.hire')}
@@ -166,8 +167,9 @@ export default function Hero() {
                   techStackSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              sx={{ 
-                '&:hover': { borderColor: 'secondary.dark' }
+              sx={{
+                '&:hover': { borderColor: 'secondary.dark' },
+                mt: { xs: 1, md: '20px' }
               }}
             >
               {t('hero.portfolio')}

@@ -7,8 +7,8 @@ import { DiDocker, DiLinux, DiVisualstudio } from "react-icons/di";
 import { FaCss3Alt, FaJava, FaJs, FaPython, FaReact } from "react-icons/fa";
 import { GiCrystalBall } from "react-icons/gi";
 import { SiBlazor, SiDart, SiDjango, SiFastapi, SiFlask, SiGithub, SiHtml5, SiIntellijidea, SiJenkins, SiRider, SiSelenium, SiSharp, SiSpring, SiSqlite, SiStreamlit, SiTypescript } from "react-icons/si";
-import TechStackSkill from "./TechStackSkill";
 import { VscAzureDevops } from "react-icons/vsc";
+import TechStackSkill from "./TechStackSkill";
 
 // Categories for skills
 export const categories = {

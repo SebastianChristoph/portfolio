@@ -101,11 +101,7 @@ export default function GitStats() {
                     blockMargin={4}
                     fontSize={12}
                     style={{ maxWidth: '100%' }}
-                    theme={{
-                      light: isDarkMode 
-                        ? ['#101935', '#4a9eff33', '#4a9eff66', '#4a9eff99', '#4a9eff']
-                        : ['#FFFFFF', '#0080ff33', '#0080ff66', '#0080ff99', '#0080ff']
-                    }}
+                    
                     labels={{
                       legend: {
                         less: 'Less',

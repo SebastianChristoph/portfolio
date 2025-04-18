@@ -37,8 +37,9 @@
     }
   },
  "projects": {
+   "comingSoon": "Verlinkung erfolgt bald",
   "title": "Projekte",
-  "description": "Hier findest du einige meiner aktuellen Projekte. Von innovativen E-Commerce-Lösungen bis hin zu fortschrittlichen Web-Scraping-Tools spiegeln sie meine Leidenschaft für moderne Webtechnologien und effiziente Software wider. Jedes Projekt bringt eigene technische Herausforderungen und Lernchancen mit sich.",
+  "description": "Hier findest du einige meiner aktuellen Projekte. Von innovativen Analayse-Plattformen bis hin zu fortschrittlichen Web-Scraping-Tools spiegeln sie meine Leidenschaft für moderne Webtechnologien und effiziente Software wider. Jedes Projekt bringt eigene technische Herausforderungen und Lernchancen mit sich.",
   "viewProject": "Projekt ansehen",
   "fritz": {
     "title": "Fritz – Dezember 2024",
@@ -96,6 +97,7 @@
   "cv": {
     "title": "Ausbildung & Zertifikate",
     "description": "Mein Bildungsweg spiegelt meine Leidenschaft für Technologie und kontinuierliches Lernen wider. Ausgehend von einer soliden Grundlage in Mathematik und Physik habe ich mich in die Informatik und moderne Webtechnologien weiterentwickelt. Durch formale Bildung und professionelle Zertifizierungen habe ich ein vielfältiges Skillset aufgebaut, das theoretisches Wissen mit praktischer Expertise im Cloud Computing und der Webentwicklung verbindet.",
+    "info": "Klicken Sie auf einen Punkt in der Timeline, um mehr über jede Meilenstein zu erfahren.",
     "education": {
       "bta": {
         "title": "Biol.Tech. Assistent",

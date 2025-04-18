@@ -1,5 +1,6 @@
 // src/theme.ts
-import { createTheme } from '@mui/material/styles';
+import { createTheme, Theme } from '@mui/material/styles';
+import type {} from '@mui/material/themeCssVarsAugmentation'; // Import needed for theme object in styleOverrides
 
 // Erweiterung der Palette (siehe oben)
 declare module '@mui/material/styles' {
@@ -129,20 +130,23 @@ export const lightTheme = createTheme({
         }
       }
     },
-    MuiTypography: {
+   MuiTypography: {
       styleOverrides: {
-        h2: {
+        h2: ({ theme }: { theme: Theme }) => ({
           position: 'relative',
           '&::after': {
             content: '""',
-            display: 'block',
-            width: '80px',
-            height: '3px',
-            backgroundColor: '#0080ff',
-            marginTop: '12px',
-            borderRadius: '2px'
+            display: 'none',
+            [theme.breakpoints.up('sm')]: {
+              display: 'block',
+              width: '80px',
+              height: '3px',
+              backgroundColor: theme.palette.primary.main,
+              marginTop: '12px',
+              borderRadius: '2px'
+            }
           }
-        }
+        })
       }
     }
   },
@@ -224,18 +228,21 @@ export const darkTheme = createTheme({
     },
     MuiTypography: {
       styleOverrides: {
-        h2: {
+        h2: ({ theme }: { theme: Theme }) => ({
           position: 'relative',
           '&::after': {
             content: '""',
-            display: 'block',
-            width: '80px',
-            height: '3px',
-            backgroundColor: '#ff6b6b',
-            marginTop: '12px',
-            borderRadius: '2px'
+            display: 'none',
+            [theme.breakpoints.up('sm')]: {
+              display: 'block',
+              width: '80px',
+              height: '3px',
+              backgroundColor: theme.palette.primary.main,
+              marginTop: '12px',
+              borderRadius: '2px'
+            }
           }
-        }
+        })
       }
     }
   },

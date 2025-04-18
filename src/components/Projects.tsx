@@ -1,6 +1,6 @@
-import { Box, Button, Card, CardContent, CardMedia, Chip, Grid, Typography, useTheme } from "@mui/material";
+import { Box, Card, CardContent, CardMedia, Chip, Grid, Typography, useTheme } from "@mui/material";
 import { useTranslation } from 'react-i18next';
-import { FaBaby, FaCloud, FaCode, FaCss3, FaDatabase, FaDocker, FaExternalLinkAlt, FaGitAlt, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
+import { FaBaby, FaCloud, FaCode, FaCss3, FaDatabase, FaDocker, FaGitAlt, FaNodeJs, FaPython, FaReact } from "react-icons/fa";
 import { GiMilkCarton, GiNightSleep } from "react-icons/gi";
 import { SiDotnet, SiExpress, SiFastapi, SiFirebase, SiMongodb, SiMui, SiNextdotjs, SiPostgresql, SiRedux, SiSelenium, SiSharp, SiSqlite, SiTypescript } from "react-icons/si";
 
@@ -233,23 +233,16 @@ export default function Projects() {
                 transition: 'opacity 0.3s ease',
               }}
             >
-              <Button
-                component="a"
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="contained"
-                startIcon={<FaExternalLinkAlt />}
+              <Typography
+                variant="h6"
                 sx={{
-                  backgroundColor: 'primary.main',
-                  color: 'white',
-                  '&:hover': {
-                    backgroundColor: 'primary.dark',
-                  }
+                  color: 'text.primary',
+                  textAlign: 'center',
+                  padding: 2,
                 }}
               >
-                {t('projects.viewProject')}
-              </Button>
+                {t('projects.comingSoon')}
+              </Typography>
             </Box>
           </Box>
         ))}

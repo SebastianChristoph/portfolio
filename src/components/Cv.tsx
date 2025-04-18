@@ -126,7 +126,8 @@ export default function Cv() {
             lineHeight: 1.8
           }}
         >
-          My educational journey reflects my passion for technology and continuous learning. Starting with a strong foundation in mathematics and physics, I've expanded into computer science and modern web technologies. Through formal education and professional certifications, I've built a diverse skill set that combines theoretical knowledge with practical expertise in cloud computing and web development.
+
+{t('cv.description')}
         </Typography>
         <Typography 
           variant="body2" 
@@ -138,6 +139,7 @@ export default function Cv() {
             fontStyle: 'italic'
           }}
         >
+           {t('cv.info')}
           Click on any point in the timeline to learn more about each milestone.
         </Typography>
       </motion.div>
@@ -309,7 +311,7 @@ export default function Cv() {
               {timelineData[selectedPoint].type === 'certificate' && (
                 <SchoolIcon color="secondary" />
               )}
-              <Typography variant="h6">
+              <Typography variant="h6"  color="secondary">
                 {t(timelineData[selectedPoint].titleKey)}
               </Typography>
               <Typography variant="subtitle1" color="text.secondary" sx={{ ml: 'auto' }}>
