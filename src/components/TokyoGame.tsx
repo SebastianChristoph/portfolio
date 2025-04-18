@@ -181,7 +181,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
               let dots = 0;
               const undoInterval = setInterval(() => {
                 dots = (dots + 1) % 4;
-                setUndoText('reverse protocol "global fallout"' + '.'.repeat(dots));
+                setUndoText('reverse protocol' + '.'.repeat(dots));
               }, 350);
 
               // Show abort message after 5 seconds
@@ -436,9 +436,10 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                   background: '#111',
                   border: '2px solid #ff0000',
                   borderRadius: 2,
-                  p: 4,
-                  width: 800,
-                  height: 400,
+                  p: { xs: 2, sm: 4 },
+                  width: { xs: '90vw', sm: 800 },
+                  height: { xs: '80vh', sm: 400 },
+                  maxWidth: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
@@ -507,10 +508,12 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
 
                 <Typography sx={{ 
                   fontFamily: 'Consolas, "Courier New", monospace',
-                  fontSize: '1.1rem',
+                  fontSize: { xs: '0.8rem', sm: '1.1rem' },
                   color: '#ff0000',
-                  whiteSpace: 'pre',
+                  whiteSpace: 'pre-wrap',
                   mb: 2,
+                  maxWidth: '100%',
+                  overflow: 'hidden',
                   textShadow: '0 0 10px #ff0000',
                   animation: 'textBlink 0.5s infinite',
                   '@keyframes textBlink': {
@@ -527,7 +530,7 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                     {nukeStep === nukeMessages.length - 1 && (
                       <Typography sx={{
                         fontFamily: 'monospace',
-                        fontSize: '10px',
+                        fontSize: { xs: '6px', sm: '10px' },
                         color: '#ff0000',
                         whiteSpace: 'pre',
                         position: 'absolute',
@@ -535,18 +538,23 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                         opacity: 0.4,
-                        textShadow: '0 0 5px #ff0000'
+                        textShadow: '0 0 5px #ff0000',
+                        display: { xs: 'none', sm: 'block' }
                       }}>
                         {SKULL_ART}
                       </Typography>
                     )}
                     <Typography sx={{
                       fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '2rem',
+                      fontSize: { xs: '1rem', sm: '2rem' },
                       color: '#ff0000',
                       whiteSpace: 'pre-wrap',
                       textAlign: 'center',
                       width: '100%',
+                      maxWidth: '100%',
+                      px: { xs: 1, sm: 2 },
+                      overflowWrap: 'break-word',
+                      wordBreak: 'break-word',
                       flex: 1,
                       display: 'flex',
                       alignItems: 'center',
@@ -561,15 +569,19 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                 )}
                 
                 {wifiPhase === 'undo' && !confirmPhase && (
-                  <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+                  <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', maxWidth: '100%' }}>
                     <Typography sx={{
                       fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '1.5rem',
+                      fontSize: { xs: '0.9rem', sm: '1.5rem' },
                       color: '#00ff99',
-                      whiteSpace: 'pre',
+                      whiteSpace: 'pre-wrap',
                       mt: 2,
                       textAlign: 'center',
                       width: '100%',
+                      maxWidth: '100%',
+                      px: { xs: 1, sm: 2 },
+                      overflowWrap: 'break-word',
+                      wordBreak: 'break-word',
                       textShadow: '0 0 10px #00ff99'
                     }}>
                       {undoText}
@@ -581,15 +593,18 @@ export default function TokyoGame({ onExit }: TokyoGameProps) {
                   <Box sx={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
                     <Typography sx={{
                       fontFamily: 'Consolas, "Courier New", monospace',
-                      fontSize: '1.5rem',
+                      fontSize: { xs: '1rem', sm: '1.5rem' },
                       color: '#00ff99',
-                      whiteSpace: 'pre',
+                      whiteSpace: 'pre-wrap',
                       mt: 2,
                       textAlign: 'center',
                       width: '100%',
+                      px: 2,
+                      overflowWrap: 'break-word',
+                      wordBreak: 'break-word',
                       textShadow: '0 0 10px #00ff99'
                     }}>
-                      global fallout aborted, protocol terminated
+                      global fallout aborted
                     </Typography>
                   </Box>
                 )}
