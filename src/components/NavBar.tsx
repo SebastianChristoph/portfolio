@@ -8,6 +8,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
+import SpeedIcon from '@mui/icons-material/Speed';
 import WorkIcon from '@mui/icons-material/Work';
 import { AppBar, Box, Button, Divider, Drawer, FormControlLabel, IconButton, List, ListItem, ListItemIcon, ListItemText, Switch, Toolbar, useTheme } from '@mui/material';
 import DE from 'country-flag-icons/react/3x2/DE';
@@ -40,9 +41,10 @@ const NavBar = () => {
 
   const menuItems = [
     { label: t('nav.home'), id: 'home', icon: <HomeIcon /> },
+    { label: t('nav.cv'), id: 'cv', icon: <ArticleIcon /> },
+    { label: t('nav.lighthouse'), id: 'cv', icon: <SpeedIcon /> },
     { label: t('nav.techstack'), id: 'techstack', icon: <CodeIcon /> },
     { label: t('nav.projects'), id: 'projects', icon: <WorkIcon /> },
-    { label: t('nav.cv'), id: 'cv', icon: <ArticleIcon /> },
     { label: t('nav.gitstats'), id: 'gitstats', icon: <BarChartIcon /> },
     { label: t('nav.contact'), id: 'contact', icon: <EmailIcon /> }
   ];

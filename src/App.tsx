@@ -13,6 +13,7 @@ import TechStack from './components/TechStack';
 import { ThemeContextProvider } from './context/ThemeContext';
 import './i18n/i18n';
 import Lighthouse from "./components/Lighthouse";
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   useEffect(() => {
@@ -67,6 +68,7 @@ function App() {
           </Grid>
         </Container>
         <Footer />
+        <ScrollToTop />
       </Box>
     </ThemeContextProvider>
   );
