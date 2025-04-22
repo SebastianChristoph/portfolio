@@ -96,7 +96,7 @@ export default function Cv() {
       width: '100%', 
       py: 4,
       position: 'relative',
-      mt: { xs: "60px", sm: "100px", md: "200px" },
+      mb: { xs: "60px", sm: "100px", md: "250px" },
       overflow: 'hidden'
     }}>
       <motion.div

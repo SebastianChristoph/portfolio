@@ -1,17 +1,16 @@
+import { Box, Container, GlobalStyles, Grid } from "@mui/material";
 import CssBaseline from '@mui/material/CssBaseline';
+import { useEffect } from 'react';
+import AboutMe from './components/AboutMe';
+import Contact from './components/Contact';
+import Cv from './components/Cv';
+import Footer from './components/Footer';
+import GitStats from './components/GitStats';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
-import { Container, Grid, Box } from "@mui/material";
-import TechStack from './components/TechStack';
 import Projects from './components/Projects';
-import Cv from './components/Cv';
-import Contact from './components/Contact';
-import GitStats from './components/GitStats';
-import Footer from './components/Footer';
-import { GlobalStyles } from '@mui/material';
+import TechStack from './components/TechStack';
 import { ThemeContextProvider } from './context/ThemeContext';
-import AboutMe from './components/AboutMe';
-import { useEffect } from 'react';
 import './i18n/i18n';
 
 function App() {
@@ -43,6 +42,10 @@ function App() {
           <Box sx={{ mb: { xs: 4, md: 8 } }}>
             <AboutMe />
           </Box>
+
+          <Box id="cv">
+            <Cv />
+          </Box>
           <Grid container spacing={4}>
            
               <TechStack />
@@ -51,9 +54,7 @@ function App() {
               <Projects />
            
           </Grid>
-          <Box id="cv">
-            <Cv />
-          </Box>
+        
           <Grid container spacing={4} sx={{ mt: "200px" }}>
            
               <Contact />
