@@ -1,7 +1,7 @@
-import { Box, IconButton, styled, Tooltip } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import GB from 'country-flag-icons/react/3x2/GB';
+import { Box, styled, Tooltip } from '@mui/material';
 import DE from 'country-flag-icons/react/3x2/DE';
+import GB from 'country-flag-icons/react/3x2/GB';
+import { useTranslation } from 'react-i18next';
 
 const LeverBase = styled(Box)(({ theme }) => ({
   width: '60px',

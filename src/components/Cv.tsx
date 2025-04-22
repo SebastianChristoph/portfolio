@@ -122,7 +122,7 @@ export default function Cv() {
             mb: 4, 
             maxWidth: '800px', 
             textAlign: 'left',
-            color: 'text.secondary',
+            color: 'text.primary',
             lineHeight: 1.8
           }}
         >

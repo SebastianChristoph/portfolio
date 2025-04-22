@@ -104,7 +104,7 @@ export default function Projects() {
         {t('projects.title')}
       </Typography>
       <Box sx={{ minHeight: '105px', mb: 8.5 }}>
-        <Typography variant="body1" sx={{ textAlign: 'left', paddingLeft: 2, color: 'text.secondary' }}>
+        <Typography variant="body1" sx={{ textAlign: 'left', paddingLeft: 2, color: 'text.primary' }}>
           {t('projects.description')}
         </Typography>
       </Box>

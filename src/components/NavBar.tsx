@@ -11,13 +11,11 @@ import WorkIcon from '@mui/icons-material/Work';
 import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useThemeContext } from '../context/ThemeContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const NavBar = () => {
   const theme = useTheme();
-  const { isDarkMode } = useThemeContext();
   const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
