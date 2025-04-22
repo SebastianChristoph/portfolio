@@ -1,11 +1,11 @@
-import { Fab, useTheme, useScrollTrigger, Zoom } from '@mui/material';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { useThemeContext } from '../context/ThemeContext';
+import { Fab, useTheme, useScrollTrigger, Zoom } from "@mui/material";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { useThemeContext } from "../context/ThemeContext";
 
 const ScrollToTop = () => {
   const { isDarkMode } = useThemeContext();
   const theme = useTheme();
-  
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,
@@ -14,7 +14,7 @@ const ScrollToTop = () => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
@@ -25,13 +25,17 @@ const ScrollToTop = () => {
         size="small"
         onClick={handleClick}
         sx={{
-          position: 'fixed',
+          position: "fixed",
           bottom: 16,
           right: 16,
           zIndex: 1000,
-          backgroundColor: isDarkMode ? theme.palette.primary.dark : theme.palette.primary.main,
-          '&:hover': {
-            backgroundColor: isDarkMode ? theme.palette.primary.main : theme.palette.primary.dark,
+          backgroundColor: isDarkMode
+            ? theme.palette.primary.dark
+            : theme.palette.primary.main,
+          "&:hover": {
+            backgroundColor: isDarkMode
+              ? theme.palette.primary.main
+              : theme.palette.primary.dark,
           },
         }}
       >
@@ -41,4 +45,4 @@ const ScrollToTop = () => {
   );
 };
 
-export default ScrollToTop; 
+export default ScrollToTop;

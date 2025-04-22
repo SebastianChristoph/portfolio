@@ -1,4 +1,12 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Typography } from '@mui/material';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Typography,
+} from "@mui/material";
 
 interface LegalModalProps {
   open: boolean;
@@ -9,16 +17,15 @@ interface LegalModalProps {
 
 const LegalModal = ({ open, onClose, title, content }: LegalModalProps) => {
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      maxWidth="md"
-      fullWidth
-    >
+    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>{title}</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          <Typography variant="body1" component="div" sx={{ whiteSpace: 'pre-line' }}>
+          <Typography
+            variant="body1"
+            component="div"
+            sx={{ whiteSpace: "pre-line" }}
+          >
             {content}
           </Typography>
         </DialogContentText>
@@ -30,4 +37,4 @@ const LegalModal = ({ open, onClose, title, content }: LegalModalProps) => {
   );
 };
 
-export default LegalModal; 
+export default LegalModal;

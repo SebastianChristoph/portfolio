@@ -1,15 +1,21 @@
-import SchoolIcon from '@mui/icons-material/School';
-import { Box, Drawer, Typography, useMediaQuery, useTheme } from "@mui/material";
+import SchoolIcon from "@mui/icons-material/School";
+import {
+  Box,
+  Drawer,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import { useInView } from "react-intersection-observer";
 
 interface TimelinePoint {
   year: string;
-  titleKey: string;  // Key for translation
+  titleKey: string; // Key for translation
   descriptionKey: string;
-  type: 'education' | 'certificate';
+  type: "education" | "certificate";
 }
 
 const timelineData: TimelinePoint[] = [
@@ -17,71 +23,70 @@ const timelineData: TimelinePoint[] = [
     year: "2010",
     titleKey: "cv.education.bta.title",
     descriptionKey: "cv.education.bta.description",
-    type: 'education'
+    type: "education",
   },
   {
     year: "2014",
     titleKey: "cv.education.bachelor.title",
     descriptionKey: "cv.education.bachelor.description",
-    type: 'education'
+    type: "education",
   },
   {
     year: "2016",
     titleKey: "cv.education.master.title",
     descriptionKey: "cv.education.master.description",
-    type: 'education'
+    type: "education",
   },
   {
     year: "2018",
     titleKey: "cv.education.teamleader.title",
     descriptionKey: "cv.education.teamleader.description",
-    type: 'education'
+    type: "education",
   },
   {
     year: "2021",
     titleKey: "cv.certificates.pcep.title",
     descriptionKey: "cv.certificates.pcep.description",
-    type: 'certificate'
+    type: "certificate",
   },
   {
     year: "2021",
     titleKey: "cv.experience.instructor.title",
     descriptionKey: "cv.experience.instructor.description",
-    type: 'education'
+    type: "education",
   },
-  
 
   {
     year: "2021",
     titleKey: "cv.certificates.pcap.title",
     descriptionKey: "cv.certificates.pcap.description",
-    type: 'certificate'
+    type: "certificate",
   },
   {
     year: "2022",
     titleKey: "cv.experience.fullstack.title",
     descriptionKey: "cv.experience.fullstack.description",
-    type: 'education'
+    type: "education",
   },
   {
     year: "2024",
     titleKey: "cv.certificates.az900.title",
     descriptionKey: "cv.certificates.az900.description",
-    type: 'certificate'
+    type: "certificate",
   },
   {
     year: "2024",
     titleKey: "cv.certificates.dp209.title",
     descriptionKey: "cv.certificates.dp209.description",
-    type: 'certificate'
-  }
+    type: "certificate",
+  },
 ];
 
 export default function Cv() {
   const [selectedPoint, setSelectedPoint] = useState<number | null>(null);
   const { t } = useTranslation();
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handlePointClick = (index: number) => {
     setSelectedPoint(index);
@@ -92,21 +97,26 @@ export default function Cv() {
   };
 
   return (
-    <Box sx={{ 
-      width: '100%', 
-      py: 4,
-      position: 'relative',
-      mb: { xs: "60px", sm: "100px", md: "250px" },
-      overflow: 'hidden'
-    }}>
+    <Box
+      sx={{
+        width: "100%",
+        py: 4,
+        position: "relative",
+        mb: { xs: "60px", sm: "100px", md: "250px" },
+        overflow: "hidden",
+      }}
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <Typography variant="h2" sx={{ mb: 2, textAlign: 'left', color: 'text.secondary' }}>
-          {t('cv.title')}
+        <Typography
+          variant="h2"
+          sx={{ mb: 2, textAlign: "left", color: "text.secondary" }}
+        >
+          {t("cv.title")}
         </Typography>
       </motion.div>
 
@@ -116,45 +126,46 @@ export default function Cv() {
         transition={{ duration: 0.8, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <Typography 
-          variant="body1" 
-          sx={{ 
-            mb: 4, 
-            maxWidth: '800px', 
-            textAlign: 'left',
-            color: 'text.primary',
-            lineHeight: 1.8
+        <Typography
+          variant="body1"
+          sx={{
+            mb: 4,
+            maxWidth: "800px",
+            textAlign: "left",
+            color: "text.primary",
+            lineHeight: 1.8,
           }}
         >
-
-{t('cv.description')}
+          {t("cv.description")}
         </Typography>
-        <Typography 
-          variant="body2" 
-          sx={{ 
+        <Typography
+          variant="body2"
+          sx={{
             mb: 16,
-            maxWidth: '800px',
-            textAlign: 'left',
-            color: 'text.main',
-            fontStyle: 'italic'
+            maxWidth: "800px",
+            textAlign: "left",
+            color: "text.main",
+            fontStyle: "italic",
           }}
         >
-           {t('cv.info')}
+          {t("cv.info")}
         </Typography>
       </motion.div>
-      
+
       {/* Timeline line */}
-      <Box sx={{
-        position: 'relative',
-        height: { xs: '80vh', sm: '4px' },
-        width: { xs: '4px', sm: '90%' },
-        backgroundColor: 'primary.main',
-        mx: { xs: '0', sm: 'auto' },
-        ml: { xs: '20px', sm: 'auto' },
-        mb: 8,
-        mt: 4,
-        zIndex: 1
-      }}>
+      <Box
+        sx={{
+          position: "relative",
+          height: { xs: "80vh", sm: "4px" },
+          width: { xs: "4px", sm: "90%" },
+          backgroundColor: "primary.main",
+          mx: { xs: "0", sm: "auto" },
+          ml: { xs: "20px", sm: "auto" },
+          mb: 8,
+          mt: 4,
+          zIndex: 1,
+        }}
+      >
         {timelineData.map((point, index) => {
           const { ref, inView } = useInView({
             triggerOnce: true,
@@ -169,102 +180,119 @@ export default function Cv() {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
               style={{
-                position: 'absolute',
+                position: "absolute",
                 ...(isMobile
                   ? {
                       top: `${(index / (timelineData.length - 1)) * 100}%`,
-                      left: '-9px',
-                      transform: 'translate(-50%, -50%)'
+                      left: "-9px",
+                      transform: "translate(-50%, -50%)",
                     }
                   : {
                       left: `${(index / (timelineData.length - 1)) * 100}%`,
-                      transform: 'translateX(-50%)',
-                      top: '-10px'
+                      transform: "translateX(-50%)",
+                      top: "-10px",
                     }),
-                cursor: 'pointer',
-                zIndex: 2
+                cursor: "pointer",
+                zIndex: 2,
               }}
               onClick={() => handlePointClick(index)}
             >
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                animate={{ 
+                animate={{
                   scale: [1, 1.1, 1],
                   boxShadow: [
-                    `0 0 0 2px ${point.type === 'certificate' ? '#1976d2' : '#ff4081'}`,
-                    `0 0 0 4px ${point.type === 'certificate' ? 'rgba(25, 118, 210, 0.5)' : 'rgba(255, 64, 129, 0.5)'}`,
-                    `0 0 0 2px ${point.type === 'certificate' ? '#1976d2' : '#ff4081'}`
-                  ]
+                    `0 0 0 2px ${
+                      point.type === "certificate" ? "#1976d2" : "#ff4081"
+                    }`,
+                    `0 0 0 4px ${
+                      point.type === "certificate"
+                        ? "rgba(25, 118, 210, 0.5)"
+                        : "rgba(255, 64, 129, 0.5)"
+                    }`,
+                    `0 0 0 2px ${
+                      point.type === "certificate" ? "#1976d2" : "#ff4081"
+                    }`,
+                  ],
                 }}
-                transition={{ 
+                transition={{
                   repeat: Infinity,
                   duration: 2,
                   ease: "easeInOut",
-                  times: [0, 0.5, 1]
+                  times: [0, 0.5, 1],
                 }}
                 style={{
-                  width: '24px',
-                  height: '24px',
-                  borderRadius: '50%',
-                  backgroundColor: point.type === 'certificate' ? '#1976d2' : '#ff4081',
-                  border: '4px solid #fff',
-                  boxShadow: `0 0 0 2px ${point.type === 'certificate' ? '#1976d2' : '#ff4081'}`,
-                  position: 'relative',
-                  zIndex: 1
+                  width: "24px",
+                  height: "24px",
+                  borderRadius: "50%",
+                  backgroundColor:
+                    point.type === "certificate" ? "#1976d2" : "#ff4081",
+                  border: "4px solid #fff",
+                  boxShadow: `0 0 0 2px ${
+                    point.type === "certificate" ? "#1976d2" : "#ff4081"
+                  }`,
+                  position: "relative",
+                  zIndex: 1,
                 }}
               />
-              
+
               {/* Year and title label */}
-              <Box sx={{ 
-                position: 'absolute',
-                ...(isMobile
-                  ? {
-                      left: '32px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      gap: 1,
-                      ml: 2
-                    }
-                  : {
-                      top: point.type === 'certificate' ? '-80px' : '30px',
-                      left: '50%',
-                      transform: 'translateX(-50%)',
-                      textAlign: 'center',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      minWidth: 'max-content'
-                    })
-              }}>
-                <Typography 
-                  variant="body2" 
-                  sx={{ 
-                    fontWeight: 'bold',
-                    whiteSpace: 'nowrap',
-                    color: 'text.primary'
+              <Box
+                sx={{
+                  position: "absolute",
+                  ...(isMobile
+                    ? {
+                        left: "32px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        display: "flex",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        gap: 1,
+                        ml: 2,
+                      }
+                    : {
+                        top: point.type === "certificate" ? "-80px" : "30px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        textAlign: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        minWidth: "max-content",
+                      }),
+                }}
+              >
+                <Typography
+                  variant="body2"
+                  sx={{
+                    fontWeight: "bold",
+                    whiteSpace: "nowrap",
+                    color: "text.primary",
                   }}
                 >
                   {point.year}
                 </Typography>
-                <Box sx={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  gap: 0.5,
-                  flexDirection: { xs: 'row', sm: 'row' },
-                  mt: { xs: 0, sm: 1 }
-                }}>
-                  {point.type === 'certificate' && (
-                    <SchoolIcon sx={{ fontSize: '1rem', color: 'secondary.main' }} />
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 0.5,
+                    flexDirection: { xs: "row", sm: "row" },
+                    mt: { xs: 0, sm: 1 },
+                  }}
+                >
+                  {point.type === "certificate" && (
+                    <SchoolIcon
+                      sx={{ fontSize: "1rem", color: "secondary.main" }}
+                    />
                   )}
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      whiteSpace: 'nowrap',
-                      color: 'text.secondary',
-                      textAlign: 'center'
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      whiteSpace: "nowrap",
+                      color: "text.secondary",
+                      textAlign: "center",
                     }}
                   >
                     {t(point.titleKey)}
@@ -282,45 +310,57 @@ export default function Cv() {
         open={selectedPoint !== null}
         onClose={handleDrawerClose}
         sx={{
-          '& .MuiDrawer-paper': {
-            ...(isMobile ? {
-              borderTopLeftRadius: '16px',
-              borderTopRightRadius: '16px',
-              padding: 3,
-              maxHeight: '70vh'
-            } : {
-              width: '400px',
-              padding: 4,
-              bgcolor: 'background.paper'
-            })
-          }
+          "& .MuiDrawer-paper": {
+            ...(isMobile
+              ? {
+                  borderTopLeftRadius: "16px",
+                  borderTopRightRadius: "16px",
+                  padding: 3,
+                  maxHeight: "70vh",
+                }
+              : {
+                  width: "400px",
+                  padding: 4,
+                  bgcolor: "background.paper",
+                }),
+          },
         }}
       >
         {selectedPoint !== null && (
           <Box>
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: 1, 
-              mb: 3,
-              borderBottom: '2px solid',
-              borderColor: 'primary.main',
-              pb: 2
-            }}>
-              {timelineData[selectedPoint].type === 'certificate' && (
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                mb: 3,
+                borderBottom: "2px solid",
+                borderColor: "primary.main",
+                pb: 2,
+              }}
+            >
+              {timelineData[selectedPoint].type === "certificate" && (
                 <SchoolIcon color="secondary" />
               )}
-              <Typography variant="h6"  color="secondary">
+              <Typography variant="h6" color="secondary">
                 {t(timelineData[selectedPoint].titleKey)}
               </Typography>
-              <Typography variant="subtitle1" color="text.secondary" sx={{ ml: 'auto' }}>
+              <Typography
+                variant="subtitle1"
+                color="text.secondary"
+                sx={{ ml: "auto" }}
+              >
                 {timelineData[selectedPoint].year}
               </Typography>
             </Box>
-            <Typography variant="body1" color="text.secondary" sx={{ 
-              lineHeight: 1.8,
-              whiteSpace: 'pre-line' 
-            }}>
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{
+                lineHeight: 1.8,
+                whiteSpace: "pre-line",
+              }}
+            >
               {t(timelineData[selectedPoint].descriptionKey)}
             </Typography>
           </Box>
