@@ -3,7 +3,7 @@
     "home": "Startseite",
     "about": "Über mich",
     "projects": "Projekte",
-    "leuchtturm" : "Leuchtturm-Projekte",
+    "lighthouse" : "Leuchtturm-Projekte",
     "cv": "Lebenslauf",
     "contact": "Kontakt",
     "techstack": "Technologien",
@@ -20,7 +20,7 @@
   "about": {
   "title": "Über mich",
   "paragraph1": "Als Full Stack Developer liebe ich es, überall mitzumischen – warum nur Frontend oder Backend, wenn man beides haben kann? Mein Spezialgebiet: Daten. Sammeln, formen, nutzen. Egal ob im Job oder bei privaten Projekten – ich tüftle ständig an neuen Wegen, Informationen clever zu erfassen und zu verarbeiten.",
-  "paragraph2": "Ich arbeite mich schnell in neue Themen ein und bin mit echter Begeisterung dabei (manchmal ein bisschen zu sehr – fragt mein Team). Diese Energie steckt oft an, und ich bringe gern eine positive, fokussierte und humorvolle Atmosphäre ins Dev-Team.",
+  "paragraph2": "Ich arbeite mich schnell in neue Themen ein und bin mit echter Begeisterung dabei. Diese Energie steckt oft an, und ich bringe gern eine positive, fokussierte und humorvolle Atmosphäre ins Dev-Team.",
   "paragraph3": "Bevor ich zur Software kam, war ich Tutor, Fotograf und Teamleiter beim DRK. Diese Erfahrungen helfen mir heute, auch mal mit einem anderen Blick auf Dinge zu schauen – und ja, manchmal debugge ich zuerst die Menschen, bevor ich mich an den Code mache.",
   "word1": "ENGAGIERT",
   "word2": "KREATIV",
