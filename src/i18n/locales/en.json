@@ -167,7 +167,7 @@
     "projects": {
       "company": {
         "title": "Modularized Business and HR Management App",
-        "description": "In this project, an existing SaaS web application for personnel management and business organization was redeveloped as a modular Blazor web app based on ASP.NET Core. The application enables, among other things, the management of employee data, business organization, and the creation of graphical dashboards. The PTA took on all project roles, from requirement engineering to deployment.",
+        "description": "In this project, an existing SaaS web application for personnel management and business organization was redeveloped as a modular Blazor web app based on ASP.NET Core. The application enables, among other things, the management of employee data, business organization, and the creation of graphical dashboards. My team took on all project roles, from requirement engineering to deployment.",
         "details": {
           "frontend": "Frontend and Frameworks:",
           "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
