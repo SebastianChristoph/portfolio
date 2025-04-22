@@ -27,22 +27,27 @@ export default function Contact() {
   const [progress, setProgress] = useState(0);
   const [showGame, setShowGame] = useState(false);
   const [sent, setSent] = useState(false);
+  const [currentLoadingMessage, setCurrentLoadingMessage] = useState(0);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
   const [botField, setBotField] = useState(""); // Honeypot
 
   useEffect(() => {
     if (sending && progress < 100) {
       const timer = setTimeout(() => {
-        setProgress((prev) =>
-          Math.min(prev + Math.floor(Math.random() * 8) + 2, 100)
-        );
-      }, 400);
+        setProgress((prev) => {
+          const newProgress = Math.min(prev + Math.floor(Math.random() * 4) + 1, 100); // Slower progress
+          // Update loading message based on progress
+          const messageIndex = Math.min(Math.floor((newProgress / 100) * 8), 7);
+          setCurrentLoadingMessage(messageIndex);
+          return newProgress;
+        });
+      }, 800); // Longer delay between updates
       return () => clearTimeout(timer);
     } else if (sending && progress >= 100) {
       setTimeout(() => {
         setSending(false);
         setSent(true);
-      }, 1000);
+      }, 1500); // Longer delay before showing success
     }
   }, [sending, progress]);
 
@@ -72,6 +77,7 @@ export default function Contact() {
       setSending(true);
       setProgress(0);
       try {
+        console.log(import.meta.env.VITE_CONTACT_SECRET);
         await fetch("https://sebastianchristoph.pythonanywhere.com/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -93,7 +99,7 @@ export default function Contact() {
     setEmail("");
   };
 
-  if (sent) {
+  if (sent || sending) {
     return (
       <Grid size={{ xs: 12, md: 5 }} id="contact">
         <Typography
@@ -112,10 +118,24 @@ export default function Contact() {
             border: `1px solid ${theme.palette.divider}`,
             fontFamily: "Consolas, 'Courier New', monospace",
             whiteSpace: "pre-wrap",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
           }}
         >
-          ✅ Nachricht erfolgreich gesendet! Vielen Dank für deine Nachricht.
-          Ich melde mich bald bei dir.
+          {sending ? (
+            <>
+              <Box>
+                {t(`contact.success.loading.${currentLoadingMessage}`)}
+              </Box>
+              <Box>
+                [{".".repeat(Math.floor(progress / 10))}]{" "}
+                {Math.floor(progress)}%
+              </Box>
+            </>
+          ) : (
+            t("contact.success.message")
+          )}
         </Box>
       </Grid>
     );

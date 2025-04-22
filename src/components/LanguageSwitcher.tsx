@@ -16,7 +16,9 @@ const LeverBase = styled(Box)(({ theme }) => ({
   transition: "all 0.3s ease",
 }));
 
-const Lever = styled(Box)<{ isLeft: boolean }>(({ theme, isLeft }) => ({
+const Lever = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'isLeft'
+})<{ isLeft: boolean }>(({ theme, isLeft }) => ({
   width: "28px",
   height: "20px",
   backgroundColor:

@@ -91,7 +91,19 @@
       }
     },
     "send": "Send Message",
-    "success": "Thank you for your message! I will get back to you as soon as possible.",
+    "success": {
+      "loading": [
+        "Initializing quantum encryption...",
+        "Installing Windows 3.1 from 7 floppy disks...",
+        "Downloading more RAM...",
+        "Bypassing mainframe...",
+        "Compiling with punchcards...",
+        "Converting message to binary and back...",
+        "Asking ChatGPT for help...",
+        "Deleting System32 (just kidding)..."
+      ],
+      "message": "✅ Message sent successfully! I'll get back to you soon."
+    },
     "error": "Sorry, there was an error sending your message. Please try again later."
   },
   "cv": {
