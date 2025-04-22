@@ -2,7 +2,8 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "projects": "Projects",
+    "lighthouse": "Lighthouse Projects",
+    "projects": "Private Projects",
     "cv": "CV",
     "contact": "Contact",
     "techstack": "Tech Stack",
@@ -38,7 +39,7 @@
   },
   "projects": {
     "comingSoon": "Link coming soon",
-    "title": "Projects",
+    "title": "Private Projects",
     "description": "Here are some of my recent projects. From developing innovative platform analysis solutions to advanced web scraping tools, these projects reflect my passion for modern web technologies and efficient software solutions. Each project presents its own technical challenges and learning opportunities.",
     "viewProject": "View Project",
     "fritz": {
@@ -186,7 +187,7 @@
       },
       "lab": {
         "title": "On-Market Support of a Laboratory Middleware",
-        "description": "In this project, I supported the further development and maintenance of a laboratory middleware software for a leading pharmaceutical company. The software optimizes laboratory workflows through a rule engine and a communication module and is used worldwide to replace existing middleware products. **Particularly challenging was working with extensive legacy code that needed to be modernized and optimized.** The PTA took on analysis, implementation, testing, and validation in the agile development process.",
+        "description": "In this project, I supported the further development and maintenance of a laboratory middleware software for a leading pharmaceutical company. The software optimizes laboratory workflows through a rule engine and a communication module and is used worldwide to replace existing middleware products. **Particularly challenging was working with extensive legacy code that needed to be modernized and optimized.** My team took on analysis, implementation, testing, and validation in the agile development process.",
         "details": {
           "frontend": "Frontend and Frameworks:",
           "frontend_tech": "Caché-ObjectScript, Selenium (Test Automation)",

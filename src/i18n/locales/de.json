@@ -3,6 +3,7 @@
     "home": "Startseite",
     "about": "Über mich",
     "projects": "Projekte",
+    "leuchtturm" : "Leuchtturm-Projekte",
     "cv": "Lebenslauf",
     "contact": "Kontakt",
     "techstack": "Technologien",
@@ -38,7 +39,7 @@
   },
  "projects": {
    "comingSoon": "Verlinkung erfolgt bald",
-  "title": "Projekte",
+  "title": "Private Projekte",
   "description": "Hier findest du einige meiner aktuellen Projekte. Von innovativen Analayse-Plattformen bis hin zu fortschrittlichen Web-Scraping-Tools spiegeln sie meine Leidenschaft für moderne Webtechnologien und effiziente Software wider. Jedes Projekt bringt eigene technische Herausforderungen und Lernchancen mit sich.",
   "viewProject": "Projekt ansehen",
   "fritz": {
@@ -168,7 +169,7 @@
     "projects": {
       "company": {
         "title": "Modularisierte App zur Unternehmens- und Personalverwaltung",
-        "description": "Im Projekt wurde eine bestehende SaaS-Webanwendung zur Personalverwaltung und Unternehmensorganisation als modulare Blazor Web App auf Basis von ASP.NET Core neu entwickelt. Die Anwendung ermöglicht unter anderem die Verwaltung von Mitarbeiterdaten, Unternehmensorganisation und die Erstellung grafischer Dashboards. Die PTA übernahm sämtliche Projektrollen, von Requirement Engineering bis zum Deployment.",
+        "description": "Im Projekt wurde eine bestehende SaaS-Webanwendung zur Personalverwaltung und Unternehmensorganisation als modulare Blazor Web App auf Basis von ASP.NET Core neu entwickelt. Die Anwendung ermöglicht unter anderem die Verwaltung von Mitarbeiterdaten, Unternehmensorganisation und die Erstellung grafischer Dashboards. Mein Team übernahm sämtliche Projektrollen, von Requirement Engineering bis zum Deployment.",
         "details": {
           "frontend": "Frontend und Frameworks:",
           "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
