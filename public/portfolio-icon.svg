@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Folder shape -->
+    <path d="M4 8C4 6.89543 4.89543 6 6 6H12L14 8H26C27.1046 8 28 8.89543 28 10V24C28 25.1046 27.1046 26 26 26H6C4.89543 26 4 25.1046 4 24V8Z" fill="#2563EB"/>
+    <!-- Letter P -->
+    <path d="M12 14H18C19.1046 14 20 14.8954 20 16C20 17.1046 19.1046 18 18 18H12V14Z" fill="white"/>
+    <path d="M12 18H18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22H12V18Z" fill="white"/>
+</svg> 
