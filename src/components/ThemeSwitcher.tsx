@@ -1,7 +1,7 @@
-import { Box, IconButton, styled, Tooltip } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import GB from 'country-flag-icons/react/3x2/GB';
-import DE from 'country-flag-icons/react/3x2/DE';
+import { Box, styled, Tooltip } from '@mui/material';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { useThemeContext } from '../context/ThemeContext';
 
 const LeverBase = styled(Box)(({ theme }) => ({
   width: '60px',
@@ -28,54 +28,48 @@ const Lever = styled(Box)<{ isLeft: boolean }>(({ theme, isLeft }) => ({
   justifyContent: 'center',
 }));
 
-const FlagContainer = styled(Box)(({ theme }) => ({
+const IconContainer = styled(Box)(({ theme }) => ({
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
   width: '20px',
-  height: '14px',
+  height: '20px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   opacity: 0.4,
-  filter: theme.palette.mode === 'dark' ? 'brightness(0.8)' : 'none',
+  color: theme.palette.mode === 'dark' ? theme.palette.common.white : theme.palette.grey[800],
   '&.active': {
     opacity: 1,
-    filter: 'none',
+    color: theme.palette.mode === 'dark' ? theme.palette.primary.light : theme.palette.primary.main,
   },
 }));
 
-const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
-
-  const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
-  };
-
-  const isEnglish = i18n.language === 'en';
+const ThemeSwitcher = () => {
+  const { isDarkMode, toggleTheme } = useThemeContext();
 
   return (
-    <Tooltip title={isEnglish ? "Switch to German" : "Switch to English"}>
+    <Tooltip title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}>
       <LeverBase 
-        onClick={() => changeLanguage(isEnglish ? 'de' : 'en')}
+        onClick={toggleTheme}
         sx={{ ml: 2 }}
       >
-        <FlagContainer 
+        <IconContainer 
           sx={{ left: '6px' }}
-          className={isEnglish ? 'active' : ''}
+          className={!isDarkMode ? 'active' : ''}
         >
-          <GB style={{ width: '20px', height: '14px' }} />
-        </FlagContainer>
-        <FlagContainer 
+          <LightModeIcon sx={{ fontSize: 18 }} />
+        </IconContainer>
+        <IconContainer 
           sx={{ right: '6px' }}
-          className={!isEnglish ? 'active' : ''}
+          className={isDarkMode ? 'active' : ''}
         >
-          <DE style={{ width: '20px', height: '14px' }} />
-        </FlagContainer>
-        <Lever isLeft={isEnglish} />
+          <DarkModeIcon sx={{ fontSize: 18 }} />
+        </IconContainer>
+        <Lever isLeft={!isDarkMode} />
       </LeverBase>
     </Tooltip>
   );
 };
 
-export default LanguageSwitcher; 
+export default ThemeSwitcher; 

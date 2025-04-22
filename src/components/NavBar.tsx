@@ -1,26 +1,24 @@
 import ArticleIcon from '@mui/icons-material/Article';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import CodeIcon from '@mui/icons-material/Code';
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import EmailIcon from '@mui/icons-material/Email';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
-import LightModeIcon from '@mui/icons-material/LightMode';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import MenuIcon from '@mui/icons-material/Menu';
 import SpeedIcon from '@mui/icons-material/Speed';
 import WorkIcon from '@mui/icons-material/Work';
-import { AppBar, Box, Button, Divider, Drawer, FormControlLabel, IconButton, List, ListItem, ListItemIcon, ListItemText, Switch, Toolbar, useTheme } from '@mui/material';
-import DE from 'country-flag-icons/react/3x2/DE';
-import GB from 'country-flag-icons/react/3x2/GB';
+import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Toolbar, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useThemeContext } from '../context/ThemeContext';
+import LanguageSwitcher from './LanguageSwitcher';
+import ThemeSwitcher from './ThemeSwitcher';
 
 const NavBar = () => {
   const theme = useTheme();
-  const { isDarkMode, toggleTheme } = useThemeContext();
-  const { i18n, t } = useTranslation();
+  const { isDarkMode } = useThemeContext();
+  const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -33,10 +31,6 @@ const NavBar = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setMobileOpen(false);
     }
-  };
-
-  const handleLanguageChange = () => {
-    i18n.changeLanguage(i18n.language === 'en' ? 'de' : 'en');
   };
 
   const menuItems = [
@@ -118,34 +112,8 @@ const NavBar = () => {
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
-            <FormControlLabel
-              control={
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
-                  <Switch
-                    checked={isDarkMode}
-                    onChange={toggleTheme}
-                    color="primary"
-                  />
-                  <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
-                </Box>
-              }
-              label=""
-            />
-            <FormControlLabel
-              control={
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <GB style={{ width: '20px', height: '14px', marginRight: '8px', opacity: i18n.language === 'en' ? 1 : 0.5 }} />
-                  <Switch
-                    checked={i18n.language === 'de'}
-                    onChange={handleLanguageChange}
-                    color="primary"
-                  />
-                  <DE style={{ width: '20px', height: '14px', marginLeft: '8px', opacity: i18n.language === 'de' ? 1 : 0.5 }} />
-                </Box>
-              }
-              label=""
-            />
+            <ThemeSwitcher />
+            <LanguageSwitcher />
           </Box>
         </Toolbar>
       </AppBar>
@@ -214,36 +182,10 @@ const NavBar = () => {
           </Box>
           <Divider sx={{ my: 2 }} />
           <ListItem>
-            <FormControlLabel
-              control={
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <LightModeIcon sx={{ fontSize: 20, mr: 1, color: isDarkMode ? 'text.secondary' : 'primary.main' }} />
-                  <Switch
-                    checked={isDarkMode}
-                    onChange={toggleTheme}
-                    color="primary"
-                  />
-                  <DarkModeIcon sx={{ fontSize: 20, ml: 1, color: isDarkMode ? 'primary.main' : 'text.secondary' }} />
-                </Box>
-              }
-              label=""
-            />
+            <ThemeSwitcher />
           </ListItem>
           <ListItem>
-            <FormControlLabel
-              control={
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <GB style={{ width: '20px', height: '14px', marginRight: '8px', opacity: i18n.language === 'en' ? 1 : 0.5 }} />
-                  <Switch
-                    checked={i18n.language === 'de'}
-                    onChange={handleLanguageChange}
-                    color="primary"
-                  />
-                  <DE style={{ width: '20px', height: '14px', marginLeft: '8px', opacity: i18n.language === 'de' ? 1 : 0.5 }} />
-                </Box>
-              }
-              label=""
-            />
+            <LanguageSwitcher />
           </ListItem>
         </List>
       </Drawer>
