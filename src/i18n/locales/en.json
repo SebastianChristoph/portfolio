@@ -163,52 +163,52 @@
     }
   },
   "lighthouse": {
-    "title": "Lighthouse Projects",
-    "projects": {
-      "company": {
-        "title": "Modularized Business and HR Management App",
-        "description": "In this project, an existing SaaS web application for personnel management and business organization was redeveloped as a modular Blazor web app based on ASP.NET Core. The application enables, among other things, the management of employee data, business organization, and the creation of graphical dashboards. My team took on all project roles, from requirement engineering to deployment.",
-        "details": {
-          "frontend": "Frontend and Frameworks:",
-          "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
-          "backend": "Backend:",
-          "backend_tech": "Entity Framework Core (with Mediator Pattern via MediatR), .NET 8",
-          "database": "Databases:",
-          "database_tech": "PostgreSQL & SQLite",
-          "cloud": "System Integration and Cloud:",
-          "cloud_tech": "Azure DevOps, Amazon S3",
-          "version": "Version Control:",
-          "version_tech": "Git",
-          "dev": "Development and Testing Environment:",
-          "dev_tech": "JetBrains Rider, .NET Core",
-          "other": "Other:",
-          "other_tech": "Complete application localization"
-        }
-      },
-      "lab": {
-        "title": "On-Market Support of a Laboratory Middleware",
-        "description": "In this project, I supported the further development and maintenance of a laboratory middleware software for a leading pharmaceutical company. The software optimizes laboratory workflows through a rule engine and a communication module and is used worldwide to replace existing middleware products. **Particularly challenging was working with extensive legacy code that needed to be modernized and optimized.** My team took on analysis, implementation, testing, and validation in the agile development process.",
-        "details": {
-          "frontend": "Frontend and Frameworks:",
-          "frontend_tech": "Caché-ObjectScript, Selenium (Test Automation)",
-          "backend": "Backend and Middleware:",
-          "backend_tech": "Spring Boot, Jenkins (CI/CD), Docker, Apache Webserver",
-          "languages": "Programming Languages:",
-          "languages_tech": "Java, JavaScript, Gherkin (Behavior-Driven Development)",
-          "database": "Databases:",
-          "database_tech": "InterSystems Caché, InterSystems HealthShare",
-          "dev": "Development and Testing Tools:",
-          "dev_tech": "MS Visual Studio, IntelliJ IDEA, Maven, Gradle",
-          "cloud": "System Integration and Cloud:",
-          "cloud_tech": "Azure DevOps, VMware",
-          "quality": "Quality Control:",
-          "quality_tech": "HP Application Lifecycle Management, Westgard Rules",
-          "browser": "Browser Support:",
-          "browser_tech": "Mozilla Firefox, Google Chrome",
-          "version": "Version Control:",
-          "version_tech": "Git, TFS"
-        }
+  "title": "Lighthouse Projects",
+  "projects": {
+    "company": {
+      "title": "Modularized Business and HR Management App",
+      "description": "In this project, an existing SaaS web application for personnel management and business organization was redeveloped as a modular Blazor web app based on ASP.NET Core. The application enables, among other things, the management of employee data, business organization, and the creation of graphical dashboards. My team took on all project roles, from requirement engineering to deployment. I worked in an international team with members from Switzerland, Spain, and Germany.",
+      "details": {
+        "frontend": "Frontend and Frameworks:",
+        "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
+        "backend": "Backend:",
+        "backend_tech": "Entity Framework Core (with Mediator Pattern via MediatR), .NET 8",
+        "database": "Databases:",
+        "database_tech": "PostgreSQL & SQLite",
+        "cloud": "System Integration and Cloud:",
+        "cloud_tech": "Azure DevOps, Amazon S3",
+        "version": "Version Control:",
+        "version_tech": "Git",
+        "dev": "Development and Testing Environment:",
+        "dev_tech": "JetBrains Rider, .NET Core",
+        "other": "Other:",
+        "other_tech": "Complete application localization"
+      }
+    },
+    "lab": {
+      "title": "On-Market Support of a Laboratory Middleware",
+      "description": "In this project, I supported the further development and maintenance of a laboratory middleware software for a leading pharmaceutical company. The software optimizes laboratory workflows through a rule engine and a communication module and is used worldwide to replace existing middleware products. Particularly challenging was working with extensive legacy code that needed to be modernized and optimized. My team took on analysis, implementation, testing, and validation in the agile development process. I worked in an international team with members from Switzerland, Spain, and Germany.",
+      "details": {
+        "frontend": "Frontend and Frameworks:",
+        "frontend_tech": "Caché-ObjectScript, Selenium (Test Automation)",
+        "backend": "Backend and Middleware:",
+        "backend_tech": "Spring Boot, Jenkins (CI/CD), Docker, Apache Webserver",
+        "languages": "Programming Languages:",
+        "languages_tech": "Java, JavaScript, Gherkin (Behavior-Driven Development)",
+        "database": "Databases:",
+        "database_tech": "InterSystems Caché, InterSystems HealthShare",
+        "dev": "Development and Testing Tools:",
+        "dev_tech": "MS Visual Studio, IntelliJ IDEA, Maven, Gradle",
+        "cloud": "System Integration and Cloud:",
+        "cloud_tech": "Azure DevOps, VMware",
+        "quality": "Quality Control:",
+        "quality_tech": "HP Application Lifecycle Management, Westgard Rules",
+        "browser": "Browser Support:",
+        "browser_tech": "Mozilla Firefox, Google Chrome",
+        "version": "Version Control:",
+        "version_tech": "Git, TFS"
       }
     }
   }
+}
 } 
