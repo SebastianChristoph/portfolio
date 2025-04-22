@@ -66,7 +66,7 @@
         "2": "Type your message",
         "3": "Click 'send' to submit"
       },
-      "notice": "NOTICE: The keyword \"tokyo\" is restricted to civilian access. Standard contact form users should ignore this warning and should not type \"tokyo\" in the email field and press enter.",
+      "notice": "PS: Only secret agents would try typing \"tokyo\" here. You're not one of those, right? RIGHT?🕵️",
       "prompt": "Enter your email",
       "name": {
         "label": "Name",

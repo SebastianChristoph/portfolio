@@ -159,7 +159,7 @@ export default function Contact() {
                 "contact.form.instructions"
               )}\n\n1. ${t("contact.form.steps.1")}\n\n2. ${t(
                 "contact.form.steps.2"
-              )}\n\n3. ${t("contact.form.steps.3")}`}
+              )}\n\n3. ${t("contact.form.steps.3")}\n\n${t("contact.form.notice")}`}
             </Typography>
 
             <TextField
