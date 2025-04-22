@@ -69,14 +69,28 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email && message && isValidEmail(email)) {
       setSending(true);
       setProgress(0);
+  
+      try {
+        await fetch("https://sebastianchristoph.pythonanywhere.com/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email,
+            message
+          }),
+        });
+      } catch (err) {
+        console.error("Fehler beim E-Mail-Versand:", err);
+        // Optional: Zeige eine Fehlermeldung im UI
+      }
     }
   };
-
+  
   const handleGameExit = () => {
     setShowGame(false);
     setEmail('');
