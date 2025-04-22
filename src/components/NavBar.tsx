@@ -47,7 +47,7 @@ const NavBar = () => {
   const menuItems = [
     { label: t("nav.home"), id: "home", icon: <HomeIcon /> },
     { label: t("nav.cv"), id: "cv", icon: <ArticleIcon /> },
-    { label: t("nav.lighthouse"), id: "cv", icon: <SpeedIcon /> },
+    { label: t("nav.lighthouse"), id: "lighthouse", icon: <SpeedIcon /> },
     { label: t("nav.techstack"), id: "techstack", icon: <CodeIcon /> },
     { label: t("nav.projects"), id: "projects", icon: <WorkIcon /> },
     { label: t("nav.gitstats"), id: "gitstats", icon: <BarChartIcon /> },

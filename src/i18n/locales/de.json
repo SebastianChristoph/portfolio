@@ -60,11 +60,11 @@
     "title": "Kontakt",
     "description": "Ich freue mich über Ihre Nachricht. Füllen Sie einfach das Formular aus, und ich werde mich zeitnah bei Ihnen melden.",
     "form": {
-      "header": "Kontaktformular - Schreiben Sie mir wie ein Profi",
+      "header": "Kontaktformular - Schreiben Sie mir wie ein echter Entwickler!",
       "instructions": "Bitte folgen Sie den untenstehenden Schritten, um mir eine Nachricht zu senden:",
       "steps": {
         "1": "Geben Sie Ihre E-Mail-Adresse ein und drücken Sie Enter",
-        "2": "Schreiben Sie Ihre Nachricht und drücken Sie Enter",
+        "2": "Schreiben Sie Ihre Nachricht",
         "3": "Klicken Sie auf 'Senden' zum Absenden"
       },
       "notice": "HINWEIS: Das Schlüsselwort \"tokyo\" ist nur für zivilen Zugriff eingeschränkt. Normale Benutzer des Kontaktformulars sollten diese Warnung ignorieren und \"tokyo\" nicht in das E-Mail-Feld eingeben und Enter drücken.",

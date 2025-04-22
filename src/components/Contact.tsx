@@ -26,9 +26,9 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
   const [progress, setProgress] = useState(0);
   const [showGame, setShowGame] = useState(false);
+  const [sent, setSent] = useState(false);
   const messageInputRef = useRef<HTMLTextAreaElement>(null);
-
-  const [botField, setBotField] = useState(""); // 🐝 Honeypot
+  const [botField, setBotField] = useState(""); // Honeypot
 
   useEffect(() => {
     if (sending && progress < 100) {
@@ -41,7 +41,7 @@ export default function Contact() {
     } else if (sending && progress >= 100) {
       setTimeout(() => {
         setSending(false);
-        // Removed unused 'setSent' call
+        setSent(true);
       }, 1000);
     }
   }, [sending, progress]);
@@ -71,7 +71,6 @@ export default function Contact() {
     if (email && message && isValidEmail(email)) {
       setSending(true);
       setProgress(0);
-
       try {
         await fetch("https://sebastianchristoph.pythonanywhere.com/send", {
           method: "POST",
@@ -80,7 +79,7 @@ export default function Contact() {
             email,
             message,
             secret: import.meta.env.VITE_CONTACT_SECRET,
-            bot_field: botField, 
+            bot_field: botField,
           }),
         });
       } catch (err) {
@@ -94,6 +93,34 @@ export default function Contact() {
     setEmail("");
   };
 
+  if (sent) {
+    return (
+      <Grid size={{ xs: 12, md: 5 }} id="contact">
+        <Typography
+          variant="h2"
+          sx={{ mb: 2, textAlign: "left", color: "text.secondary" }}
+        >
+          {t("contact.title")}
+        </Typography>
+        <Box
+          sx={{
+            backgroundColor: terminalBg,
+            color: terminalText,
+            p: 2,
+            borderRadius: "4px",
+            height: "400px",
+            border: `1px solid ${theme.palette.divider}`,
+            fontFamily: "Consolas, 'Courier New', monospace",
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          ✅ Nachricht erfolgreich gesendet! Vielen Dank für deine Nachricht.
+          Ich melde mich bald bei dir.
+        </Box>
+      </Grid>
+    );
+  }
+
   return (
     <Grid size={{ xs: 12, md: 5 }} id="contact">
       <Typography
@@ -102,7 +129,6 @@ export default function Contact() {
       >
         {t("contact.title")}
       </Typography>
-
       <Box
         sx={{
           backgroundColor: terminalBg,
@@ -140,18 +166,21 @@ export default function Contact() {
               name="bot_field"
               value={botField}
               onChange={(e) => setBotField(e.target.value)}
-              style={{ display: "none" }} // 🔍 verstecktes Honeypot-Feld
+              style={{ display: "none" }}
               autoComplete="off"
               tabIndex={-1}
             />
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              {/* Email input aligned */}
+              <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
                 <Typography
                   sx={{
                     fontFamily: "Consolas",
                     fontSize: "14px",
-                    color: terminalPrompt,
+                    color: terminalText,
+                    whiteSpace: "nowrap",
+                    minWidth: "140px",
                   }}
                 >
                   C:\Users\guest&gt;
@@ -171,6 +200,10 @@ export default function Contact() {
                       fontSize: "14px",
                       color: terminalText,
                       backgroundColor: "transparent",
+                      padding: 0,
+                      "& .MuiInputBase-input": {
+                        padding: 0,
+                      },
                       "& .MuiInputBase-input::placeholder": {
                         color: placeholderColor,
                         opacity: 1,
@@ -187,27 +220,33 @@ export default function Contact() {
                     fontFamily: "Consolas",
                     fontSize: "14px",
                     color: theme.palette.error.main,
+                    mt: -1,
                   }}
                 >
                   {t("contact.form.email.invalid")}
                 </Typography>
               )}
 
+              {/* Message input aligned */}
               {step >= 2 && (
                 <>
-                  <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+                  <Box
+                    sx={{ display: "flex", alignItems: "flex-start", gap: 1 }}
+                  >
                     <Typography
                       sx={{
                         fontFamily: "Consolas",
                         fontSize: "14px",
-                        color: terminalPrompt,
-                        mr: 1,
+                        color: terminalText,
+                        minWidth: "140px",
+                        pt: "10px",
                       }}
                     >
                       C:\Users\guest&gt;
                     </Typography>
                     <TextField
                       multiline
+                      rows={3}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder={t("contact.form.message.placeholder")}
@@ -220,6 +259,16 @@ export default function Contact() {
                           fontSize: "14px",
                           color: terminalText,
                           backgroundColor: "transparent",
+                          padding: 0,
+                          margin: 0,
+                          "& .MuiInputBase-input": {
+                            padding: 0,
+                            margin: 0,
+                            "&.MuiInputBase-inputMultiline": {
+                              padding: 0,
+                              margin: 0,
+                            },
+                          },
                           "& .MuiInputBase-input::placeholder": {
                             color: placeholderColor,
                             opacity: 1,
@@ -228,17 +277,18 @@ export default function Contact() {
                         "& .MuiOutlinedInput-notchedOutline": {
                           display: "none",
                         },
+                        mt: "10px",
                       }}
                     />
                   </Box>
 
-                  <Box sx={{ display: "flex", alignItems: "center" }}>
+                  <Box sx={{ display: "flex", alignItems: "baseline", gap: 1 }}>
                     <Typography
                       sx={{
                         fontFamily: "Consolas",
                         fontSize: "14px",
-                        color: terminalPrompt,
-                        mr: 1,
+                        color: terminalText,
+                        minWidth: "140px",
                       }}
                     >
                       C:\Users\guest&gt;
@@ -251,7 +301,11 @@ export default function Contact() {
                         fontSize: "14px",
                         color: terminalText,
                         backgroundColor: "transparent",
+                        padding: 0,
                         "&:hover": { textDecoration: "underline" },
+                        "&.Mui-disabled": {
+                          color: placeholderColor,
+                        },
                       }}
                     >
                       {t("contact.send")}
