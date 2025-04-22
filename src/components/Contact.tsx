@@ -16,7 +16,7 @@ export default function Contact() {
   const isDarkMode = theme.palette.mode === "dark";
   const terminalBg = isDarkMode ? "#101935" : "#F8FAFC";
   const terminalText = isDarkMode ? "#CCCCCC" : "#1E293B";
-  const terminalPrompt = isDarkMode ? "#8f9ba8" : "#64748B";
+
   const placeholderColor = isDarkMode ? "#666666" : "#94A3B8";
 
   const [email, setEmail] = useState("");
