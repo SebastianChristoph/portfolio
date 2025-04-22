@@ -61,10 +61,10 @@ const skills = [
   { icon: <DiLinux />, skill: "Linux", experience: 3, category: categories.TOOLS },
 
   // Other Skills
-  { icon: <BsDatabase />, skill: "InterSystems Caché", experience: 4, category: categories.OTHER },
-  { icon: <BsDatabase />, skill: "InterSystems HealthShare", experience: 4, category: categories.OTHER },
+  { icon: <BsDatabase />, skill: "InterSystems Caché", experience: 2, category: categories.OTHER },
+  { icon: <BsDatabase />, skill: "InterSystems HealthShare", experience: 2, category: categories.OTHER },
   { icon: <VscAzureDevops  />, skill: "Azure DevOps", experience: 4, category: categories.OTHER },
-  { icon: <SiJenkins  />, skill: "Jenkins", experience: 4, category: categories.OTHER },
+  { icon: <SiJenkins  />, skill: "Jenkins", experience: 2, category: categories.OTHER },
   { icon: <SiGithub />, skill: "GitHub", experience: 4, category: categories.OTHER },
 ];
 
