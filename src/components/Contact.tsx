@@ -77,14 +77,14 @@ export default function Contact() {
       setSending(true);
       setProgress(0);
       try {
-        console.log(import.meta.env.VITE_CONTACT_SECRET);
+      
         await fetch("https://sebastianchristoph.pythonanywhere.com/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email,
             message,
-            secret: import.meta.env.VITE_CONTACT_SECRET,
+            secret: 'meinSicheresPasswort123',
             bot_field: botField,
           }),
         });
