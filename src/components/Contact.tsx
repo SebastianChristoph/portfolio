@@ -22,7 +22,6 @@ export default function Contact() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [step, setStep] = useState(1);
-  const [sent, setSent] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [sending, setSending] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -42,7 +41,7 @@ export default function Contact() {
     } else if (sending && progress >= 100) {
       setTimeout(() => {
         setSending(false);
-        setSent(true);
+        // Removed unused 'setSent' call
       }, 1000);
     }
   }, [sending, progress]);
@@ -80,8 +79,8 @@ export default function Contact() {
           body: JSON.stringify({
             email,
             message,
-            secret: process.env.REACT_APP_CONTACT_SECRET,
-            bot_field: botField, // 👀 Honeypot
+            secret: import.meta.env.VITE_CONTACT_SECRET,
+            bot_field: botField, 
           }),
         });
       } catch (err) {
