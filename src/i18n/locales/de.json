@@ -162,5 +162,54 @@
       "title": "Datenschutzerklärung",
       "content": "Diese Website verwendet Cookies, um Ihr Surferlebnis zu verbessern. Wir erheben keine personenbezogenen Daten ohne Ihre ausdrückliche Zustimmung. Für weitere Informationen darüber, wie wir mit Ihren Daten umgehen, kontaktieren Sie uns bitte über das bereitgestellte Kontaktformular."
     }
+  },
+  "lighthouse": {
+    "title": "Leuchtturm-Projekte",
+    "projects": {
+      "company": {
+        "title": "Modularisierte App zur Unternehmens- und Personalverwaltung",
+        "description": "Im Projekt wurde eine bestehende SaaS-Webanwendung zur Personalverwaltung und Unternehmensorganisation als modulare Blazor Web App auf Basis von ASP.NET Core neu entwickelt. Die Anwendung ermöglicht unter anderem die Verwaltung von Mitarbeiterdaten, Unternehmensorganisation und die Erstellung grafischer Dashboards. Die PTA übernahm sämtliche Projektrollen, von Requirement Engineering bis zum Deployment.",
+        "details": {
+          "frontend": "Frontend und Frameworks:",
+          "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
+          "backend": "Backend:",
+          "backend_tech": "Entity Framework Core (mit Mediator-Pattern über MediatR), .NET 8",
+          "database": "Datenbanken:",
+          "database_tech": "PostgreSQL & SQLite",
+          "cloud": "Systemintegration und Cloud:",
+          "cloud_tech": "Azure DevOps, Amazon S3",
+          "version": "Versionsverwaltung:",
+          "version_tech": "Git",
+          "dev": "Entwicklungs- und Testumgebung:",
+          "dev_tech": "JetBrains Rider, .NET Core",
+          "other": "Sonstige:",
+          "other_tech": "Vollständige Lokalisierung der Anwendung"
+        }
+      },
+      "lab": {
+        "title": "On-Market-Support einer Labor-Middleware",
+        "description": "Im Projekt unterstützte ich die Weiterentwicklung und Wartung einer Labor-Middleware-Software für ein führendes Pharmaunternehmen. Die Software optimiert Labor-Workflows durch eine Rule Engine und ein Kommunikationsmodul und wird weltweit eingesetzt, um bestehende Middleware-Produkte zu ersetzen. **Besonders herausfordernd war hier die Arbeit mit umfangreichem Legacy-Code, den es zu modernisieren und zu optimieren galt.** Die PTA übernahm dabei die Analyse, Implementierung, Testing und Validierung im agilen Entwicklungsprozess.",
+        "details": {
+          "frontend": "Frontend und Frameworks:",
+          "frontend_tech": "Caché-ObjectScript, Selenium (Testautomatisierung)",
+          "backend": "Backend und Middleware:",
+          "backend_tech": "Spring Boot, Jenkins (CI/CD), Docker, Apache Webserver",
+          "languages": "Programmiersprachen:",
+          "languages_tech": "Java, JavaScript, Gherkin (Behavior-Driven Development)",
+          "database": "Datenbanken:",
+          "database_tech": "InterSystems Caché, InterSystems HealthShare",
+          "dev": "Entwicklungs- und Testtools:",
+          "dev_tech": "MS Visual Studio, IntelliJ IDEA, Maven, Gradle",
+          "cloud": "Systemintegration und Cloud:",
+          "cloud_tech": "Azure DevOps, VMware",
+          "quality": "Qualitätskontrolle:",
+          "quality_tech": "HP Application Lifecycle Management, Westgard Rules",
+          "browser": "Browser-Unterstützung:",
+          "browser_tech": "Mozilla Firefox, Google Chrome",
+          "version": "Versionsverwaltung:",
+          "version_tech": "Git, TFS"
+        }
+      }
+    }
   }
 } 

@@ -12,6 +12,7 @@ import Projects from './components/Projects';
 import TechStack from './components/TechStack';
 import { ThemeContextProvider } from './context/ThemeContext';
 import './i18n/i18n';
+import Lighthouse from "./components/Lighthouse";
 
 function App() {
   useEffect(() => {
@@ -46,6 +47,7 @@ function App() {
           <Box id="cv">
             <Cv />
           </Box>
+          <Lighthouse />
           <Grid container spacing={4}>
            
               <TechStack />
