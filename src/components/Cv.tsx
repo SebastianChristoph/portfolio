@@ -140,7 +140,6 @@ export default function Cv() {
           }}
         >
            {t('cv.info')}
-          Click on any point in the timeline to learn more about each milestone.
         </Typography>
       </motion.div>
       
