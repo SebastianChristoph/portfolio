@@ -9,47 +9,107 @@ import {
   useTheme,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { FaGitAlt, FaJava, FaJs, FaPython } from "react-icons/fa";
+import { DiVisualstudio } from "react-icons/di";
+import { FaFirefox, FaGitAlt, FaJava, FaJenkins, FaPython } from "react-icons/fa";
+import { FiDatabase } from "react-icons/fi";
+import { IoLanguage } from "react-icons/io5";
+import { MdDataset } from "react-icons/md";
 import {
+  SiAmazons3,
+  SiApache,
+  SiApachemaven,
   SiBlazor,
   SiDocker,
+  SiDotnet,
+  SiGooglechrome,
+  SiGradle,
+  SiIntellijidea,
+  SiJavascript,
   SiJenkins,
-  SiPostgresql,
+  SiRider,
   SiSelenium,
   SiSharp,
   SiSpring,
   SiSqlite,
+  SiVmware
 } from "react-icons/si";
-
+import { VscAzureDevops } from "react-icons/vsc";
 // Helper function to get icon for technology
 const getTechIcon = (tech: string) => {
-  switch (tech.toLowerCase()) {
-    case "git":
+  switch (tech) {
+    case "Git":
       return <FaGitAlt />;
-    case "python":
-      return <FaPython />;
-    case "docker":
-      return <SiDocker />;
-    case "postgresql":
-      return <SiPostgresql />;
-    case "selenium":
-      return <SiSelenium />;
-    case "c#":
-      return <SiSharp />;
-    case "blazor":
+    case "TFS":
+      return <FaGitAlt />;
+    case "Blazor Web Components (Radzen)":
       return <SiBlazor />;
-    case "java":
-      return <FaJava />;
-    case "javascript":
-      return <FaJs />;
-    case "spring boot":
+    case "Entity Framework Core (with Mediator Pattern via MediatR)":
+      return <SiDotnet />;
+      case "Entity Framework Core (mit Mediator Pattern via MediatR)":
+      return <SiDotnet />;
+    case "ASP.NET Core":
+      return <SiDotnet />;
+    case ".NET 8":
+      return <SiDotnet />;
+    case ".NET Core":
+      return <SiDotnet />;
+    case "PostgreSQL & SQLite":
+      return <FiDatabase />;
+    case "Amazon S3":
+      return <SiAmazons3 />;
+    case "Azure DevOps":
+      return <VscAzureDevops />;
+    case ".NET Core":
+      return <FaPython />;
+    case "JetBrains Rider":
+      return <SiRider />;
+    case "Complete application localization":
+      return <IoLanguage />;
+      case "Komplette Anwendungs-Lokalisierung":
+        return <IoLanguage />;
+    case "Python":
+      return <FaPython />;
+    case "Docker":
+      return <SiDocker />;
+    case "C#":
+      return <SiSharp />;
+    case "Spring Boot":
       return <SiSpring />;
-    case "jenkins":
+    case "Jenkins":
       return <SiJenkins />;
-    case "sqlite":
+    case "Sqlite":
       return <SiSqlite />;
+
+    case "JavaScript":
+      return <SiJavascript />;
+    case "Java":
+      return <FaJava />;
+    case "MS Visual Studio":
+      return <DiVisualstudio />;
+    case "IntelliJ IDEA":
+      return <SiIntellijidea />;
+    case "Maven":
+      return <SiApachemaven />;
+    case "Gradle":
+      return <SiGradle />;
+    case "VMware":
+      return <SiVmware />;
+    case "Docker":
+      return <SiSqlite />;
+    case "Jenkins (CI/CD)":
+      return <FaJenkins />;
+    case "Selenium (Test Automation)":
+      return <SiSelenium />;
+      case "Selenium (Testautomatisierung)":
+        return <SiSelenium />;
+    case "Mozilla Firefox":
+      return <FaFirefox />;
+    case "Google Chrome":
+      return <SiGooglechrome />;
+    case "Apache Webserver":
+      return <SiApache />;
     default:
-      return <FaGitAlt />; // Fallback icon
+      return <MdDataset />; // Fallback icon
   }
 };
 

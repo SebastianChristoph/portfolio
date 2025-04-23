@@ -185,6 +185,8 @@
         "frontend_tech": "Blazor Web Components (Radzen), ASP.NET Core",
         "backend": "Backend:",
         "backend_tech": "Entity Framework Core (with Mediator Pattern via MediatR), .NET 8",
+        "languages": "Programming Languages:",
+        "languages_tech": "C#, JavaScript",
         "database": "Databases:",
         "database_tech": "PostgreSQL & SQLite",
         "cloud": "System Integration and Cloud:",
