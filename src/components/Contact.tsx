@@ -16,6 +16,7 @@ export default function Contact() {
   const isDarkMode = theme.palette.mode === "dark";
   const terminalBg = isDarkMode ? "#101935" : "#F8FAFC";
   const terminalText = isDarkMode ? "#CCCCCC" : "#1E293B";
+  const contactSecret = import.meta.env.VITE_CONTACT_SECRET;
 
   const placeholderColor = isDarkMode ? "#666666" : "#94A3B8";
 
@@ -59,8 +60,23 @@ export default function Contact() {
       e.preventDefault();
       if (email.toLowerCase() === "tokyo") {
         setShowGame(true);
+        fetch("https://sebastianchristoph.pythonanywhere.com/tokyo", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            secret: contactSecret,
+          }),
+        }).then((res) => {
+          if (!res.ok) {
+            console.error("Tokyo-Benachrichtigung fehlgeschlagen");
+          }
+        }).catch((err) => {
+          console.error("Fehler beim Tokyo-Request:", err);
+        });
+      
         return;
       }
+      
       if (isValidEmail(email)) {
         setEmailError(false);
         setStep(2);
@@ -84,7 +100,7 @@ export default function Contact() {
           body: JSON.stringify({
             email,
             message,
-            secret: 'meinSicheresPasswort123',
+            secret: contactSecret,
             bot_field: botField,
           }),
         });
