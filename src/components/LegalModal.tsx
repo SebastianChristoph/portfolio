@@ -7,6 +7,7 @@ import {
   DialogTitle,
   Typography,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 interface LegalModalProps {
   open: boolean;
@@ -16,6 +17,8 @@ interface LegalModalProps {
 }
 
 const LegalModal = ({ open, onClose, title, content }: LegalModalProps) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
       <DialogTitle>{title}</DialogTitle>
@@ -31,7 +34,7 @@ const LegalModal = ({ open, onClose, title, content }: LegalModalProps) => {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose}>Close</Button>
+        <Button onClick={onClose}>{t("legal.close")}</Button>
       </DialogActions>
     </Dialog>
   );
