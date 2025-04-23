@@ -59,8 +59,6 @@ const getTechIcon = (tech: string) => {
       return <SiAmazons3 />;
     case "Azure DevOps":
       return <VscAzureDevops />;
-    case ".NET Core":
-      return <FaPython />;
     case "JetBrains Rider":
       return <SiRider />;
     case "Complete application localization":
@@ -94,8 +92,6 @@ const getTechIcon = (tech: string) => {
       return <SiGradle />;
     case "VMware":
       return <SiVmware />;
-    case "Docker":
-      return <SiSqlite />;
     case "Jenkins (CI/CD)":
       return <FaJenkins />;
     case "Selenium (Test Automation)":
