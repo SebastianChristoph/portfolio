@@ -101,6 +101,7 @@ interface Project {
   image: string;
   technologies: string[];
   link: string;
+  externalLink?: boolean; // To indicate if it's an external link
 }
 
 export default function Projects() {
@@ -117,7 +118,8 @@ export default function Projects() {
           ? "/logo_baby_dark.png"
           : "/logo_baby_light.png",
       technologies: ["BabyScript", "Milk.js", "Cuddle.io", "Sleep.API"],
-      link: "#",
+      link: "https://www.sos-kinderdorf.de/",
+      externalLink: true
     },
     {
       titleKey: "projects.marktzone.title",
@@ -134,6 +136,7 @@ export default function Projects() {
         "Git",
       ],
       link: "https://marktzone.io",
+      externalLink: true
     },
     {
       titleKey: "projects.checkdiepreise.title",
@@ -150,6 +153,7 @@ export default function Projects() {
         "Git",
       ],
       link: "https://check-die-preise.de",
+      externalLink: true
     },
   ];
 
@@ -205,16 +209,23 @@ export default function Projects() {
         {projects.map((project: Project, index: number) => (
           <Box
             key={index}
+            component="a"
+            href={project.link}
+            target={project.externalLink ? "_blank" : undefined}
+            rel={project.externalLink ? "noopener noreferrer" : undefined}
             sx={{
               position: "relative",
               height: "100%",
-              "&:hover .overlay": {
+              textDecoration: "none",
+              cursor: "pointer",
+              "&:hover .card-hover": {
                 opacity: 1,
               },
             }}
           >
             {/* Project card */}
             <Card
+              className="card-hover"
               sx={{
                 position: "relative",
                 height: "100%",
@@ -223,6 +234,11 @@ export default function Projects() {
                 backgroundColor: "background.paper",
                 border: 1,
                 borderColor: "divider",
+                transition: "transform 0.3s ease",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: 3,
+                },
               }}
             >
               <CardMedia
@@ -296,7 +312,7 @@ export default function Projects() {
 
             {/* Hover overlay */}
             <Box
-              className="overlay"
+              className="card-hover"
               sx={{
                 position: "absolute",
                 top: 0,
@@ -312,6 +328,7 @@ export default function Projects() {
                 justifyContent: "center",
                 opacity: 0,
                 transition: "opacity 0.3s ease",
+                pointerEvents: "none",
               }}
             >
               <Typography
@@ -322,7 +339,7 @@ export default function Projects() {
                   padding: 2,
                 }}
               >
-                {t("projects.comingSoon")}
+                {project.link}
               </Typography>
             </Box>
           </Box>
