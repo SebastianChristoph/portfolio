@@ -16,8 +16,7 @@ export default function Contact() {
   const isDarkMode = theme.palette.mode === "dark";
   const terminalBg = isDarkMode ? "#101935" : "#F8FAFC";
   const terminalText = isDarkMode ? "#CCCCCC" : "#1E293B";
-  const contactSecret = import.meta.env.VITE_CONTACT_SECRET;
-
+  const contactSecret = 'meinSicheresPasswort123'
   const placeholderColor = isDarkMode ? "#666666" : "#94A3B8";
 
   const [email, setEmail] = useState("");
